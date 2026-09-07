@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard – City of Koronadal')
+@section('title', 'Dashboard – City of Tupi')
 @section('page_title', 'Dashboard')
 
 @section('content')
