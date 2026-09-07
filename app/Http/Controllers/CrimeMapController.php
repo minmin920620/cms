@@ -98,7 +98,7 @@ class CrimeMapController extends Controller
      * Return GIS barangay boundaries with crime statistics.
      *
      * Priority:
-     * 1. GIS GeoJSON file on disk (public/gis/koronadal-barangays.geojson)
+     * 1. GIS GeoJSON file on disk (gis/koronadal-barangays.geojson)
      * 2. Predefined polygon boundaries from BarangayBoundaries data class
      * 3. Convex hull generated from crime locations in that barangay
      * 4. Hexagon fallback (original behavior) as last resort
@@ -122,7 +122,7 @@ class CrimeMapController extends Controller
 	        $barangays = $barangays->get();
 
         // --- PRIORITY 1: GIS GeoJSON file ---
-        $gisPath = public_path('gis/koronadal-barangays.geojson');
+        $gisPath = $this->barangayGeoJsonPath();
         if (File::exists($gisPath)) {
             $geojson = json_decode(File::get($gisPath), true);
 
@@ -456,7 +456,7 @@ class CrimeMapController extends Controller
 
     private function detectBarangayFromGeoJson(float $lat, float $lng, $barangays): ?array
     {
-        $gisPath = public_path('gis/koronadal-barangays.geojson');
+        $gisPath = $this->barangayGeoJsonPath();
         if (! File::exists($gisPath)) {
             return null;
         }
@@ -497,6 +497,21 @@ class CrimeMapController extends Controller
         usort($matches, fn ($a, $b) => $a['distance_km'] <=> $b['distance_km']);
 
         return $matches[0];
+    }
+
+    /**
+     * Resolve the canonical Koronadal boundary dataset.
+     *
+     * The application source is outside Hostinger's web root, so the GIS file
+     * belongs in the repository-level gis directory rather than public_html.
+     */
+    private function barangayGeoJsonPath(): string
+    {
+        $sourcePath = base_path('gis/koronadal-barangays.geojson');
+
+        return File::exists($sourcePath)
+            ? $sourcePath
+            : public_path('gis/koronadal-barangays.geojson');
     }
 
     private function pointInGeometry(float $lng, float $lat, array $geometry): bool
