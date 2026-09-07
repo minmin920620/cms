@@ -26,7 +26,13 @@
                         <td class="px-4 py-3">
                             <p class="text-sm font-medium text-gray-900">{{ $offense->name }}</p>
                         </td>
-                        <td class="px-4 py-3 text-sm text-gray-600">{{ $offense->crimeType->name ?? 'Unlinked' }}</td>
+                        <td class="px-4 py-3 text-sm text-gray-600">
+                            @if($offense->crimeType)
+                                {{ $offense->crimeType->name }}
+                            @else
+                                <a href="{{ route('offense-types.edit', $offense) }}" class="font-medium text-amber-700 hover:text-amber-800">Needs linking</a>
+                            @endif
+                        </td>
                         <td class="px-4 py-3">
                             @if($offense->is_active)
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Active</span>

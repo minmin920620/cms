@@ -838,6 +838,14 @@ class CrimeController extends Controller
         $validator = Validator::make($request->all(), $rules);
 
         $validator->after(function ($validator) use ($request, $crime) {
+            if ($request->filled(['crime_type_id', 'offense_type_id'])) {
+                $offenseType = OffenseType::find($request->integer('offense_type_id'));
+
+                if (! $offenseType || (int) $offenseType->crime_type_id !== $request->integer('crime_type_id')) {
+                    $validator->errors()->add('offense_type_id', 'Select an offense linked to the selected crime type.');
+                }
+            }
+
             if (
                 $request->filled(['date_reported', 'date_occurred', 'time_reported', 'time_occurred'])
                 && $request->date_reported === $request->date_occurred

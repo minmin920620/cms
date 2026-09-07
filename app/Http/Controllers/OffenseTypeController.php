@@ -30,7 +30,7 @@ class OffenseTypeController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:500', 'unique:offense_types,name'],
-            'crime_type_id' => ['nullable', Rule::exists('crime_types', 'id')->where('is_active', true)],
+            'crime_type_id' => ['required', Rule::exists('crime_types', 'id')->where('is_active', true)],
             'is_active' => ['boolean'],
         ]);
 
@@ -55,7 +55,7 @@ class OffenseTypeController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:500', Rule::unique('offense_types', 'name')->ignore($offenseType)],
-            'crime_type_id' => ['nullable', Rule::exists('crime_types', 'id')],
+            'crime_type_id' => ['required', Rule::exists('crime_types', 'id')],
             'is_active' => ['boolean'],
         ]);
 
