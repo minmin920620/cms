@@ -95,7 +95,7 @@
             {{-- Footer --}}
             <footer class="border-t border-border bg-card/80 px-4 py-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
-                    <p>&copy; {{ date('Y') }} City of Tupi. All rights reserved.</p>
+                    <p>&copy; {{ date('Y') }} City of Koronadal. All rights reserved.</p>
                     <p>Crime Mapping &amp; Information System v1.0</p>
                 </div>
             </footer>
