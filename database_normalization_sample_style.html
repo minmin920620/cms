@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Database Normalization - Crime Mapping and Management System</title>
+<style>
+@page { size: landscape; margin: 0.45in; }
+body { margin: 0; background: #f3f4f6; font-family: Arial, Helvetica, sans-serif; color: #3f3f46; }
+.slide { width: 100%; min-height: 6.75in; box-sizing: border-box; background: white; border-top: 28px solid #c75a24; border-bottom: 28px solid #c75a24; padding: 38px 56px 32px; page-break-after: always; }
+.slide.plain-top { border-top: 0; }
+h1 { font-size: 38px; line-height: 1.08; margin: 0 0 8px; font-weight: 800; letter-spacing: .2px; }
+h2 { font-size: 28px; margin: 12px 0 10px; font-weight: 800; }
+h3 { font-size: 19px; margin: 8px 0; font-weight: 800; }
+.rule { font-size: 18px; font-weight: 700; margin: 4px 0 10px; }
+hr { border: 0; border-top: 1px solid #b9b9b9; margin: 8px 0 12px; }
+table { border-collapse: collapse; font-size: 13px; margin: 8px 0 12px; }
+th, td { border: 1.5px solid #f28c28; padding: 7px 8px; vertical-align: top; }
+th { background: #fff4ec; font-weight: 800; }
+td { background: #f4d6c5; }
+.wide { width: 100%; }
+.medium { width: 78%; }
+.small { width: 48%; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px; align-items: start; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; align-items: start; }
+.problem { font-size: 25px; font-weight: 800; margin: 8px 0 2px; }
+ul { margin: 4px 0 0 20px; padding: 0; font-size: 23px; font-weight: 800; line-height: 1.25; }
+li { margin: 4px 0; }
+li::marker { color: #f28c28; font-size: 16px; }
+.note { font-size: 16px; text-align: center; margin-top: 8px; color: #111827; }
+.left-note { font-size: 16px; margin-top: 4px; color: #111827; }
+.caption { font-weight: 800; font-size: 15px; margin: 2px 0 0; }
+.compact th, .compact td { padding: 6px 7px; font-size: 12px; }
+.tiny th, .tiny td { padding: 5px 6px; font-size: 11px; }
+</style>
+</head>
+<body>
+
+<section class="slide">
+<h1>Chapter IV: Methodology, Results,<br>and Discussion</h1>
+<hr>
+<h2>Example of UNF:</h2>
+<table class="wide compact">
+<tr>
+<th>CaseNo</th>
+<th>CaseTitle</th>
+<th>CrimeType</th>
+<th>Offense</th>
+<th>Barangay</th>
+<th>Reporter</th>
+<th>AssignedOfficer</th>
+<th>Evidence1</th>
+<th>Evidence2</th>
+<th>Status1</th>
+<th>Status2</th>
+</tr>
+<tr>
+<td>CRM-20260816-0001</td>
+<td>Theft Incident</td>
+<td>Theft</td>
+<td>THEFT - RPC Art. 308</td>
+<td>Zone III, Koronadal City</td>
+<td>Juan Dela Cruz</td>
+<td>PO1 Santos</td>
+<td>photo.jpg</td>
+<td>blotter.pdf</td>
+<td>Report Received</td>
+<td>CIRAS Recording</td>
+</tr>
+<tr>
+<td>CRM-20260816-0002</td>
+<td>Robbery Incident</td>
+<td>Robbery</td>
+<td>ROBBERY - RPC Art. 293</td>
+<td>General Paulino Santos</td>
+<td>Maria Cruz</td>
+<td>PO1 Santos</td>
+<td>cctv.mp4</td>
+<td>irf.pdf</td>
+<td>Report Received</td>
+<td>For Review</td>
+</tr>
+</table>
+<div class="problem">Problem:</div>
+<ul>
+<li>Evidence and status updates are stored in multiple columns.</li>
+<li>If a case has more evidence or status updates, additional columns must be added.</li>
+<li>Crime type, offense, barangay, reporter, and officer information can be repeated.</li>
+<li>Data is repeated and difficult to maintain.</li>
+</ul>
+</section>
+
+<section class="slide plain-top">
+<h1>Chapter IV: Methodology, Results,<br>and Discussion</h1>
+<hr>
+<h2>Example of 1NF:</h2>
+<p class="rule">Rule of 1NF: Each column must contain only one value (atomic values). Instead of multiple evidence and status columns, each evidence file and status update gets its own row/table.</p>
+<table class="wide compact">
+<tr>
+<th>CaseNo</th>
+<th>CaseTitle</th>
+<th>CrimeType</th>
+<th>Offense</th>
+<th>Barangay</th>
+<th>Reporter</th>
+<th>AssignedOfficer</th>
+<th>EvidenceFile</th>
+<th>Status</th>
+</tr>
+<tr><td>CRM-20260816-0001</td><td>Theft Incident</td><td>Theft</td><td>THEFT - RPC Art. 308</td><td>Zone III</td><td>Juan Dela Cruz</td><td>PO1 Santos</td><td>photo.jpg</td><td>Report Received</td></tr>
+<tr><td>CRM-20260816-0001</td><td>Theft Incident</td><td>Theft</td><td>THEFT - RPC Art. 308</td><td>Zone III</td><td>Juan Dela Cruz</td><td>PO1 Santos</td><td>blotter.pdf</td><td>CIRAS Recording</td></tr>
+<tr><td>CRM-20260816-0002</td><td>Robbery Incident</td><td>Robbery</td><td>ROBBERY - RPC Art. 293</td><td>General Paulino Santos</td><td>Maria Cruz</td><td>PO1 Santos</td><td>cctv.mp4</td><td>Report Received</td></tr>
+<tr><td>CRM-20260816-0002</td><td>Robbery Incident</td><td>Robbery</td><td>ROBBERY - RPC Art. 293</td><td>General Paulino Santos</td><td>Maria Cruz</td><td>PO1 Santos</td><td>irf.pdf</td><td>For Review</td></tr>
+</table>
+<p class="note">*No repeating groups, but crime type, offense, barangay, reporter, and officer information are still repeated in every row.</p>
+</section>
+
+<section class="slide plain-top">
+<h1>Chapter IV: Methodology, Results,<br>and Discussion</h1>
+<hr>
+<h2>Example of 2NF:</h2>
+<p class="rule">Rule of 2NF: Remove partial dependencies. Separate information that belongs to different entities, such as crime type, offense type, barangay, and user information.</p>
+<div class="grid3">
+<div>
+<table class="wide tiny">
+<tr><th>id (PK)</th><th>case_number</th><th>title</th><th>crime_type_id (FK)</th><th>offense_type_id (FK)</th><th>barangay_id (FK)</th></tr>
+<tr><td>1</td><td>CRM-20260816-0001</td><td>Theft Incident</td><td>1</td><td>1</td><td>1</td></tr>
+<tr><td>2</td><td>CRM-20260816-0002</td><td>Robbery Incident</td><td>2</td><td>2</td><td>2</td></tr>
+</table>
+</div>
+<div>
+<table class="wide tiny">
+<tr><th>id (PK)</th><th>name</th></tr>
+<tr><td>1</td><td>Theft</td></tr>
+<tr><td>2</td><td>Robbery</td></tr>
+</table>
+<table class="wide tiny">
+<tr><th>id (PK)</th><th>name</th><th>crime_type_id (FK)</th></tr>
+<tr><td>1</td><td>THEFT - RPC Art. 308</td><td>1</td></tr>
+<tr><td>2</td><td>ROBBERY - RPC Art. 293</td><td>2</td></tr>
+</table>
+</div>
+<div>
+<table class="wide tiny">
+<tr><th>id (PK)</th><th>name</th><th>city</th></tr>
+<tr><td>1</td><td>Zone III</td><td>Koronadal City</td></tr>
+<tr><td>2</td><td>General Paulino Santos</td><td>Koronadal City</td></tr>
+</table>
+<table class="wide tiny">
+<tr><th>id (PK)</th><th>name</th><th>role</th></tr>
+<tr><td>1</td><td>Juan Dela Cruz</td><td>police_officer</td></tr>
+<tr><td>2</td><td>PO1 Santos</td><td>investigator</td></tr>
+</table>
+</div>
+</div>
+<p class="left-note">*Crime type, offense type, barangay, and user information are stored only once. Remaining problem: evidence, status updates, assignment changes, notifications, and audit actions are event records and must be separated further.</p>
+</section>
+
+<section class="slide plain-top">
+<h1>Chapter IV: Methodology, Results,<br>and Discussion</h1>
+<hr>
+<h2>Example of 3NF:</h2>
+<p class="rule">Rule of 3NF: Remove transitive dependencies. A non-key attribute should depend only on the primary key. Separate event and supporting details into their own tables.</p>
+<div class="grid2">
+<table class="wide tiny">
+<tr><th>id (PK)</th><th>case_number</th><th>title</th><th>crime_type_id (FK)</th><th>offense_type_id (FK)</th><th>barangay_id (FK)</th><th>reported_by (FK)</th><th>assigned_officer (FK)</th></tr>
+<tr><td>1</td><td>CRM-20260816-0001</td><td>Theft Incident</td><td>1</td><td>1</td><td>1</td><td>1</td><td>2</td></tr>
+</table>
+<table class="wide tiny">
+<tr><th>id (PK)</th><th>crime_id (FK)</th><th>file_name</th><th>category</th><th>uploaded_by (FK)</th></tr>
+<tr><td>1</td><td>1</td><td>photo.jpg</td><td>evidence</td><td>1</td></tr>
+<tr><td>2</td><td>1</td><td>blotter.pdf</td><td>blotter</td><td>2</td></tr>
+</table>
+<table class="wide tiny">
+<tr><th>id (PK)</th><th>crime_id (FK)</th><th>old_status</th><th>new_status</th><th>changed_by (FK)</th></tr>
+<tr><td>1</td><td>1</td><td>pending</td><td>ciras_recording</td><td>2</td></tr>
+</table>
+<table class="wide tiny">
+<tr><th>id (PK)</th><th>crime_id (FK)</th><th>old_user_id (FK)</th><th>new_user_id (FK)</th><th>changed_by (FK)</th></tr>
+<tr><td>1</td><td>1</td><td>1</td><td>2</td><td>1</td></tr>
+</table>
+<table class="wide tiny">
+<tr><th>id (PK)</th><th>user_id (FK)</th><th>crime_id (FK)</th><th>title</th><th>read_at</th></tr>
+<tr><td>1</td><td>2</td><td>1</td><td>Case Assigned</td><td>NULL</td></tr>
+</table>
+<table class="wide tiny">
+<tr><th>id (PK)</th><th>user_id (FK)</th><th>action</th><th>auditable_type</th><th>auditable_id</th></tr>
+<tr><td>1</td><td>1</td><td>Create Crime</td><td>Crime</td><td>1</td></tr>
+</table>
+</div>
+<p class="note">No duplicated crime type, offense, barangay, user, evidence, status, assignment, notification, or audit information. Easy to update records and better database integrity.</p>
+</section>
+
+</body>
+</html>

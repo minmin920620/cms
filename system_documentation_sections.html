@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>System Documentation Sections - Crime Mapping and Management System</title>
+<style>
+@page { size: A4; margin: 1in; }
+body { color:#111827; font-family: Arial, Helvetica, sans-serif; font-size: 12pt; line-height: 1.45; }
+h1 { font-size: 18pt; text-align: center; margin: 0 0 18pt; text-transform: uppercase; }
+h2 { font-size: 15pt; margin: 18pt 0 8pt; }
+h3 { font-size: 13pt; margin: 12pt 0 6pt; }
+p { margin: 0 0 8pt; text-align: justify; }
+ul, ol { margin-top: 0; }
+table { border-collapse: collapse; margin: 8pt 0 14pt; width: 100%; }
+th, td { border: 1px solid #374151; padding: 6pt; text-align: left; vertical-align: top; }
+th { background: #e5e7eb; text-align: center; }
+.center { text-align: center; }
+.pagebreak { page-break-before: always; }
+.figure { text-align: center; margin: 12pt 0; }
+.figure img { max-width: 100%; height: auto; border: 1px solid #d1d5db; }
+.caption { font-size: 10pt; font-weight: bold; text-align: center; }
+</style>
+</head>
+<body>
+<h1>System Documentation Sections<br>Crime Mapping and Management System</h1>
+
+<h2>1. Requirements Analysis: Current Technical Situation</h2>
+<p>The current technical situation of the organization involves the need for a centralized web-based system that can record, manage, monitor, map, and analyze crime incident data. Traditional crime recording often depends on paper forms, separate files, manual encoding, and delayed consolidation of reports. This causes difficulty in searching case records, tracking the progress of a case, monitoring barangay-level crime patterns, and preparing reports needed by administrators, police personnel, investigators, and local government users.</p>
+<p>The developed Crime Mapping and Management System addresses this situation through a Laravel-based application with role-based access for Administrator, Police Officer, Investigator, and LGU users. The system supports authentication, dashboard summaries, crime incident management, evidence uploads, workflow status tracking, approval, notifications, mapping, hotspot viewing, analytics, report generation, user management, audit logs, and database backup. It uses a normalized relational database to store users, crime incidents, crime types, offense types, barangays, evidence, status history, assignment history, system notifications, and audit logs.</p>
+<p>The system is designed for Koronadal City crime monitoring. Barangay data and map boundaries are used to support location-based visualization. Crime records include case number, title, crime type, offense type, barangay, report date and time, occurrence date and time, stage of felony, address, coordinates, reporter, assigned officer, status, investigation findings, approval information, and resolution data. This improves data retrieval, accountability, and decision-making compared with disconnected manual records.</p>
+
+<h3>Technical Environment</h3>
+<table>
+<tr><th>Component</th><th>Description</th></tr>
+<tr><td>Application Type</td><td>Web-based Crime Mapping and Management System</td></tr>
+<tr><td>Framework</td><td>Laravel PHP application with Blade views</td></tr>
+<tr><td>Frontend Assets</td><td>Vite, JavaScript, CSS, map interface, charts, and responsive pages</td></tr>
+<tr><td>Database</td><td>Relational database managed through Laravel migrations</td></tr>
+<tr><td>Security</td><td>Login authentication, password reset OTP, role middleware, active account status, and audit logs</td></tr>
+<tr><td>Main Users</td><td>Administrator, Police Officer, Investigator, and LGU user</td></tr>
+</table>
+
+<h3>Identified Problems</h3>
+<ul>
+<li>Manual or scattered crime records are difficult to search, update, and consolidate.</li>
+<li>Crime status monitoring is delayed when case progress is not tracked in one workflow.</li>
+<li>Crime location analysis is limited without map plotting and barangay-based summaries.</li>
+<li>Evidence and supporting files can be separated from the case record.</li>
+<li>Report preparation takes time when data must be manually filtered and counted.</li>
+<li>User activity accountability is weak without audit logs and role restrictions.</li>
+</ul>
+
+<h3>System Objectives</h3>
+<ul>
+<li>To provide a centralized database for crime incidents, users, barangays, crime types, offense types, and evidence.</li>
+<li>To support role-based access for administrators, police officers, investigators, and LGU users.</li>
+<li>To allow authorized personnel to record, update, and monitor crime incidents.</li>
+<li>To track case workflow from report received up to resolved or closed status.</li>
+<li>To map crime incidents and identify barangay-level hotspots.</li>
+<li>To generate analytics and reports for administrative and LGU decision-making.</li>
+</ul>
+
+<div class="pagebreak"></div>
+<h2>2. Requirements Documentation</h2>
+<h3>2.1 Functional Requirements</h3>
+<table>
+<tr><th>No.</th><th>Requirement</th><th>Description</th><th>Primary Actor</th></tr>
+<tr><td>FR-01</td><td>User Authentication</td><td>The system shall allow users to log in, log out, and reset passwords using OTP-based recovery.</td><td>All users</td></tr>
+<tr><td>FR-02</td><td>Role-Based Access</td><td>The system shall restrict modules according to user role: Administrator, Police Officer, Investigator, and LGU.</td><td>System</td></tr>
+<tr><td>FR-03</td><td>Dashboard</td><td>The system shall display role-based summaries, recent records, and dashboard data.</td><td>All users</td></tr>
+<tr><td>FR-04</td><td>Crime Incident Recording</td><td>The system shall allow authorized users to create crime incident records with case details, dates, address, barangay, coordinates, reporter, and assigned officer.</td><td>Administrator, Police Officer</td></tr>
+<tr><td>FR-05</td><td>Crime Incident Management</td><td>The system shall allow authorized users to view, edit, filter, print, and soft-delete crime records.</td><td>Administrator, Police Officer, Investigator</td></tr>
+<tr><td>FR-06</td><td>Case Number Generation</td><td>The system shall automatically generate unique case numbers using the CRM-YYYYMMDD sequence format.</td><td>System</td></tr>
+<tr><td>FR-07</td><td>Status Workflow</td><td>The system shall update case status through report received, CIRAS recording, review, correction, data stored, IRF printed, signature, blotter, UCPER, resolved, and closed stages.</td><td>Administrator, Police Officer, Investigator</td></tr>
+<tr><td>FR-08</td><td>Case Approval</td><td>The system shall allow administrator approval for selected final status requests such as data stored, resolved, and closed.</td><td>Administrator</td></tr>
+<tr><td>FR-09</td><td>Investigation Findings</td><td>The system shall store investigation findings and findings recorded date for applicable cases.</td><td>Investigator</td></tr>
+<tr><td>FR-10</td><td>Evidence Management</td><td>The system shall allow upload, viewing, categorization, and deletion of evidence files connected to a crime incident.</td><td>Administrator, Police Officer, Investigator</td></tr>
+<tr><td>FR-11</td><td>Crime Map</td><td>The system shall display mapped crime incidents, barangay boundaries, location markers, and barangay detection.</td><td>Administrator, Police Officer, Investigator</td></tr>
+<tr><td>FR-12</td><td>Hotspot Monitoring</td><td>The system shall summarize high-incident areas using crime and barangay data.</td><td>Administrator, Police Officer, Investigator</td></tr>
+<tr><td>FR-13</td><td>Analytics</td><td>The system shall provide crime trends, crime by type, crime by barangay, status breakdown, monthly reports, and summary reports.</td><td>Administrator, LGU</td></tr>
+<tr><td>FR-14</td><td>Report Generation</td><td>The system shall generate, preview, print, and export filtered crime reports.</td><td>Administrator</td></tr>
+<tr><td>FR-15</td><td>User Management</td><td>The system shall allow administrators to create, update, deactivate, and delete user accounts.</td><td>Administrator</td></tr>
+<tr><td>FR-16</td><td>Crime Type Management</td><td>The system shall allow administrators to manage crime classifications.</td><td>Administrator</td></tr>
+<tr><td>FR-17</td><td>Offense Type Management</td><td>The system shall allow administrators to manage legal offense categories linked to crime types.</td><td>Administrator</td></tr>
+<tr><td>FR-18</td><td>Notifications</td><td>The system shall display system notifications and allow users to mark notifications as read.</td><td>Administrator, Police Officer, Investigator</td></tr>
+<tr><td>FR-19</td><td>Audit Logs</td><td>The system shall record user actions, affected records, old values, new values, IP address, and user agent.</td><td>Administrator</td></tr>
+<tr><td>FR-20</td><td>Backup</td><td>The system shall provide an administrator backup download function.</td><td>Administrator</td></tr>
+</table>
+
+<h3>2.2 Non-Functional Requirements</h3>
+<table>
+<tr><th>No.</th><th>Requirement</th><th>Description</th></tr>
+<tr><td>NFR-01</td><td>Security</td><td>The system must protect records through authentication, role middleware, password hashing, active account checks, and restricted routes.</td></tr>
+<tr><td>NFR-02</td><td>Usability</td><td>The system must provide clear forms, tables, dashboards, map views, filters, and role-appropriate navigation.</td></tr>
+<tr><td>NFR-03</td><td>Reliability</td><td>The system must preserve case records, status history, assignment history, and uploaded evidence references.</td></tr>
+<tr><td>NFR-04</td><td>Maintainability</td><td>The system must use Laravel controllers, models, migrations, Blade views, and route groups to keep modules organized.</td></tr>
+<tr><td>NFR-05</td><td>Data Integrity</td><td>The system must use normalized tables, foreign keys, validation, unique case numbers, and controlled status values.</td></tr>
+<tr><td>NFR-06</td><td>Performance</td><td>The system must support efficient filtering, indexed deployment fields, dashboard retrieval, and analytics queries.</td></tr>
+<tr><td>NFR-07</td><td>Availability</td><td>The system must be available to authorized users through a local or deployed web server during operational use.</td></tr>
+<tr><td>NFR-08</td><td>Auditability</td><td>The system must maintain logs for administrative review and accountability.</td></tr>
+<tr><td>NFR-09</td><td>Scalability</td><td>The design must allow additional crime types, offense types, barangays, users, and records without restructuring the whole system.</td></tr>
+<tr><td>NFR-10</td><td>Compatibility</td><td>The system must run in common web browsers and support standard database-backed Laravel deployment.</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+<h2>3. Design of Software, Systems, Product, and Process</h2>
+<h3>3.1 Conceptual Framework</h3>
+<p>The conceptual framework follows the Input-Process-Output model. Inputs include crime incident details, user account data, barangay and location data, crime type and offense type records, evidence files, status updates, approval data, and report filters. Processes include validation, authentication, role checking, case number generation, record storage, evidence management, mapping, analytics computation, report generation, notification handling, and audit logging. Outputs include crime records, status history, mapped incidents, hotspot summaries, analytics charts, printable reports, PDF exports, notifications, and audit records.</p>
+<div class="figure">
+<img src="C:\xampp\htdocs\cms\capstone_build\conceptual_framework.png" alt="Conceptual Framework">
+<div class="caption">Figure 1. Conceptual Framework of the Crime Mapping and Management System</div>
+</div>
+
+<h3>3.2 System Architecture</h3>
+<p>The system uses a web application architecture. Users access the application through a browser. Laravel routes receive requests and forward them to controllers. Controllers validate requests, apply role restrictions, call Eloquent models, and return Blade views or data responses. The database stores normalized records for users, crime incidents, barangays, crime types, offense types, evidence, histories, notifications, and audit logs. The storage layer keeps uploaded evidence files. Map and analytics interfaces display database results for monitoring and decision-making.</p>
+<div class="figure">
+<img src="C:\xampp\htdocs\cms\capstone_build\architecture.png" alt="System Architecture">
+<div class="caption">Figure 2. System Architecture</div>
+</div>
+
+<h3>3.3 Use Case Diagram</h3>
+<p>The main actors are Administrator, Police Officer, Investigator, and LGU user. The Administrator manages users, crime types, offense types, reports, audit logs, backups, approvals, and crime records. The Police Officer records incidents, plots incidents, updates records, uploads evidence, views map data, and receives notifications. The Investigator reviews assigned cases, updates status, records findings, manages evidence, and monitors case progress. The LGU user views analytics and summary reports for planning and decision support.</p>
+<div class="figure">
+<img src="C:\xampp\htdocs\cms\capstone_build\use_case.png" alt="Use Case Diagram">
+<div class="caption">Figure 3. Use Case Diagram</div>
+</div>
+
+<h3>3.4 Activity Diagram</h3>
+<p>The general activity starts when a user logs in. The system validates credentials and checks the user's role. After successful authentication, the system displays the role-based dashboard. Authorized users may create or update crime records, upload evidence, update status, view maps, generate reports, or view analytics. Each transaction is validated before being saved. Important activities may create notifications, status history, assignment history, and audit log entries. The activity ends when the user finishes the task and logs out.</p>
+<div class="figure">
+<img src="C:\xampp\htdocs\cms\capstone_build\activity_record.png" alt="Record Activity Diagram">
+<div class="caption">Figure 4. Crime Record Activity Diagram</div>
+</div>
+<div class="figure">
+<img src="C:\xampp\htdocs\cms\capstone_build\activity_status.png" alt="Status Activity Diagram">
+<div class="caption">Figure 5. Case Status Activity Diagram</div>
+</div>
+
+<h3>3.5 Major System Modules</h3>
+<table>
+<tr><th>No.</th><th>Module</th><th>Description</th></tr>
+<tr><td>1</td><td>Login and Authentication</td><td>Handles login, logout, password reset OTP, sessions, and protected access.</td></tr>
+<tr><td>2</td><td>Dashboard</td><td>Shows role-based summaries and recent case information.</td></tr>
+<tr><td>3</td><td>Crime Incident Management</td><td>Creates, views, updates, filters, prints, and soft-deletes crime records.</td></tr>
+<tr><td>4</td><td>Crime Status Workflow</td><td>Tracks status from report received to closed.</td></tr>
+<tr><td>5</td><td>Evidence Management</td><td>Stores files and categories connected to crime records.</td></tr>
+<tr><td>6</td><td>Crime Map</td><td>Displays incident locations and barangay boundary data.</td></tr>
+<tr><td>7</td><td>Hotspot Monitoring</td><td>Identifies areas with higher incident concentration.</td></tr>
+<tr><td>8</td><td>Analytics</td><td>Provides trends, type, barangay, status, monthly, and summary statistics.</td></tr>
+<tr><td>9</td><td>Reports</td><td>Generates printable and exportable crime reports.</td></tr>
+<tr><td>10</td><td>User Management</td><td>Maintains user accounts and roles.</td></tr>
+<tr><td>11</td><td>Crime Type Management</td><td>Maintains crime classifications.</td></tr>
+<tr><td>12</td><td>Offense Type Management</td><td>Maintains offense categories and legal references.</td></tr>
+<tr><td>13</td><td>Audit, Notification, and Backup</td><td>Supports accountability, user alerts, and database backup.</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+<h2>4. Normalization</h2>
+<p>Normalization is applied to organize the system database and reduce redundancy. The system separates repeated data such as users, barangays, crime types, offense types, evidence files, status histories, assignment histories, notifications, and audit logs into related tables.</p>
+
+<h3>4.1 Unnormalized Form</h3>
+<p>In unnormalized form, one crime report may contain all details in a single wide record, including repeated evidence files, repeated officer data, repeated barangay data, repeated crime type names, and repeated status notes.</p>
+<table>
+<tr><th>Case No.</th><th>Incident Details</th><th>Crime/Offense</th><th>Location</th><th>People</th><th>Evidence Group</th><th>Status and Audit Data</th></tr>
+<tr><td>CRM-20260816-0001</td><td>Theft incident; reported and occurred dates; address; stage of felony</td><td>Theft; THEFT - RPC Art. 308</td><td>Barangay name, city, latitude, longitude</td><td>Reporter name, officer name, investigator name</td><td>Evidence file 1, evidence file 2, IRF, blotter copy, UCPER file</td><td>Pending, review notes, approval notes, old values, new values</td></tr>
+</table>
+<p>This form causes duplication because barangay, crime type, offense type, user, and evidence information may be repeated for every incident.</p>
+
+<h3>4.2 First Normal Form</h3>
+<p>In First Normal Form, repeating groups are removed and each field contains atomic values. Evidence files are separated from the main crime incident record. Each crime incident has one value per field, while multiple evidence files are stored as separate evidence records.</p>
+<table>
+<tr><th>Table</th><th>Sample Fields</th><th>Purpose</th></tr>
+<tr><td>crime_incidents</td><td>case_number, title, date_reported, time_reported, date_occurred, time_occurred, address, latitude, longitude, status</td><td>Stores one record per incident.</td></tr>
+<tr><td>evidence</td><td>crime_id, file_path, file_type, file_name, category, description, uploaded_by</td><td>Stores one record per uploaded file.</td></tr>
+</table>
+
+<h3>4.3 Second Normal Form</h3>
+<p>In Second Normal Form, partial dependencies are removed by separating reference data into their own tables. Crime type, offense type, barangay, and user details are not repeatedly stored as plain text inside every incident record. Instead, the incident record stores foreign keys.</p>
+<table>
+<tr><th>Table</th><th>Primary Data</th><th>Relationship</th></tr>
+<tr><td>users</td><td>name, email, password, role, phone, badge_number, avatar, is_active</td><td>Linked as reporter, assigned officer, uploader, approver, or notification recipient.</td></tr>
+<tr><td>crime_types</td><td>name, description, icon, color, is_active</td><td>One crime type can be used by many crime incidents.</td></tr>
+<tr><td>offense_types</td><td>name, crime_type_id, description, is_active</td><td>One offense type can be used by many crime incidents and may belong to a crime type.</td></tr>
+<tr><td>barangays</td><td>name, city, latitude, longitude, is_active</td><td>One barangay can be linked to many crime incidents.</td></tr>
+<tr><td>crime_incidents</td><td>crime_type_id, offense_type_id, barangay_id, reported_by, assigned_officer</td><td>Uses foreign keys instead of repeated descriptive data.</td></tr>
+</table>
+
+<h3>4.4 Third Normal Form</h3>
+<p>In Third Normal Form, transitive dependencies are removed. Workflow history, assignment history, notifications, and audit details are stored in their own tables because they describe events related to a crime, user, or system action rather than being direct attributes of the main crime incident.</p>
+<table>
+<tr><th>Table</th><th>Key Fields</th><th>Reason for Separation</th></tr>
+<tr><td>crime_status_histories</td><td>crime_id, old_status, new_status, notes, changed_by</td><td>Stores multiple status changes per crime incident.</td></tr>
+<tr><td>case_assignment_histories</td><td>crime_id, assigned_from, assigned_to, assigned_by, notes</td><td>Stores changes in case assignment over time.</td></tr>
+<tr><td>system_notifications</td><td>user_id, crime_id, title, message, type, read_at</td><td>Stores notification records separately from users and crimes.</td></tr>
+<tr><td>audit_logs</td><td>user_id, action, auditable_type, auditable_id, old_values, new_values, ip_address, user_agent</td><td>Stores accountability records for system actions.</td></tr>
+<tr><td>password_reset_otps</td><td>email, otp, expires_at, used_at</td><td>Stores password recovery data separately from users.</td></tr>
+</table>
+
+<h3>4.5 Final Normalized Tables</h3>
+<ul>
+<li>users</li>
+<li>crime_incidents</li>
+<li>crime_types</li>
+<li>offense_types</li>
+<li>barangays</li>
+<li>evidence</li>
+<li>crime_status_histories</li>
+<li>case_assignment_histories</li>
+<li>system_notifications</li>
+<li>audit_logs</li>
+<li>password_reset_otps</li>
+<li>sessions, cache, and jobs tables used by Laravel infrastructure</li>
+</ul>
+
+<h3>4.6 Normalization Summary</h3>
+<table>
+<tr><th>Normal Form</th><th>Action Applied</th><th>Result</th></tr>
+<tr><td>1NF</td><td>Removed repeating groups and made fields atomic.</td><td>Evidence files and incident details are stored as separate records.</td></tr>
+<tr><td>2NF</td><td>Separated reference entities from the main incident record.</td><td>Users, barangays, crime types, and offense types are linked through foreign keys.</td></tr>
+<tr><td>3NF</td><td>Removed transitive/event dependencies.</td><td>Status histories, assignment histories, notifications, audit logs, and OTP records are separated into dedicated tables.</td></tr>
+</table>
+
+</body>
+</html>

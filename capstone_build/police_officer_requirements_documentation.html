@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Requirements Documentation</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 18mm 17mm;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            color: #111827;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 11.5pt;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 20pt;
+            margin: 0 0 18px;
+            text-align: center;
+        }
+
+        h2 {
+            border-bottom: 1px solid #d1d5db;
+            font-size: 15pt;
+            margin: 24px 0 12px;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            font-size: 12.5pt;
+            margin: 18px 0 8px;
+        }
+
+        p {
+            margin: 0 0 10px;
+            text-align: justify;
+        }
+
+        .requirement {
+            margin-left: 18px;
+            text-indent: -18px;
+        }
+
+        h2, h3 {
+            break-after: avoid;
+        }
+    </style>
+</head>
+<body>
+<h1>Police Officer Requirements Documentation</h1>
+<h2>Functional Requirements</h2>
+<h3>Login Module</h3>
+<p>This module allows the Police Officer user to securely access the system using valid credentials.</p>
+<p>REQ. PO.1.1 The Police Officer user shall be able to enter their email address.</p>
+<p>REQ. PO.1.2 The Police Officer user shall be able to enter their password.</p>
+<p>REQ. PO.1.3 The system shall validate the Police Officer user&#039;s email and password before granting access to the dashboard.</p>
+<p>REQ. PO.1.4 The Police Officer user shall be able to access the forgot password page when needed.</p>
+<h3>Dashboard Module</h3>
+<p>This module allows the Police Officer user to view role-based crime summaries.</p>
+<p>REQ. PO.2.1 The Police Officer user shall be able to access the dashboard after a successful login.</p>
+<p>REQ. PO.2.2 The Police Officer user shall be able to view role-based dashboard statistics.</p>
+<p>REQ. PO.2.3 The Police Officer user shall be able to view available crime type, hotspot, trend, and status summary information.</p>
+<h3>Crime Incident Management Module</h3>
+<p>This module allows the Police Officer user to record and manage related crime incidents.</p>
+<p>REQ. PO.3.1 The Police Officer user shall be able to view crime incidents they reported or are assigned to.</p>
+<p>REQ. PO.3.2 The Police Officer user shall be able to create new crime incident records.</p>
+<p>REQ. PO.3.3 The Police Officer user shall be able to enter crime details such as title, crime type, offense type, barangay, date occurred, date reported, and address.</p>
+<p>REQ. PO.3.4 The Police Officer user shall be able to enter optional details such as time occurred, time reported, stage of felony, latitude, longitude, and investigation findings.</p>
+<p>REQ. PO.3.5 The system shall automatically set the Police Officer user as the reporter of the crime incident.</p>
+<p>REQ. PO.3.6 The Police Officer user shall be able to upload evidence files when creating or updating a crime incident.</p>
+<p>REQ. PO.3.7 The Police Officer user shall be able to search and filter related crime incident records.</p>
+<p>REQ. PO.3.8 The Police Officer user shall be able to view full details of related crime incidents.</p>
+<p>REQ. PO.3.9 The Police Officer user shall be able to update crime incidents they are authorized to edit.</p>
+<p>REQ. PO.3.10 The Police Officer user shall be able to archive crime incidents they are authorized to edit.</p>
+<h3>Crime Status Workflow Module</h3>
+<p>REQ. PO.4.1 The Police Officer user shall be able to update the status of authorized crime incidents.</p>
+<p>REQ. PO.4.2 The Police Officer user shall be required to enter remarks when changing a crime incident status.</p>
+<p>REQ. PO.4.3 The Police Officer user shall be able to view the status history of authorized crime incidents.</p>
+<h3>Evidence Management Module</h3>
+<p>REQ. PO.5.1 The Police Officer user shall be able to upload evidence files for authorized crime incidents.</p>
+<p>REQ. PO.5.2 The Police Officer user shall be able to view uploaded evidence files for authorized crime incidents.</p>
+<p>REQ. PO.5.3 The Police Officer user shall be able to delete evidence files when authorized.</p>
+<p>REQ. PO.5.4 The system shall only allow supported evidence file formats such as JPG, JPEG, PNG, PDF, DOC, and DOCX.</p>
+<h3>Crime Map Module</h3>
+<p>REQ. PO.6.1 The Police Officer user shall be able to access the crime map.</p>
+<p>REQ. PO.6.2 The Police Officer user shall be able to view plotted crime incident locations.</p>
+<p>REQ. PO.6.3 The Police Officer user shall be able to view Koronadal City barangay boundaries.</p>
+<p>REQ. PO.6.4 The Police Officer user shall be able to detect barangay based on selected coordinates.</p>
+<p>REQ. PO.6.5 The Police Officer user shall be able to plot a crime incident from the map.</p>
+<h3>Hotspot Module</h3>
+<p>REQ. PO.7.1 The Police Officer user shall be able to access the hotspot module.</p>
+<p>REQ. PO.7.2 The Police Officer user shall be able to view crime hotspot information.</p>
+<p>REQ. PO.7.3 The Police Officer user shall be able to view crime counts by barangay.</p>
+<h3>Profile and Logout Module</h3>
+<p>REQ. PO.8.1 The Police Officer user shall be able to update their profile information.</p>
+<p>REQ. PO.8.2 The Police Officer user shall be able to update their password.</p>
+<p>REQ. PO.8.3 The Police Officer user shall be able to log out from the system.</p>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Requirements Documentation</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 18mm 17mm;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            color: #111827;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 11.5pt;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 20pt;
+            margin: 0 0 18px;
+            text-align: center;
+        }
+
+        h2 {
+            border-bottom: 1px solid #d1d5db;
+            font-size: 15pt;
+            margin: 24px 0 12px;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            font-size: 12.5pt;
+            margin: 18px 0 8px;
+        }
+
+        p {
+            margin: 0 0 10px;
+            text-align: justify;
+        }
+
+        .requirement {
+            margin-left: 18px;
+            text-indent: -18px;
+        }
+
+        h2, h3 {
+            break-after: avoid;
+        }
+    </style>
+</head>
+<body>
+<h1>Requirements Documentation</h1>
+<h2>Functional Requirements</h2>
+<h2>Common User Requirements</h2>
+<p>These requirements apply to all authorized system users, including Admin, Police Officer, Investigator, and LGU users.</p>
+<h3>Login Module</h3>
+<p>This module allows authorized users to securely access the system using valid credentials.</p>
+<p>REQ. CU.1.1 The user shall be able to enter their email address.</p>
+<p>REQ. CU.1.2 The user shall be able to enter their password.</p>
+<p>REQ. CU.1.3 The system shall validate the user&#039;s email and password before granting access to the dashboard.</p>
+<p>REQ. CU.1.4 The system shall reject invalid login credentials and display an appropriate error message.</p>
+<p>REQ. CU.1.5 The user shall be able to access the forgot password page from the login page.</p>
+<p>REQ. CU.1.6 The system shall redirect the user to the dashboard after a successful login.</p>
+<h3>Forgot Password Module</h3>
+<p>This module allows users to request password reset assistance when they cannot access their account.</p>
+<p>REQ. CU.2.1 The user shall be able to access the forgot password page from the login page.</p>
+<p>REQ. CU.2.2 The user shall be able to enter their registered email address.</p>
+<p>REQ. CU.2.3 The system shall validate the submitted email address before processing the password reset request.</p>
+<p>REQ. CU.2.4 The system shall send password reset instructions or a reset code to the user&#039;s registered email address.</p>
+<p>REQ. CU.2.5 The user shall be able to proceed to the reset password page after receiving valid reset instructions.</p>
+<h3>Reset Password Module</h3>
+<p>This module allows users to create a new password after completing the password reset process.</p>
+<p>REQ. CU.3.1 The user shall be able to enter the required reset information.</p>
+<p>REQ. CU.3.2 The user shall be able to enter a new password.</p>
+<p>REQ. CU.3.3 The user shall be able to confirm the new password.</p>
+<p>REQ. CU.3.4 The system shall validate that the new password and confirmation password match.</p>
+<p>REQ. CU.3.5 The system shall update the user&#039;s password after successful validation.</p>
+<p>REQ. CU.3.6 The user shall be able to log in using the new password after the reset is completed.</p>
+<h3>Dashboard Module</h3>
+<p>This module provides users with a role-based summary of crime records and system statistics.</p>
+<p>REQ. CU.4.1 The user shall be able to access the dashboard after a successful login.</p>
+<p>REQ. CU.4.2 The system shall display dashboard information based on the user&#039;s role.</p>
+<p>REQ. CU.4.3 The system shall prevent the user from viewing dashboard information that is not allowed for their assigned role.</p>
+<h3>Profile Management Module</h3>
+<p>This module allows authenticated users to manage their own account settings.</p>
+<p>REQ. CU.5.1 The user shall be able to access their profile settings.</p>
+<p>REQ. CU.5.2 The user shall be able to update their profile information.</p>
+<p>REQ. CU.5.3 The user shall be able to update their password.</p>
+<p>REQ. CU.5.4 The system shall validate profile and password changes before saving.</p>
+<h3>Logout Module</h3>
+<p>This module allows authenticated users to securely end their session.</p>
+<p>REQ. CU.6.1 The user shall be able to log out from the system.</p>
+<p>REQ. CU.6.2 The system shall invalidate the user&#039;s active session after logout.</p>
+<p>REQ. CU.6.3 The system shall prevent logged-out users from accessing authenticated pages without logging in again.</p>
+<h2>Admin User Requirements</h2>
+<p>The Admin user has full system access and is responsible for managing records, users, reports, maintenance data, and audit logs.</p>
+<h3>Admin Dashboard Module</h3>
+<p>REQ. AU.1.1 The Admin user shall be able to access the dashboard after a successful login.</p>
+<p>REQ. AU.1.2 The Admin user shall be able to view total crime incidents, crimes recorded today, crimes recorded this month, and pending crimes.</p>
+<p>REQ. AU.1.3 The Admin user shall be able to view crime statistics by crime type.</p>
+<p>REQ. AU.1.4 The Admin user shall be able to view hotspot summary information based on barangay crime counts.</p>
+<p>REQ. AU.1.5 The Admin user shall be able to view monthly crime trend information.</p>
+<p>REQ. AU.1.6 The Admin user shall be able to view crime status breakdown information.</p>
+<h3>Admin Crime Incident Management Module</h3>
+<p>REQ. AU.2.1 The Admin user shall be able to view all crime incident records.</p>
+<p>REQ. AU.2.2 The Admin user shall be able to create new crime incident records.</p>
+<p>REQ. AU.2.3 The Admin user shall be able to enter crime details such as title, crime type, offense type, barangay, date occurred, date reported, and address.</p>
+<p>REQ. AU.2.4 The Admin user shall be able to assign a Police Officer as reporter when recording a crime incident.</p>
+<p>REQ. AU.2.5 The Admin user shall be able to assign an Investigator to a crime incident.</p>
+<p>REQ. AU.2.6 The Admin user shall be able to upload evidence files when creating or updating a crime incident.</p>
+<p>REQ. AU.2.7 The Admin user shall be able to search crime incidents by title, case number, offense type, stage of felony, investigation findings, or address.</p>
+<p>REQ. AU.2.8 The Admin user shall be able to filter crime incidents by crime type, barangay, status, and date range.</p>
+<p>REQ. AU.2.9 The Admin user shall be able to view the full details of a crime incident.</p>
+<p>REQ. AU.2.10 The Admin user shall be able to update crime incident information.</p>
+<p>REQ. AU.2.11 The Admin user shall be able to archive crime incident records.</p>
+<h3>Admin Crime Status Workflow Module</h3>
+<p>REQ. AU.3.1 The Admin user shall be able to update the status of any crime incident.</p>
+<p>REQ. AU.3.2 The Admin user shall be required to enter remarks when changing a crime incident status.</p>
+<p>REQ. AU.3.3 The Admin user shall be able to record investigation findings.</p>
+<p>REQ. AU.3.4 The system shall store the old status, new status, remarks, user, and date of every status change.</p>
+<p>REQ. AU.3.5 The Admin user shall be able to view the status history of a crime incident.</p>
+<h3>Admin Evidence Management Module</h3>
+<p>REQ. AU.4.1 The Admin user shall be able to upload evidence files for a crime incident.</p>
+<p>REQ. AU.4.2 The Admin user shall be able to view uploaded evidence files.</p>
+<p>REQ. AU.4.3 The Admin user shall be able to delete uploaded evidence files.</p>
+<p>REQ. AU.4.4 The system shall only allow supported evidence file formats such as JPG, JPEG, PNG, PDF, DOC, and DOCX.</p>
+<p>REQ. AU.4.5 The system shall limit evidence upload size based on the allowed file size.</p>
+<h3>Admin Crime Map Module</h3>
+<p>REQ. AU.5.1 The Admin user shall be able to access the crime map.</p>
+<p>REQ. AU.5.2 The Admin user shall be able to view plotted crime incident locations on the map.</p>
+<p>REQ. AU.5.3 The Admin user shall be able to view Koronadal City barangay boundaries.</p>
+<p>REQ. AU.5.4 The Admin user shall be able to detect the barangay based on selected coordinates.</p>
+<p>REQ. AU.5.5 The Admin user shall be able to plot a crime incident from the map.</p>
+<h3>Admin Hotspot Module</h3>
+<p>REQ. AU.6.1 The Admin user shall be able to access the hotspot module.</p>
+<p>REQ. AU.6.2 The Admin user shall be able to view crime hotspot information.</p>
+<p>REQ. AU.6.3 The Admin user shall be able to view crime counts by barangay.</p>
+<h3>Admin Analytics Module</h3>
+<p>REQ. AU.7.1 The Admin user shall be able to access the analytics module.</p>
+<p>REQ. AU.7.2 The Admin user shall be able to view crime trend data.</p>
+<p>REQ. AU.7.3 The Admin user shall be able to view crime distribution by crime type.</p>
+<p>REQ. AU.7.4 The Admin user shall be able to view crime distribution by barangay.</p>
+<p>REQ. AU.7.5 The Admin user shall be able to view crime status breakdown information.</p>
+<p>REQ. AU.7.6 The Admin user shall be able to generate monthly crime report data for a selected year.</p>
+<h3>Admin Reports Module</h3>
+<p>REQ. AU.8.1 The Admin user shall be able to access the reports module.</p>
+<p>REQ. AU.8.2 The Admin user shall be able to generate report previews.</p>
+<p>REQ. AU.8.3 The Admin user shall be able to export reports as PDF files.</p>
+<h3>Admin User Management Module</h3>
+<p>REQ. AU.9.1 The Admin user shall be able to view the list of system users.</p>
+<p>REQ. AU.9.2 The Admin user shall be able to create new user accounts.</p>
+<p>REQ. AU.9.3 The Admin user shall be able to assign user roles such as Admin, Police Officer, Investigator, and LGU.</p>
+<p>REQ. AU.9.4 The Admin user shall be able to update user account information.</p>
+<p>REQ. AU.9.5 The Admin user shall be able to manage active or inactive user account status when available.</p>
+<h3>Admin Crime Type Management Module</h3>
+<p>REQ. AU.10.1 The Admin user shall be able to view crime types.</p>
+<p>REQ. AU.10.2 The Admin user shall be able to create new crime types.</p>
+<p>REQ. AU.10.3 The Admin user shall be able to update existing crime types.</p>
+<p>REQ. AU.10.4 The Admin user shall be able to remove or disable crime types when appropriate.</p>
+<p>REQ. AU.10.5 The system shall use active crime types as selectable options when recording crime incidents.</p>
+<h3>Admin Offense Type Management Module</h3>
+<p>REQ. AU.11.1 The Admin user shall be able to view offense types.</p>
+<p>REQ. AU.11.2 The Admin user shall be able to create new offense types.</p>
+<p>REQ. AU.11.3 The Admin user shall be able to update existing offense types.</p>
+<p>REQ. AU.11.4 The Admin user shall be able to remove or disable offense types when appropriate.</p>
+<p>REQ. AU.11.5 The system shall use active offense types as selectable options when recording crime incidents.</p>
+<h3>Admin Audit Log Module</h3>
+<p>REQ. AU.12.1 The Admin user shall be able to access audit logs.</p>
+<p>REQ. AU.12.2 The Admin user shall be able to review recorded system activities.</p>
+<p>REQ. AU.12.3 The system shall record important actions such as crime creation, crime update, crime archive, status update, and evidence upload.</p>
+<p>REQ. AU.12.4 The system shall store audit information for accountability and monitoring.</p>
+<h2>Police Officer User Requirements</h2>
+<p>The Police Officer user is responsible for recording crime incidents, viewing related records, using the map, and monitoring hotspots.</p>
+<h3>Police Officer Dashboard Module</h3>
+<p>REQ. PO.1.1 The Police Officer user shall be able to access the dashboard after a successful login.</p>
+<p>REQ. PO.1.2 The Police Officer user shall be able to view role-based dashboard statistics.</p>
+<p>REQ. PO.1.3 The Police Officer user shall be able to view crime type, hotspot, trend, and status summary information available to their role.</p>
+<h3>Police Officer Crime Incident Management Module</h3>
+<p>REQ. PO.2.1 The Police Officer user shall be able to view crime incidents they reported or are assigned to.</p>
+<p>REQ. PO.2.2 The Police Officer user shall be able to create new crime incident records.</p>
+<p>REQ. PO.2.3 The Police Officer user shall be able to enter crime details such as title, crime type, offense type, barangay, date occurred, date reported, and address.</p>
+<p>REQ. PO.2.4 The Police Officer user shall be able to enter optional details such as time occurred, time reported, stage of felony, latitude, longitude, and investigation findings.</p>
+<p>REQ. PO.2.5 The system shall automatically set the Police Officer user as the reporter of the crime incident.</p>
+<p>REQ. PO.2.6 The Police Officer user shall be able to upload evidence files when creating or updating a crime incident.</p>
+<p>REQ. PO.2.7 The Police Officer user shall be able to search related crime incidents by title, case number, offense type, stage of felony, investigation findings, or address.</p>
+<p>REQ. PO.2.8 The Police Officer user shall be able to filter related crime incidents by crime type, barangay, status, and date range.</p>
+<p>REQ. PO.2.9 The Police Officer user shall be able to view the full details of related crime incidents.</p>
+<p>REQ. PO.2.10 The Police Officer user shall be able to update crime incidents they are authorized to edit.</p>
+<p>REQ. PO.2.11 The Police Officer user shall be able to archive crime incidents they are authorized to edit.</p>
+<h3>Police Officer Crime Status Workflow Module</h3>
+<p>REQ. PO.3.1 The Police Officer user shall be able to update the status of authorized crime incidents.</p>
+<p>REQ. PO.3.2 The Police Officer user shall be required to enter remarks when changing a crime incident status.</p>
+<p>REQ. PO.3.3 The Police Officer user shall be able to view the status history of authorized crime incidents.</p>
+<h3>Police Officer Evidence Management Module</h3>
+<p>REQ. PO.4.1 The Police Officer user shall be able to upload evidence files for authorized crime incidents.</p>
+<p>REQ. PO.4.2 The Police Officer user shall be able to view uploaded evidence files for authorized crime incidents.</p>
+<p>REQ. PO.4.3 The Police Officer user shall be able to delete evidence files when authorized.</p>
+<p>REQ. PO.4.4 The system shall only allow supported evidence file formats such as JPG, JPEG, PNG, PDF, DOC, and DOCX.</p>
+<h3>Police Officer Crime Map Module</h3>
+<p>REQ. PO.5.1 The Police Officer user shall be able to access the crime map.</p>
+<p>REQ. PO.5.2 The Police Officer user shall be able to view plotted crime incident locations on the map.</p>
+<p>REQ. PO.5.3 The Police Officer user shall be able to view Koronadal City barangay boundaries.</p>
+<p>REQ. PO.5.4 The Police Officer user shall be able to detect the barangay based on selected coordinates.</p>
+<p>REQ. PO.5.5 The Police Officer user shall be able to plot a crime incident from the map.</p>
+<h3>Police Officer Hotspot Module</h3>
+<p>REQ. PO.6.1 The Police Officer user shall be able to access the hotspot module.</p>
+<p>REQ. PO.6.2 The Police Officer user shall be able to view crime hotspot information.</p>
+<p>REQ. PO.6.3 The Police Officer user shall be able to view crime counts by barangay.</p>
+<h2>Investigator User Requirements</h2>
+<p>The Investigator user is responsible for viewing and updating assigned crime incidents, recording findings, and monitoring mapped incidents and hotspots.</p>
+<h3>Investigator Dashboard Module</h3>
+<p>REQ. IU.1.1 The Investigator user shall be able to access the dashboard after a successful login.</p>
+<p>REQ. IU.1.2 The Investigator user shall be able to view role-based dashboard statistics.</p>
+<p>REQ. IU.1.3 The Investigator user shall be able to view assigned active investigations on the dashboard.</p>
+<p>REQ. IU.1.4 The Investigator user shall be able to view the number of assigned active investigations.</p>
+<h3>Investigator Crime Incident Management Module</h3>
+<p>REQ. IU.2.1 The Investigator user shall be able to view crime incidents assigned to them.</p>
+<p>REQ. IU.2.2 The Investigator user shall be able to search assigned crime incidents by title, case number, offense type, stage of felony, investigation findings, or address.</p>
+<p>REQ. IU.2.3 The Investigator user shall be able to filter assigned crime incidents by crime type, barangay, status, and date range.</p>
+<p>REQ. IU.2.4 The Investigator user shall be able to view the full details of assigned crime incidents.</p>
+<p>REQ. IU.2.5 The Investigator user shall be able to update assigned crime incidents.</p>
+<p>REQ. IU.2.6 The Investigator user shall be able to archive assigned crime incidents when authorized.</p>
+<p>REQ. IU.2.7 The system shall prevent the Investigator user from viewing or updating crime incidents not assigned to them.</p>
+<h3>Investigator Crime Status Workflow Module</h3>
+<p>REQ. IU.3.1 The Investigator user shall be able to update the status of assigned crime incidents.</p>
+<p>REQ. IU.3.2 The Investigator user shall be required to enter remarks when changing a crime incident status.</p>
+<p>REQ. IU.3.3 The Investigator user shall be able to record investigation findings for assigned crime incidents.</p>
+<p>REQ. IU.3.4 The Investigator user shall be able to view the status history of assigned crime incidents.</p>
+<p>REQ. IU.3.5 The system shall store the old status, new status, remarks, user, and date of every status change.</p>
+<h3>Investigator Evidence Management Module</h3>
+<p>REQ. IU.4.1 The Investigator user shall be able to upload evidence files for assigned crime incidents.</p>
+<p>REQ. IU.4.2 The Investigator user shall be able to view uploaded evidence files for assigned crime incidents.</p>
+<p>REQ. IU.4.3 The Investigator user shall be able to delete evidence files when authorized.</p>
+<p>REQ. IU.4.4 The system shall only allow supported evidence file formats such as JPG, JPEG, PNG, PDF, DOC, and DOCX.</p>
+<h3>Investigator Crime Map Module</h3>
+<p>REQ. IU.5.1 The Investigator user shall be able to access the crime map.</p>
+<p>REQ. IU.5.2 The Investigator user shall be able to view plotted crime incident locations on the map.</p>
+<p>REQ. IU.5.3 The Investigator user shall be able to view Koronadal City barangay boundaries.</p>
+<p>REQ. IU.5.4 The Investigator user shall be able to detect the barangay based on selected coordinates.</p>
+<p>REQ. IU.5.5 The system shall prevent the Investigator user from plotting new incidents from the map.</p>
+<h3>Investigator Hotspot Module</h3>
+<p>REQ. IU.6.1 The Investigator user shall be able to access the hotspot module.</p>
+<p>REQ. IU.6.2 The Investigator user shall be able to view crime hotspot information.</p>
+<p>REQ. IU.6.3 The Investigator user shall be able to view crime counts by barangay.</p>
+<h2>LGU User Requirements</h2>
+<p>The LGU user is responsible for viewing dashboard summaries and analytics data for planning, monitoring, and decision-making.</p>
+<h3>LGU Dashboard Module</h3>
+<p>REQ. LU.1.1 The LGU user shall be able to access the dashboard after a successful login.</p>
+<p>REQ. LU.1.2 The LGU user shall be able to view role-based dashboard statistics.</p>
+<p>REQ. LU.1.3 The LGU user shall be able to view crime summary information available to their role.</p>
+<p>REQ. LU.1.4 The system shall prevent the LGU user from accessing crime incident management, crime map, hotspot, report management, user management, audit log, crime type management, and offense type management modules.</p>
+<h3>LGU Analytics Module</h3>
+<p>REQ. LU.2.1 The LGU user shall be able to access the analytics module.</p>
+<p>REQ. LU.2.2 The LGU user shall be able to view crime trend data.</p>
+<p>REQ. LU.2.3 The LGU user shall be able to view crime distribution by crime type.</p>
+<p>REQ. LU.2.4 The LGU user shall be able to view crime distribution by barangay.</p>
+<p>REQ. LU.2.5 The LGU user shall be able to view crime status breakdown information.</p>
+<p>REQ. LU.2.6 The LGU user shall be able to view monthly crime report data for a selected year.</p>
+<p>REQ. LU.2.7 The system shall restrict LGU access to viewing analytics only and shall not allow LGU users to modify crime records.</p>
+<h2>Non-Functional Requirements</h2>
+<h3>Security Requirements</h3>
+<p>REQ. NF.1.1 The system shall protect authenticated pages from unauthenticated access.</p>
+<p>REQ. NF.1.2 The system shall enforce role-based access control for restricted modules.</p>
+<p>REQ. NF.1.3 The system shall store passwords securely using hashing.</p>
+<p>REQ. NF.1.4 The system shall validate user input before saving records.</p>
+<p>REQ. NF.1.5 The system shall protect file upload functions by limiting file types and file sizes.</p>
+<h3>Usability Requirements</h3>
+<p>REQ. NF.2.1 The system shall provide a clear navigation menu based on the user&#039;s role.</p>
+<p>REQ. NF.2.2 The system shall display success and error messages after important user actions.</p>
+<p>REQ. NF.2.3 The system shall allow users to search and filter records to find information efficiently.</p>
+<p>REQ. NF.2.4 The system shall present dashboard, analytics, map, and report information in a format that is easy to understand.</p>
+<h3>Reliability Requirements</h3>
+<p>REQ. NF.3.1 The system shall maintain stored crime incident records unless they are intentionally archived or removed by an authorized user.</p>
+<p>REQ. NF.3.2 The system shall preserve status history for crime incident workflow tracking.</p>
+<p>REQ. NF.3.3 The system shall preserve audit logs for accountability.</p>
+<p>REQ. NF.3.4 The system shall prevent duplicate case numbers when creating crime incidents.</p>
+<h3>Performance Requirements</h3>
+<p>REQ. NF.4.1 The system shall load dashboard statistics, crime lists, maps, analytics, and reports within a reasonable response time.</p>
+<p>REQ. NF.4.2 The system shall paginate crime incident lists to support efficient record browsing.</p>
+<p>REQ. NF.4.3 The system shall use filters and database queries to retrieve only relevant records when possible.</p>
+<h3>Data Requirements</h3>
+<p>REQ. NF.5.1 The system shall store user account information, crime types, offense types, barangays, crime incidents, evidence, status histories, and audit logs.</p>
+<p>REQ. NF.5.2 The system shall associate each crime incident with its crime type, offense type, barangay, reporter, assigned officer, evidence files, and status history when available.</p>
+<p>REQ. NF.5.3 The system shall store barangay and coordinate information for crime mapping and hotspot identification.</p>
+<p>REQ. NF.5.4 The system shall support analytics and reports using stored crime incident data.</p>
+</body>
+</html>

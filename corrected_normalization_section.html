@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Corrected Normalization Section - Crime Mapping and Management System</title>
+<style>
+@page { size: A4; margin: 1in; }
+body { font-family: Arial, Helvetica, sans-serif; color: #111827; font-size: 12pt; line-height: 1.45; }
+h1 { text-align: center; font-size: 18pt; text-transform: uppercase; }
+h2 { font-size: 15pt; margin-top: 18pt; }
+h3 { font-size: 13pt; margin-top: 12pt; }
+p { text-align: justify; margin: 0 0 8pt; }
+table { border-collapse: collapse; width: 100%; margin: 8pt 0 14pt; }
+th, td { border: 1px solid #374151; padding: 6pt; vertical-align: top; }
+th { background: #e5e7eb; text-align: center; }
+ul { margin-top: 0; }
+</style>
+</head>
+<body>
+<h1>Corrected Normalization Section<br>Crime Mapping and Management System</h1>
+
+<h2>Database Normalization</h2>
+<p>Database normalization was applied to the Crime Mapping and Management System to reduce data redundancy, avoid update anomalies, and maintain accurate relationships among crime incidents, users, barangays, crime classifications, offense types, evidence, status records, assignment records, notifications, and audit logs. The final database design separates repeated and dependent data into related tables using primary keys and foreign keys.</p>
+
+<h2>Unnormalized Form (UNF)</h2>
+<p>In the unnormalized form, all information about a crime incident may be stored in one wide record. This includes the crime details, barangay details, crime type, offense information, reporter and officer information, multiple evidence files, multiple status updates, notifications, and audit details. This design creates repeated groups and duplicated values.</p>
+
+<table>
+<tr><th>Case No.</th><th>Crime Details</th><th>Location</th><th>People</th><th>Evidence Repeating Group</th><th>Status/Assignment Repeating Group</th><th>Notification/Audit Data</th></tr>
+<tr>
+<td>CRM-20260816-0001</td>
+<td>Title, crime type name, offense name, date reported, time reported, date occurred, time occurred, stage of felony, address</td>
+<td>Barangay name, city, latitude, longitude</td>
+<td>Reporter name/email, assigned officer name/email, approver name/email</td>
+<td>Evidence file 1, evidence file 2, IRF file, blotter file, UCPER file</td>
+<td>Pending, CIRAS recording, review, correction, assigned from user, assigned to user</td>
+<td>Notification message, read status, old values, new values, IP address</td>
+</tr>
+</table>
+
+<p>The UNF structure is not ideal because evidence files, status changes, assignment changes, user details, barangay details, and audit data may repeat in a single crime record.</p>
+
+<h2>First Normal Form (1NF)</h2>
+<p>First Normal Form requires that each field must contain only one value and that repeating groups must be removed. In the system, multiple evidence files and multiple status updates are separated from the main crime incident record. Each evidence file becomes one row in the evidence table, and each status update becomes one row in the crime status history table.</p>
+
+<table>
+<tr><th>Table</th><th>Primary Key</th><th>Important Fields</th><th>Purpose</th></tr>
+<tr><td>crime_incidents</td><td>id</td><td>case_number, title, crime_type_id, barangay_id, offense_type_id, date_reported, time_reported, date_occurred, time_occurred, stage_of_felony, status, address, latitude, longitude, reported_by, assigned_officer</td><td>Stores one record for each crime incident.</td></tr>
+<tr><td>evidence</td><td>id</td><td>crime_id, file_path, storage_disk, file_type, file_name, category, description, uploaded_by</td><td>Stores one record for each uploaded evidence or document file.</td></tr>
+<tr><td>crime_status_histories</td><td>id</td><td>crime_id, changed_by, old_status, new_status, remarks</td><td>Stores one record for each case status update.</td></tr>
+</table>
+
+<h2>Second Normal Form (2NF)</h2>
+<p>Second Normal Form requires that non-key attributes depend on the whole primary key and that data belonging to separate entities must be placed in separate tables. The system removes repeated descriptive data from crime records by separating users, crime types, offense types, and barangays into their own tables. The main crime record stores foreign keys instead of repeating names and details.</p>
+
+<table>
+<tr><th>Separated Entity</th><th>Primary Key</th><th>Fields</th><th>Relationship to Crime Incident</th></tr>
+<tr><td>users</td><td>id</td><td>name, email, password, role, phone, badge_number, avatar, is_active</td><td>Referenced by reported_by, assigned_officer, uploaded_by, changed_by, approval_requested_by, approved_by, and user_id in notifications/audit logs.</td></tr>
+<tr><td>crime_types</td><td>id</td><td>name, description, icon, color, is_active</td><td>Referenced by crime_incidents.crime_type_id.</td></tr>
+<tr><td>offense_types</td><td>id</td><td>name, crime_type_id, description, is_active</td><td>Referenced by crime_incidents.offense_type_id. This replaced the old plain-text offense field.</td></tr>
+<tr><td>barangays</td><td>id</td><td>name, city, latitude, longitude, is_active</td><td>Referenced by crime_incidents.barangay_id.</td></tr>
+</table>
+
+<p>After 2NF, the crime incident table no longer needs to repeatedly store the full crime type name, offense name, barangay details, or user account details. Those values are retrieved through related tables.</p>
+
+<h2>Third Normal Form (3NF)</h2>
+<p>Third Normal Form requires removing transitive dependencies. Data that describes events, logs, notifications, assignments, approvals, or password recovery should not be stored as repeated columns in the main crime incident or users table. The system separates these supporting records into dedicated tables.</p>
+
+<table>
+<tr><th>Table</th><th>Primary Key</th><th>Important Fields</th><th>Reason for 3NF Separation</th></tr>
+<tr><td>case_assignment_histories</td><td>id</td><td>crime_id, old_user_id, new_user_id, changed_by, remarks</td><td>A crime incident may have many assignment changes, so assignment history is stored separately.</td></tr>
+<tr><td>system_notifications</td><td>id</td><td>user_id, crime_id, type, title, message, read_at</td><td>A user may receive many notifications, and notifications may relate to crime records.</td></tr>
+<tr><td>audit_logs</td><td>id</td><td>user_id, action, auditable_type, auditable_id, old_values, new_values, ip_address, user_agent</td><td>Audit records describe system actions and must be stored separately for accountability.</td></tr>
+<tr><td>password_reset_otps</td><td>id</td><td>email, otp, expires_at, used_at</td><td>Password reset data is temporary recovery data and should not be stored directly in the users table.</td></tr>
+<tr><td>crime_incidents approval fields</td><td>id</td><td>approval_status, approval_requested_status, approval_notes, approval_requested_by, approval_requested_at, approved_by, approved_at</td><td>Approval is linked to a specific crime record. User details are not repeated because approver/requester fields reference users.</td></tr>
+</table>
+
+<h2>Final Normalized Database Tables</h2>
+<table>
+<tr><th>Table</th><th>Description</th></tr>
+<tr><td>users</td><td>Stores system users and roles: Administrator, Police Officer, Investigator, and LGU.</td></tr>
+<tr><td>crime_incidents</td><td>Stores main crime incident records and foreign keys to crime type, offense type, barangay, reporter, and assigned officer.</td></tr>
+<tr><td>crime_types</td><td>Stores crime classifications such as Theft, Robbery, Assault, Homicide, Drug-Related, Cyber Crime, Fraud, and others.</td></tr>
+<tr><td>offense_types</td><td>Stores specific legal offense categories and may link each offense to a crime type.</td></tr>
+<tr><td>barangays</td><td>Stores barangay names, city, coordinates, and active status.</td></tr>
+<tr><td>evidence</td><td>Stores uploaded evidence, signed IRF, blotter copy, UCPER file, image, and document records connected to a crime incident.</td></tr>
+<tr><td>crime_status_histories</td><td>Stores status movement history for crime incidents.</td></tr>
+<tr><td>case_assignment_histories</td><td>Stores officer/investigator assignment changes for crime incidents.</td></tr>
+<tr><td>system_notifications</td><td>Stores notifications for users and related crime incidents.</td></tr>
+<tr><td>audit_logs</td><td>Stores accountability records for user actions.</td></tr>
+<tr><td>password_reset_otps</td><td>Stores OTP records for password reset.</td></tr>
+<tr><td>sessions, cache, jobs</td><td>Laravel infrastructure tables for session, cache, and queued job support.</td></tr>
+</table>
+
+<h2>Normalization Summary</h2>
+<table>
+<tr><th>Normal Form</th><th>Rule Applied</th><th>Application in the System</th></tr>
+<tr><td>UNF</td><td>All data may be stored in one wide record with repeating groups.</td><td>Crime details, evidence files, status updates, barangay details, user details, notifications, and audit values are mixed together.</td></tr>
+<tr><td>1NF</td><td>Remove repeating groups and keep atomic values.</td><td>Evidence and status histories are separated from the main crime incident record.</td></tr>
+<tr><td>2NF</td><td>Remove partial dependencies and separate entity data.</td><td>Users, crime types, offense types, and barangays are stored in separate tables and referenced by IDs.</td></tr>
+<tr><td>3NF</td><td>Remove transitive dependencies and event-based data from main records.</td><td>Assignment histories, notifications, audit logs, and password reset OTPs are stored in separate supporting tables.</td></tr>
+</table>
+
+</body>
+</html>

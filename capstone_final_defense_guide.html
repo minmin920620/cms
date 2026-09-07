@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Final Defense Guide - Crime Mapping and Management System</title>
+<style>
+@page { size: A4; margin: 1in; }
+body { font-family: Arial, Helvetica, sans-serif; color: #111827; font-size: 12pt; line-height: 1.45; }
+h1 { text-align: center; font-size: 18pt; text-transform: uppercase; margin-bottom: 18pt; }
+h2 { font-size: 15pt; margin: 18pt 0 8pt; border-bottom: 1px solid #9ca3af; padding-bottom: 3pt; }
+h3 { font-size: 13pt; margin: 12pt 0 6pt; }
+p { margin: 0 0 8pt; text-align: justify; }
+ul, ol { margin-top: 0; }
+li { margin-bottom: 4pt; }
+table { width: 100%; border-collapse: collapse; margin: 8pt 0 14pt; }
+th, td { border: 1px solid #374151; padding: 6pt; vertical-align: top; }
+th { background: #e5e7eb; text-align: center; }
+.answer { background: #f9fafb; border-left: 4px solid #2563eb; padding: 8pt; margin: 6pt 0 10pt; }
+.tip { background: #fef3c7; border: 1px solid #f59e0b; padding: 8pt; margin: 8pt 0; }
+.pagebreak { page-break-before: always; }
+</style>
+</head>
+<body>
+<h1>Final Defense Guide<br>Crime Mapping and Management System</h1>
+
+<h2>1. Short System Introduction</h2>
+<p>The system is a Crime Mapping and Management System developed for recording, monitoring, mapping, and analyzing crime incidents. It helps police personnel, investigators, administrators, and LGU users manage crime records in one centralized web application. The system supports crime incident encoding, case status tracking, evidence management, barangay-based mapping, hotspot monitoring, analytics, report generation, notifications, audit logs, and user management.</p>
+
+<div class="answer">
+<strong>Simple defense answer:</strong><br>
+Our system is a web-based Crime Mapping and Management System. Its purpose is to centralize crime incident records, track case progress, manage evidence, display incidents on a map, identify hotspots, and generate analytics and reports for decision-making.
+</div>
+
+<h2>2. Problem Addressed by the System</h2>
+<p>The system addresses the difficulty of managing crime records manually or through scattered files. Without a centralized system, it can be hard to search records, monitor case status, consolidate evidence, identify crime-prone areas, and prepare reports. The system improves record organization, data retrieval, accountability, and decision-making.</p>
+
+<ul>
+<li>Manual records are harder to search and update.</li>
+<li>Case progress is difficult to monitor without a workflow.</li>
+<li>Evidence can be separated from the case record.</li>
+<li>Crime patterns are harder to analyze without maps and analytics.</li>
+<li>Report preparation takes longer when data is manually counted.</li>
+<li>User actions are harder to trace without audit logs.</li>
+</ul>
+
+<h2>3. Main Users and Roles</h2>
+<table>
+<tr><th>User Role</th><th>Main Purpose</th><th>Allowed Functions</th></tr>
+<tr><td>Administrator</td><td>Overall system management.</td><td>Manage users, crime records, crime types, offense types, reports, audit logs, backups, approvals, map data, analytics, and notifications.</td></tr>
+<tr><td>Police Officer</td><td>Crime incident recording and initial case handling.</td><td>Add crime records, plot incidents, upload evidence, update status, view map, view hotspots, print records, and receive notifications.</td></tr>
+<tr><td>Investigator</td><td>Case investigation and progress monitoring.</td><td>View cases, update status, record investigation findings, manage evidence, view map, view hotspots, and receive notifications.</td></tr>
+<tr><td>LGU User</td><td>Decision support and monitoring.</td><td>View analytics and summary reports for crime trends, barangay data, and status breakdowns.</td></tr>
+</table>
+
+<h2>4. Technologies Used</h2>
+<table>
+<tr><th>Technology</th><th>Use in the System</th></tr>
+<tr><td>Laravel</td><td>Main PHP framework used for routing, controllers, models, authentication, validation, and database interaction.</td></tr>
+<tr><td>PHP</td><td>Server-side programming language used by Laravel.</td></tr>
+<tr><td>Blade</td><td>Laravel templating engine used to create the system pages/views.</td></tr>
+<tr><td>MySQL or MariaDB</td><td>Relational database used to store users, crime records, barangays, evidence, histories, notifications, and logs.</td></tr>
+<tr><td>Laravel Migrations</td><td>Used to define and update the database structure.</td></tr>
+<tr><td>Eloquent ORM</td><td>Used to connect Laravel models to database tables and relationships.</td></tr>
+<tr><td>Laravel Breeze/Auth</td><td>Used for login, logout, sessions, password features, and protected routes.</td></tr>
+<tr><td>Middleware</td><td>Used for role-based access control.</td></tr>
+<tr><td>JavaScript/CSS/Vite</td><td>Used for frontend assets, interactive pages, charts, and map-related UI behavior.</td></tr>
+<tr><td>GeoJSON Barangay Data</td><td>Used for barangay boundary display in the crime map.</td></tr>
+</table>
+
+<div class="answer">
+<strong>Simple defense answer:</strong><br>
+We used Laravel because it supports organized MVC development, secure authentication, routing, validation, database migrations, and Eloquent relationships. This made it suitable for a database-driven crime management system.
+</div>
+
+<h2>5. System Modules</h2>
+<table>
+<tr><th>Module</th><th>Explanation</th></tr>
+<tr><td>Login and Authentication</td><td>Allows users to log in securely and access only the modules allowed for their role. Password reset uses OTP-based recovery.</td></tr>
+<tr><td>Dashboard</td><td>Displays summary information, counts, and recent case data depending on the logged-in user's role.</td></tr>
+<tr><td>Crime Incident Management</td><td>Allows authorized users to add, view, edit, print, and soft-delete crime incident records.</td></tr>
+<tr><td>Case Status Workflow</td><td>Tracks each crime record from pending/report received through CIRAS recording, review, correction, data stored, IRF printed, signature, blotter, UCPER, resolved, and closed.</td></tr>
+<tr><td>Evidence Management</td><td>Allows users to upload and manage evidence files such as images, documents, IRF, blotter copy, and UCPER files.</td></tr>
+<tr><td>Crime Map</td><td>Displays crime incidents using coordinates and barangay boundary data to support location-based monitoring.</td></tr>
+<tr><td>Hotspot Monitoring</td><td>Shows areas or barangays with higher crime concentration based on recorded incidents.</td></tr>
+<tr><td>Analytics</td><td>Provides charts and summaries such as crime trends, crimes by type, crimes by barangay, status breakdown, and monthly reports.</td></tr>
+<tr><td>Reports</td><td>Allows administrators to filter, preview, print, and export crime reports.</td></tr>
+<tr><td>User Management</td><td>Allows administrators to create, update, deactivate, and delete user accounts.</td></tr>
+<tr><td>Crime Type Management</td><td>Allows administrators to manage crime classifications such as Theft, Robbery, Assault, Homicide, and others.</td></tr>
+<tr><td>Offense Type Management</td><td>Allows administrators to manage legal offense categories such as THEFT - RPC Art. 308 and ROBBERY - RPC Art. 293.</td></tr>
+<tr><td>Notifications, Audit Logs, and Backup</td><td>Supports system alerts, accountability through recorded user actions, and administrator backup download.</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+<h2>6. Database Explanation</h2>
+<p>The database is normalized so that related information is stored in separate tables. This avoids repeated data and improves data integrity. For example, crime type names are stored in the crime_types table and referenced by crime_incidents through crime_type_id. Barangay information is stored once in barangays and referenced by barangay_id. Evidence, status histories, assignment histories, notifications, and audit logs are separated because one crime incident can have many supporting records.</p>
+
+<table>
+<tr><th>Table</th><th>Purpose</th></tr>
+<tr><td>users</td><td>Stores user accounts, roles, contact details, badge number, avatar, and active status.</td></tr>
+<tr><td>crime_incidents</td><td>Stores the main crime case record including case number, title, type, offense, barangay, dates, times, status, coordinates, reporter, and assigned officer.</td></tr>
+<tr><td>crime_types</td><td>Stores general crime categories.</td></tr>
+<tr><td>offense_types</td><td>Stores specific legal offense categories linked to crime types.</td></tr>
+<tr><td>barangays</td><td>Stores barangay names, city, coordinates, and active status.</td></tr>
+<tr><td>evidence</td><td>Stores uploaded files connected to crime incidents.</td></tr>
+<tr><td>crime_status_histories</td><td>Stores the history of case status changes.</td></tr>
+<tr><td>case_assignment_histories</td><td>Stores assignment changes from one user/officer to another.</td></tr>
+<tr><td>system_notifications</td><td>Stores notifications for users.</td></tr>
+<tr><td>audit_logs</td><td>Stores user actions for accountability.</td></tr>
+<tr><td>password_reset_otps</td><td>Stores OTP records for password reset.</td></tr>
+</table>
+
+<h2>7. Normalization Explanation</h2>
+<p>The database normalization follows UNF, 1NF, 2NF, and 3NF. In UNF, all data can be stored in one wide table, which causes repeating groups such as Evidence1, Evidence2, Status1, and Status2. In 1NF, repeating groups are removed and each field contains only one value. In 2NF, separate entities such as users, crime types, offense types, and barangays are moved to their own tables. In 3NF, event-based and supporting records such as evidence, status history, assignment history, notifications, and audit logs are separated to remove transitive dependencies.</p>
+
+<div class="answer">
+<strong>Simple defense answer:</strong><br>
+We normalized the database to reduce repeated data. Crime incidents store only the main case details and foreign keys. Other information, like users, barangays, crime types, evidence, status histories, notifications, and audit logs, is stored in separate related tables.
+</div>
+
+<h2>8. Conceptual Framework Explanation</h2>
+<table>
+<tr><th>Input</th><th>Process</th><th>Output</th></tr>
+<tr><td>Crime details, user data, barangay/location data, crime types, offense types, evidence files, status updates, and report filters.</td><td>Authentication, role checking, validation, case number generation, crime record storage, evidence upload, status tracking, mapping, hotspot analysis, analytics, report generation, notification handling, and audit logging.</td><td>Stored crime records, mapped incidents, evidence records, status histories, hotspot summaries, analytics charts, reports, notifications, and audit logs.</td></tr>
+</table>
+
+<h2>9. System Architecture Explanation</h2>
+<p>The system follows a three-tier architecture. The presentation layer is the user interface accessed through the browser, including login, dashboard, crime records, map, analytics, and reports. The application or business logic layer is Laravel, which handles routing, controllers, validation, authentication, role checking, workflow rules, and report generation. The data layer is the database and storage where crime records, users, barangays, evidence, histories, notifications, logs, and uploaded files are stored.</p>
+
+<h2>10. Security Features</h2>
+<ul>
+<li>Login authentication protects the system from unauthorized access.</li>
+<li>Passwords are hashed by Laravel.</li>
+<li>Role middleware limits access based on user role.</li>
+<li>Active account status can control whether a user can use the system.</li>
+<li>Audit logs record important user actions.</li>
+<li>Evidence files are accessed through controlled routes.</li>
+<li>Validation helps prevent invalid or incomplete data from being saved.</li>
+</ul>
+
+<h2>11. Workflow Status Explanation</h2>
+<p>The crime workflow starts when a report is received. The case may move to CIRAS recording, summary review, correction, data stored, IRF printed, IRF signature, blotter entered, UCPER compiled, resolved, and closed. This workflow allows the organization to monitor the progress of every crime incident and maintain a history of status changes.</p>
+
+<div class="answer">
+<strong>Simple defense answer:</strong><br>
+The workflow is used so users can see the current stage of a case. It also creates accountability because status changes are recorded in the system.
+</div>
+
+<h2>12. Why the System Is Useful</h2>
+<ul>
+<li>It centralizes crime incident records.</li>
+<li>It reduces repeated manual encoding.</li>
+<li>It helps track case progress.</li>
+<li>It connects evidence files to the correct case.</li>
+<li>It helps identify crime-prone barangays through mapping and hotspots.</li>
+<li>It supports reports and analytics for decision-making.</li>
+<li>It improves accountability through audit logs and role-based access.</li>
+</ul>
+
+<div class="pagebreak"></div>
+<h2>13. Common Final Defense Questions and Answers</h2>
+
+<h3>Question: What is the main objective of your system?</h3>
+<div class="answer">The main objective is to provide a centralized web-based system for recording, managing, mapping, and analyzing crime incidents. It helps authorized users monitor cases, manage evidence, identify hotspots, and generate reports.</div>
+
+<h3>Question: Who are the users of the system?</h3>
+<div class="answer">The users are Administrator, Police Officer, Investigator, and LGU user. Each role has different access depending on their responsibilities.</div>
+
+<h3>Question: Why did you use Laravel?</h3>
+<div class="answer">Laravel was used because it provides organized MVC structure, built-in routing, authentication support, validation, database migrations, Eloquent ORM, and middleware for role-based access.</div>
+
+<h3>Question: What makes your system different from manual recording?</h3>
+<div class="answer">The system centralizes records, makes searching and updating easier, connects evidence to cases, tracks status history, maps crime locations, generates analytics, and records audit logs for accountability.</div>
+
+<h3>Question: How does the map help users?</h3>
+<div class="answer">The map helps users visualize where crime incidents happened. It uses coordinates and barangay data to support location-based monitoring and hotspot identification.</div>
+
+<h3>Question: What is the purpose of normalization in your database?</h3>
+<div class="answer">Normalization reduces duplicate data and improves database integrity. It separates users, barangays, crime types, offense types, evidence, status histories, notifications, and audit logs into related tables.</div>
+
+<h3>Question: What is the purpose of audit logs?</h3>
+<div class="answer">Audit logs record user actions, affected records, old values, new values, IP address, and user agent. This helps administrators trace activity and improve accountability.</div>
+
+<h3>Question: How do you protect sensitive data?</h3>
+<div class="answer">The system uses login authentication, hashed passwords, role-based middleware, protected routes, validation, and audit logs. Users can only access the modules allowed for their role.</div>
+
+<h3>Question: Why do you have different roles?</h3>
+<div class="answer">Different roles are needed because each user has different responsibilities. For example, administrators manage the whole system, police officers record incidents, investigators handle case progress, and LGU users view analytics for planning.</div>
+
+<h3>Question: What are the limitations of your system?</h3>
+<div class="answer">Possible limitations include dependence on accurate data encoding, availability of internet or local network connection, and the need for correct coordinates for reliable mapping. The system also depends on authorized users keeping records updated.</div>
+
+<h3>Question: What future improvements can be added?</h3>
+<div class="answer">Future improvements may include mobile access, SMS/email notifications, advanced predictive analytics, real-time GIS layers, integration with other police systems, and automated data import from official sources.</div>
+
+<h2>14. Short Closing Statement</h2>
+<div class="answer">In conclusion, the Crime Mapping and Management System helps improve crime record management by centralizing incident data, supporting case workflow, managing evidence, mapping locations, identifying hotspots, generating analytics, and improving accountability through role-based access and audit logs.</div>
+
+<div class="tip">
+<strong>Defense tip:</strong> When answering, always connect back to your actual system. Mention the module, the user role, and the database table if relevant.
+</div>
+
+</body>
+</html>

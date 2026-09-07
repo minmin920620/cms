@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Requirements Documentation</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 18mm 17mm;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            color: #111827;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 11.5pt;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 20pt;
+            margin: 0 0 18px;
+            text-align: center;
+        }
+
+        h2 {
+            border-bottom: 1px solid #d1d5db;
+            font-size: 15pt;
+            margin: 24px 0 12px;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            font-size: 12.5pt;
+            margin: 18px 0 8px;
+        }
+
+        p {
+            margin: 0 0 10px;
+            text-align: justify;
+        }
+
+        .requirement {
+            margin-left: 18px;
+            text-indent: -18px;
+        }
+
+        h2, h3 {
+            break-after: avoid;
+        }
+    </style>
+</head>
+<body>
+<h1>Admin Requirements Documentation</h1>
+<h2>Functional Requirements</h2>
+<h3>Login Module</h3>
+<p>This module allows the Admin user to securely access the system using valid credentials.</p>
+<p>REQ. AU.1.1 The Admin user shall be able to enter their email address.</p>
+<p>REQ. AU.1.2 The Admin user shall be able to enter their password.</p>
+<p>REQ. AU.1.3 The system shall validate the Admin user&#039;s email and password before granting access to the dashboard.</p>
+<p>REQ. AU.1.4 The system shall reject invalid login credentials and display an appropriate error message.</p>
+<p>REQ. AU.1.5 The Admin user shall be able to access the forgot password page from the login page.</p>
+<h3>Forgot Password Module</h3>
+<p>This module allows the Admin user to request password reset assistance when they cannot access their account.</p>
+<p>REQ. AU.2.1 The Admin user shall be able to access the forgot password page.</p>
+<p>REQ. AU.2.2 The Admin user shall be able to enter their registered email address.</p>
+<p>REQ. AU.2.3 The system shall validate the submitted email address before processing the password reset request.</p>
+<p>REQ. AU.2.4 The system shall send password reset instructions or a reset code to the Admin user&#039;s registered email address.</p>
+<p>REQ. AU.2.5 The Admin user shall be able to reset and confirm a new password.</p>
+<h3>Dashboard Module</h3>
+<p>This module allows the Admin user to view overall crime records and system statistics.</p>
+<p>REQ. AU.3.1 The Admin user shall be able to access the dashboard after a successful login.</p>
+<p>REQ. AU.3.2 The Admin user shall be able to view total crime incidents, crimes recorded today, crimes recorded this month, and pending crimes.</p>
+<p>REQ. AU.3.3 The Admin user shall be able to view crime statistics by crime type.</p>
+<p>REQ. AU.3.4 The Admin user shall be able to view hotspot summary information based on barangay crime counts.</p>
+<p>REQ. AU.3.5 The Admin user shall be able to view monthly crime trend information.</p>
+<p>REQ. AU.3.6 The Admin user shall be able to view crime status breakdown information.</p>
+<h3>Crime Incident Management Module</h3>
+<p>This module allows the Admin user to manage all crime incident records.</p>
+<p>REQ. AU.4.1 The Admin user shall be able to view all crime incident records.</p>
+<p>REQ. AU.4.2 The Admin user shall be able to create new crime incident records.</p>
+<p>REQ. AU.4.3 The Admin user shall be able to enter crime details such as title, crime type, offense type, barangay, date occurred, date reported, and address.</p>
+<p>REQ. AU.4.4 The Admin user shall be able to assign a Police Officer as reporter.</p>
+<p>REQ. AU.4.5 The Admin user shall be able to assign an Investigator to a crime incident.</p>
+<p>REQ. AU.4.6 The Admin user shall be able to search and filter crime incident records.</p>
+<p>REQ. AU.4.7 The Admin user shall be able to view, update, and archive crime incident records.</p>
+<h3>Crime Status Workflow Module</h3>
+<p>This module allows the Admin user to update and monitor the progress of crime incidents.</p>
+<p>REQ. AU.5.1 The Admin user shall be able to update the status of any crime incident.</p>
+<p>REQ. AU.5.2 The Admin user shall be required to enter remarks when changing a crime incident status.</p>
+<p>REQ. AU.5.3 The Admin user shall be able to record investigation findings.</p>
+<p>REQ. AU.5.4 The Admin user shall be able to view the status history of a crime incident.</p>
+<h3>Evidence Management Module</h3>
+<p>This module allows the Admin user to manage evidence files connected to crime incidents.</p>
+<p>REQ. AU.6.1 The Admin user shall be able to upload evidence files.</p>
+<p>REQ. AU.6.2 The Admin user shall be able to view uploaded evidence files.</p>
+<p>REQ. AU.6.3 The Admin user shall be able to delete uploaded evidence files.</p>
+<p>REQ. AU.6.4 The system shall only allow supported evidence file formats such as JPG, JPEG, PNG, PDF, DOC, and DOCX.</p>
+<h3>Crime Map Module</h3>
+<p>This module allows the Admin user to view and plot crime incidents on the map.</p>
+<p>REQ. AU.7.1 The Admin user shall be able to access the crime map.</p>
+<p>REQ. AU.7.2 The Admin user shall be able to view plotted crime incident locations.</p>
+<p>REQ. AU.7.3 The Admin user shall be able to view Koronadal City barangay boundaries.</p>
+<p>REQ. AU.7.4 The Admin user shall be able to detect barangay based on selected coordinates.</p>
+<p>REQ. AU.7.5 The Admin user shall be able to plot a crime incident from the map.</p>
+<h3>Hotspot Module</h3>
+<p>REQ. AU.8.1 The Admin user shall be able to access the hotspot module.</p>
+<p>REQ. AU.8.2 The Admin user shall be able to view crime hotspot information.</p>
+<p>REQ. AU.8.3 The Admin user shall be able to view crime counts by barangay.</p>
+<h3>Analytics Module</h3>
+<p>REQ. AU.9.1 The Admin user shall be able to access the analytics module.</p>
+<p>REQ. AU.9.2 The Admin user shall be able to view crime trends, crime by type, crime by barangay, status breakdown, and monthly report data.</p>
+<h3>Reports Module</h3>
+<p>REQ. AU.10.1 The Admin user shall be able to access the reports module.</p>
+<p>REQ. AU.10.2 The Admin user shall be able to generate report previews.</p>
+<p>REQ. AU.10.3 The Admin user shall be able to export reports as PDF files.</p>
+<h3>User Management Module</h3>
+<p>REQ. AU.11.1 The Admin user shall be able to view the list of system users.</p>
+<p>REQ. AU.11.2 The Admin user shall be able to create new user accounts.</p>
+<p>REQ. AU.11.3 The Admin user shall be able to assign user roles.</p>
+<p>REQ. AU.11.4 The Admin user shall be able to update user account information.</p>
+<h3>Maintenance Module</h3>
+<p>REQ. AU.12.1 The Admin user shall be able to manage crime types.</p>
+<p>REQ. AU.12.2 The Admin user shall be able to manage offense types.</p>
+<p>REQ. AU.12.3 The system shall use active crime types and offense types when recording crime incidents.</p>
+<h3>Audit Log Module</h3>
+<p>REQ. AU.13.1 The Admin user shall be able to access audit logs.</p>
+<p>REQ. AU.13.2 The Admin user shall be able to review recorded system activities for accountability and monitoring.</p>
+<h3>Profile and Logout Module</h3>
+<p>REQ. AU.14.1 The Admin user shall be able to update their profile information.</p>
+<p>REQ. AU.14.2 The Admin user shall be able to update their password.</p>
+<p>REQ. AU.14.3 The Admin user shall be able to log out from the system.</p>
+</body>
+</html>

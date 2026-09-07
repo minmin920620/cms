@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Chapter IV Module Use Case and Activity Diagram</title>
+<style>
+    @page {
+        size: A4;
+        margin: 18mm 16mm;
+    }
+    body {
+        color: #111827;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 11px;
+        line-height: 1.45;
+    }
+    h1 {
+        border-bottom: 1px solid #9ca3af;
+        color: #374151;
+        font-size: 26px;
+        margin: 0 0 18px;
+        padding-bottom: 8px;
+        text-align: center;
+    }
+    h2 {
+        color: #111827;
+        font-size: 15px;
+        margin: 22px 0 8px;
+        page-break-after: avoid;
+    }
+    p {
+        margin: 6px 0;
+    }
+    table {
+        border-collapse: collapse;
+        margin: 8px 0 10px;
+        page-break-inside: avoid;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid #4b5563;
+        padding: 6px;
+        text-align: left;
+        vertical-align: top;
+    }
+    th {
+        background: #f3f4f6;
+        font-weight: 700;
+        text-align: center;
+    }
+    ol {
+        margin: 6px 0 12px 20px;
+        padding: 0;
+    }
+    li {
+        margin: 2px 0;
+    }
+    .diagram {
+        margin: 8px auto 12px;
+        page-break-inside: avoid;
+        text-align: center;
+        width: 100%;
+    }
+    .diagram svg {
+        max-height: 520px;
+        max-width: 100%;
+        width: 100%;
+    }
+    .figure-caption {
+        font-size: 10px;
+        font-weight: 700;
+        margin-top: 3px;
+        text-align: center;
+    }
+    .activity-slide {
+        border-bottom: 8px solid #d97706;
+        margin: 22px auto;
+        min-height: 480px;
+        page-break-inside: avoid;
+        width: 100%;
+    }
+    .activity-slide h3 {
+        border-bottom: 1px solid #c9c9c9;
+        color: #3f3f46;
+        font-size: 28px;
+        line-height: 1.1;
+        margin: 0 0 10px;
+        padding: 0 0 8px;
+    }
+    .activity-note {
+        color: #3f3f46;
+        font-size: 14px;
+        font-weight: 700;
+        margin: 8px 0 16px;
+    }
+    .activity-note div::before {
+        border: 2px solid #f59e0b;
+        content: "";
+        display: inline-block;
+        height: 9px;
+        margin-right: 4px;
+        width: 9px;
+    }
+    .activity-board {
+        display: block;
+        margin: 8px auto 4px;
+        max-width: 780px;
+        width: 96%;
+    }
+    .activity-board text {
+        fill: #111827;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10px;
+    }
+    .activity-board .lane-title {
+        font-size: 11px;
+        font-weight: 700;
+    }
+    .activity-board .node {
+        fill: #ffffff;
+        stroke: #4b5563;
+        stroke-width: 1.2;
+    }
+    .activity-board .decision {
+        fill: #ffffff;
+        stroke: #4b5563;
+        stroke-width: 1.2;
+    }
+    .activity-board .flow {
+        fill: none;
+        marker-end: url(#arrow);
+        stroke: #6b7280;
+        stroke-width: 1.1;
+    }
+    .activity-board .lane {
+        fill: none;
+        stroke: #9ca3af;
+        stroke-width: 1;
+    }
+</style>
+</head>
+<body>
+<h1>Chapter IV: Methodology, Results, and Discussion</h1>
+<h2>Use Case Diagram</h2>
+<p>The Use Case Diagram shows the functions that each user can access in the Crime Mapping System. The actors of the system are the Admin, LGU, Police Officer, and Investigator. Each actor is placed outside the system boundary, while the use cases are placed inside the boundary.</p>
+<h2>Activity Diagram</h2>
+<p>The Activity Diagram shows the step-by-step workflow of a particular process. It explains what happens from the beginning to the end of a system activity. Unlike the Use Case Diagram, which shows what users can do, the Activity Diagram shows how a process is performed.</p>
+<h2>Login Module</h2>
+<div class="diagram"><svg viewBox="0 0 920 284" role="img" aria-label="Login Module Use Case Diagram"><rect x="245" y="40" width="595" height="212" fill="none" stroke="#111827" stroke-width="1.4"/><text x="542.5" y="60" text-anchor="middle" font-size="13" font-weight="700">Crime Mapping System - Login Module</text><ellipse cx="555" cy="96" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="96" text-anchor="middle" font-size="10">Login</text>
+<ellipse cx="555" cy="160" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="160" text-anchor="middle" font-size="10">Reset Password</text>
+<ellipse cx="555" cy="224" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="224" text-anchor="middle" font-size="10">Logout</text>
+<circle cx="105" cy="58" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="67" x2="105" y2="97" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="80" x2="123" y2="80" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="97" x2="89" y2="120" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="97" x2="121" y2="120" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="138" text-anchor="middle" font-size="11" font-weight="700">Admin</text><line x1="128" y1="85" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="85" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="85" x2="464" y2="224" stroke="#6b7280" stroke-width="0.8"/><circle cx="105" cy="122" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="131" x2="105" y2="161" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="144" x2="123" y2="144" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="161" x2="89" y2="184" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="161" x2="121" y2="184" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="202" text-anchor="middle" font-size="11" font-weight="700">LGU</text><line x1="128" y1="149" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="149" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="149" x2="464" y2="224" stroke="#6b7280" stroke-width="0.8"/><circle cx="105" cy="186" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="195" x2="105" y2="225" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="208" x2="123" y2="208" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="225" x2="89" y2="248" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="225" x2="121" y2="248" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="266" text-anchor="middle" font-size="11" font-weight="700">Police Officer</text><line x1="128" y1="213" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="213" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="213" x2="464" y2="224" stroke="#6b7280" stroke-width="0.8"/><circle cx="105" cy="250" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="259" x2="105" y2="289" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="272" x2="123" y2="272" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="289" x2="89" y2="312" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="289" x2="121" y2="312" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="330" text-anchor="middle" font-size="11" font-weight="700">Investigator</text><line x1="128" y1="277" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="277" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="277" x2="464" y2="224" stroke="#6b7280" stroke-width="0.8"/></svg><p class="figure-caption">Login Module Use Case Diagram</p></div><table><tbody>
+<tr><th>Use Case</th><th>Description</th><th>User/Actor Roles</th></tr>
+<tr><td>Login</td><td>Allows the user to enter their email and password to access the system.</td><td>Admin, LGU, Police Officer, Investigator</td></tr>
+<tr><td>Reset Password</td><td>Allows the user to request an OTP, verify the code, and create a new password if they forgot their login credentials.</td><td>Admin, LGU, Police Officer, Investigator</td></tr>
+<tr><td>Logout</td><td>Allows the user to securely exit the system.</td><td>Admin, LGU, Police Officer, Investigator</td></tr>
+</tbody></table>
+<p>Activity Diagram Workflow:</p>
+<ol>
+<li>The system displays the login form.</li>
+<li>The user enters email and password.</li>
+<li>The system validates the credentials.</li>
+<li>If valid, the system displays the dashboard.</li>
+<li>If invalid, the system displays an error message.</li>
+<li>The process ends.</li>
+</ol>
+<h2>Dashboard Module</h2>
+<div class="diagram"><svg viewBox="0 0 920 260" role="img" aria-label="Dashboard Module Use Case Diagram"><rect x="245" y="40" width="595" height="188" fill="none" stroke="#111827" stroke-width="1.4"/><text x="542.5" y="60" text-anchor="middle" font-size="13" font-weight="700">Crime Mapping System - Dashboard Module</text><ellipse cx="555" cy="96" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="96" text-anchor="middle" font-size="10">View Dashboard</text>
+<ellipse cx="555" cy="160" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="160" text-anchor="middle" font-size="10">View Dashboard Data</text>
+<circle cx="105" cy="58" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="67" x2="105" y2="97" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="80" x2="123" y2="80" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="97" x2="89" y2="120" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="97" x2="121" y2="120" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="138" text-anchor="middle" font-size="11" font-weight="700">Admin</text><line x1="128" y1="85" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="85" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><circle cx="105" cy="122" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="131" x2="105" y2="161" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="144" x2="123" y2="144" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="161" x2="89" y2="184" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="161" x2="121" y2="184" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="202" text-anchor="middle" font-size="11" font-weight="700">LGU</text><line x1="128" y1="149" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="149" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><circle cx="105" cy="186" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="195" x2="105" y2="225" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="208" x2="123" y2="208" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="225" x2="89" y2="248" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="225" x2="121" y2="248" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="266" text-anchor="middle" font-size="11" font-weight="700">Police Officer</text><line x1="128" y1="213" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="213" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><circle cx="105" cy="250" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="259" x2="105" y2="289" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="272" x2="123" y2="272" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="289" x2="89" y2="312" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="289" x2="121" y2="312" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="330" text-anchor="middle" font-size="11" font-weight="700">Investigator</text><line x1="128" y1="277" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="277" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/></svg><p class="figure-caption">Dashboard Module Use Case Diagram</p></div><table><tbody>
+<tr><th>Use Case</th><th>Description</th><th>User/Actor Roles</th></tr>
+<tr><td>View Dashboard</td><td>Allows users to view the main system dashboard and summary of crime-related information based on their role.</td><td>Admin, LGU, Police Officer, Investigator</td></tr>
+<tr><td>View Dashboard Data</td><td>Allows users to view system statistics and summarized records shown on the dashboard.</td><td>Admin, LGU, Police Officer, Investigator</td></tr>
+</tbody></table>
+<p>Activity Diagram Workflow:</p>
+<ol>
+<li>The user logs in to the system.</li>
+<li>The system checks the user&#039;s role.</li>
+<li>The system retrieves dashboard data.</li>
+<li>The system displays the dashboard.</li>
+<li>The user views the available summary information.</li>
+<li>The process ends.</li>
+</ol>
+<h2>Crime Incident Management Module</h2>
+<div class="diagram"><svg viewBox="0 0 920 476" role="img" aria-label="Crime Incident Management Module Use Case Diagram"><rect x="245" y="40" width="595" height="404" fill="none" stroke="#111827" stroke-width="1.4"/><text x="542.5" y="60" text-anchor="middle" font-size="13" font-weight="700">Crime Mapping System - Crime Incident Management Module</text><ellipse cx="555" cy="96" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="96" text-anchor="middle" font-size="10">View Crime Incidents</text>
+<ellipse cx="555" cy="160" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="160" text-anchor="middle" font-size="10">Report Crime Incident</text>
+<ellipse cx="555" cy="224" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="224" text-anchor="middle" font-size="10">Update Crime Incident</text>
+<ellipse cx="555" cy="288" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="288" text-anchor="middle" font-size="10">Update Crime Status</text>
+<ellipse cx="555" cy="352" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="346" text-anchor="middle" font-size="10">Record Investigation</text>
+<text x="555" y="359" text-anchor="middle" font-size="10">Findings</text>
+<ellipse cx="555" cy="416" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="416" text-anchor="middle" font-size="10">Delete Crime Incident</text>
+<circle cx="105" cy="58" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="67" x2="105" y2="97" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="80" x2="123" y2="80" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="97" x2="89" y2="120" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="97" x2="121" y2="120" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="138" text-anchor="middle" font-size="11" font-weight="700">Admin</text><line x1="128" y1="85" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="85" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="85" x2="464" y2="224" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="85" x2="464" y2="288" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="85" x2="464" y2="352" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="85" x2="464" y2="416" stroke="#6b7280" stroke-width="0.8"/><circle cx="105" cy="146" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="155" x2="105" y2="185" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="168" x2="123" y2="168" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="185" x2="89" y2="208" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="185" x2="121" y2="208" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="226" text-anchor="middle" font-size="11" font-weight="700">Police Officer</text><line x1="128" y1="173" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="173" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="173" x2="464" y2="224" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="173" x2="464" y2="288" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="173" x2="464" y2="352" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="173" x2="464" y2="416" stroke="#6b7280" stroke-width="0.8"/><circle cx="105" cy="234" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="243" x2="105" y2="273" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="256" x2="123" y2="256" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="273" x2="89" y2="296" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="273" x2="121" y2="296" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="314" text-anchor="middle" font-size="11" font-weight="700">Investigator</text><line x1="128" y1="261" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="261" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="261" x2="464" y2="224" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="261" x2="464" y2="288" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="261" x2="464" y2="352" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="261" x2="464" y2="416" stroke="#6b7280" stroke-width="0.8"/></svg><p class="figure-caption">Crime Incident Management Module Use Case Diagram</p></div><table><tbody>
+<tr><th>Use Case</th><th>Description</th><th>User/Actor Roles</th></tr>
+<tr><td>View Crime Incidents</td><td>Allows users to view crime incident records. Admin can view all records, police officers can view their reported or assigned records, and investigators can view assigned, pending, or under-investigation records.</td><td>Admin, Police Officer, Investigator</td></tr>
+<tr><td>Report Crime Incident</td><td>Allows police officers and admin users to encode a new crime incident, including crime details, barangay, date, time, location, and assigned investigator.</td><td>Admin, Police Officer</td></tr>
+<tr><td>Update Crime Incident</td><td>Allows authorized users to edit crime incident details.</td><td>Admin, Police Officer, Investigator</td></tr>
+<tr><td>Update Crime Status</td><td>Allows authorized users to change the case status to pending, under investigation, resolved, or closed.</td><td>Admin, Police Officer, Investigator</td></tr>
+<tr><td>Record Investigation Findings</td><td>Allows investigators and authorized users to record findings related to the crime incident.</td><td>Admin, Investigator</td></tr>
+<tr><td>Delete Crime Incident</td><td>Allows authorized users to remove a crime incident record.</td><td>Admin, Police Officer, Investigator</td></tr>
+</tbody></table>
+<p>Activity Diagram Workflow:</p>
+<ol>
+<li>The user opens the Crime Incidents module.</li>
+<li>The system checks the user&#039;s role and access permission.</li>
+<li>The system displays the crime incident list.</li>
+<li>The user selects an action: add, view, edit, update status, or delete.</li>
+<li>The system validates the submitted information.</li>
+<li>If the information is valid, the system saves the record.</li>
+<li>The system displays a success message.</li>
+<li>If the information is invalid, the system displays an error message.</li>
+<li>The process ends.</li>
+</ol>
+<h2>Evidence Management Module</h2>
+<div class="diagram"><svg viewBox="0 0 920 284" role="img" aria-label="Evidence Management Module Use Case Diagram"><rect x="245" y="40" width="595" height="212" fill="none" stroke="#111827" stroke-width="1.4"/><text x="542.5" y="60" text-anchor="middle" font-size="13" font-weight="700">Crime Mapping System - Evidence Management Module</text><ellipse cx="555" cy="96" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="96" text-anchor="middle" font-size="10">Upload Evidence</text>
+<ellipse cx="555" cy="160" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="160" text-anchor="middle" font-size="10">View Evidence</text>
+<ellipse cx="555" cy="224" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="224" text-anchor="middle" font-size="10">Delete Evidence</text>
+<circle cx="105" cy="58" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="67" x2="105" y2="97" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="80" x2="123" y2="80" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="97" x2="89" y2="120" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="97" x2="121" y2="120" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="138" text-anchor="middle" font-size="11" font-weight="700">Admin</text><line x1="128" y1="85" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="85" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="85" x2="464" y2="224" stroke="#6b7280" stroke-width="0.8"/><circle cx="105" cy="122" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="131" x2="105" y2="161" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="144" x2="123" y2="144" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="161" x2="89" y2="184" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="161" x2="121" y2="184" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="202" text-anchor="middle" font-size="11" font-weight="700">Police Officer</text><line x1="128" y1="149" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="149" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="149" x2="464" y2="224" stroke="#6b7280" stroke-width="0.8"/><circle cx="105" cy="186" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="195" x2="105" y2="225" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="208" x2="123" y2="208" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="225" x2="89" y2="248" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="225" x2="121" y2="248" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="266" text-anchor="middle" font-size="11" font-weight="700">Investigator</text><line x1="128" y1="213" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="213" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="213" x2="464" y2="224" stroke="#6b7280" stroke-width="0.8"/></svg><p class="figure-caption">Evidence Management Module Use Case Diagram</p></div><table><tbody>
+<tr><th>Use Case</th><th>Description</th><th>User/Actor Roles</th></tr>
+<tr><td>Upload Evidence</td><td>Allows authorized users to upload evidence files connected to a crime incident.</td><td>Admin, Police Officer, Investigator</td></tr>
+<tr><td>View Evidence</td><td>Allows authorized users to view uploaded evidence files.</td><td>Admin, Police Officer, Investigator</td></tr>
+<tr><td>Delete Evidence</td><td>Allows authorized users to remove evidence files from a crime incident.</td><td>Admin, Police Officer, Investigator</td></tr>
+</tbody></table>
+<p>Activity Diagram Workflow:</p>
+<ol>
+<li>The user opens a crime incident record.</li>
+<li>The user uploads or selects an evidence file.</li>
+<li>The system validates the file type and file size.</li>
+<li>If valid, the system stores the evidence file.</li>
+<li>The system links the evidence to the crime incident.</li>
+<li>The system displays a success message.</li>
+<li>If invalid, the system displays an error message.</li>
+<li>The process ends.</li>
+</ol>
+<h2>Crime Map Module</h2>
+<div class="diagram"><svg viewBox="0 0 920 348" role="img" aria-label="Crime Map Module Use Case Diagram"><rect x="245" y="40" width="595" height="276" fill="none" stroke="#111827" stroke-width="1.4"/><text x="542.5" y="60" text-anchor="middle" font-size="13" font-weight="700">Crime Mapping System - Crime Map Module</text><ellipse cx="555" cy="96" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="96" text-anchor="middle" font-size="10">View Crime Map</text>
+<ellipse cx="555" cy="160" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="160" text-anchor="middle" font-size="10">Filter Map Data</text>
+<ellipse cx="555" cy="224" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="224" text-anchor="middle" font-size="10">Detect Barangay</text>
+<ellipse cx="555" cy="288" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="288" text-anchor="middle" font-size="10">Plot Incident on Map</text>
+<circle cx="105" cy="58" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="67" x2="105" y2="97" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="80" x2="123" y2="80" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="97" x2="89" y2="120" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="97" x2="121" y2="120" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="138" text-anchor="middle" font-size="11" font-weight="700">Admin</text><line x1="128" y1="85" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="85" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="85" x2="464" y2="224" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="85" x2="464" y2="288" stroke="#6b7280" stroke-width="0.8"/><circle cx="105" cy="144" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="153" x2="105" y2="183" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="166" x2="123" y2="166" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="183" x2="89" y2="206" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="183" x2="121" y2="206" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="224" text-anchor="middle" font-size="11" font-weight="700">Police Officer</text><line x1="128" y1="171" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="171" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="171" x2="464" y2="224" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="171" x2="464" y2="288" stroke="#6b7280" stroke-width="0.8"/><circle cx="105" cy="230" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="239" x2="105" y2="269" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="252" x2="123" y2="252" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="269" x2="89" y2="292" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="269" x2="121" y2="292" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="310" text-anchor="middle" font-size="11" font-weight="700">Investigator</text><line x1="128" y1="257" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="257" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="257" x2="464" y2="224" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="257" x2="464" y2="288" stroke="#6b7280" stroke-width="0.8"/></svg><p class="figure-caption">Crime Map Module Use Case Diagram</p></div><table><tbody>
+<tr><th>Use Case</th><th>Description</th><th>User/Actor Roles</th></tr>
+<tr><td>View Crime Map</td><td>Allows users to view mapped crime incidents within Koronadal City.</td><td>Admin, Police Officer, Investigator</td></tr>
+<tr><td>Filter Map Data</td><td>Allows users to filter mapped incidents by crime type, barangay, status, and date range.</td><td>Admin, Police Officer, Investigator</td></tr>
+<tr><td>Detect Barangay</td><td>Allows the system to detect the barangay based on selected map coordinates.</td><td>Admin, Police Officer, Investigator</td></tr>
+<tr><td>Plot Incident on Map</td><td>Allows admin and police officers to plot a new crime incident directly on the map.</td><td>Admin, Police Officer</td></tr>
+</tbody></table>
+<p>Activity Diagram Workflow:</p>
+<ol>
+<li>The user opens the Crime Map module.</li>
+<li>The system loads the map and barangay boundaries.</li>
+<li>The user applies filters or selects a location.</li>
+<li>The system retrieves matching crime incident data.</li>
+<li>The system displays crime markers on the map.</li>
+<li>If the user plots an incident, the system validates the incident details.</li>
+<li>The system saves the plotted incident and displays it on the map.</li>
+<li>The process ends.</li>
+</ol>
+<h2>Hotspot Module</h2>
+<div class="diagram"><svg viewBox="0 0 920 260" role="img" aria-label="Hotspot Module Use Case Diagram"><rect x="245" y="40" width="595" height="188" fill="none" stroke="#111827" stroke-width="1.4"/><text x="542.5" y="60" text-anchor="middle" font-size="13" font-weight="700">Crime Mapping System - Hotspot Module</text><ellipse cx="555" cy="96" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="96" text-anchor="middle" font-size="10">View Hotspots</text>
+<ellipse cx="555" cy="160" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="160" text-anchor="middle" font-size="10">View Hotspot Details</text>
+<circle cx="105" cy="58" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="67" x2="105" y2="97" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="80" x2="123" y2="80" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="97" x2="89" y2="120" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="97" x2="121" y2="120" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="138" text-anchor="middle" font-size="11" font-weight="700">Admin</text><line x1="128" y1="85" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="85" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><circle cx="105" cy="122" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="131" x2="105" y2="161" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="144" x2="123" y2="144" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="161" x2="89" y2="184" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="161" x2="121" y2="184" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="202" text-anchor="middle" font-size="11" font-weight="700">Police Officer</text><line x1="128" y1="149" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="149" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><circle cx="105" cy="186" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="195" x2="105" y2="225" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="208" x2="123" y2="208" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="225" x2="89" y2="248" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="225" x2="121" y2="248" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="266" text-anchor="middle" font-size="11" font-weight="700">Investigator</text><line x1="128" y1="213" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="213" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/></svg><p class="figure-caption">Hotspot Module Use Case Diagram</p></div><table><tbody>
+<tr><th>Use Case</th><th>Description</th><th>User/Actor Roles</th></tr>
+<tr><td>View Hotspots</td><td>Allows users to view barangays with high crime incident counts.</td><td>Admin, Police Officer, Investigator</td></tr>
+<tr><td>View Hotspot Details</td><td>Allows users to view total, open, and resolved incidents per barangay.</td><td>Admin, Police Officer, Investigator</td></tr>
+</tbody></table>
+<p>Activity Diagram Workflow:</p>
+<ol>
+<li>The user opens the Hotspots module.</li>
+<li>The system retrieves crime counts per barangay.</li>
+<li>The system calculates hotspot density.</li>
+<li>The system displays hotspot data and map points.</li>
+<li>The user reviews the hotspot information.</li>
+<li>The process ends.</li>
+</ol>
+<h2>Analytics Module</h2>
+<div class="diagram"><svg viewBox="0 0 920 412" role="img" aria-label="Analytics Module Use Case Diagram"><rect x="245" y="40" width="595" height="340" fill="none" stroke="#111827" stroke-width="1.4"/><text x="542.5" y="60" text-anchor="middle" font-size="13" font-weight="700">Crime Mapping System - Analytics Module</text><ellipse cx="555" cy="96" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="96" text-anchor="middle" font-size="10">View Crime Trends</text>
+<ellipse cx="555" cy="160" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="160" text-anchor="middle" font-size="10">View Crime by Type</text>
+<ellipse cx="555" cy="224" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="224" text-anchor="middle" font-size="10">View Crime by Barangay</text>
+<ellipse cx="555" cy="288" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="288" text-anchor="middle" font-size="10">View Status Breakdown</text>
+<ellipse cx="555" cy="352" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="352" text-anchor="middle" font-size="10">View Monthly Report Data</text>
+<circle cx="105" cy="58" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="67" x2="105" y2="97" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="80" x2="123" y2="80" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="97" x2="89" y2="120" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="97" x2="121" y2="120" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="138" text-anchor="middle" font-size="11" font-weight="700">Admin</text><line x1="128" y1="85" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="85" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="85" x2="464" y2="224" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="85" x2="464" y2="288" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="85" x2="464" y2="352" stroke="#6b7280" stroke-width="0.8"/><circle cx="105" cy="146" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="155" x2="105" y2="185" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="168" x2="123" y2="168" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="185" x2="89" y2="208" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="185" x2="121" y2="208" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="226" text-anchor="middle" font-size="11" font-weight="700">LGU</text><line x1="128" y1="173" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="173" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="173" x2="464" y2="224" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="173" x2="464" y2="288" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="173" x2="464" y2="352" stroke="#6b7280" stroke-width="0.8"/></svg><p class="figure-caption">Analytics Module Use Case Diagram</p></div><table><tbody>
+<tr><th>Use Case</th><th>Description</th><th>User/Actor Roles</th></tr>
+<tr><td>View Crime Trends</td><td>Allows users to view crime trend statistics by month.</td><td>Admin, LGU</td></tr>
+<tr><td>View Crime by Type</td><td>Allows users to view the number of crimes grouped by crime type.</td><td>Admin, LGU</td></tr>
+<tr><td>View Crime by Barangay</td><td>Allows users to view crime statistics per barangay.</td><td>Admin, LGU</td></tr>
+<tr><td>View Status Breakdown</td><td>Allows users to view the number of crimes by status.</td><td>Admin, LGU</td></tr>
+<tr><td>View Monthly Report Data</td><td>Allows users to view monthly crime statistics for a selected year.</td><td>Admin, LGU</td></tr>
+</tbody></table>
+<p>Activity Diagram Workflow:</p>
+<ol>
+<li>The user opens the Analytics module.</li>
+<li>The system checks if the user is Admin or LGU.</li>
+<li>The user selects the type of analytics to view.</li>
+<li>The system retrieves the required crime data.</li>
+<li>The system generates charts and statistics.</li>
+<li>The user reviews the analytics results.</li>
+<li>The process ends.</li>
+</ol>
+<h2>Report Module</h2>
+<div class="diagram"><svg viewBox="0 0 920 284" role="img" aria-label="Report Module Use Case Diagram"><rect x="245" y="40" width="595" height="212" fill="none" stroke="#111827" stroke-width="1.4"/><text x="542.5" y="60" text-anchor="middle" font-size="13" font-weight="700">Crime Mapping System - Report Module</text><ellipse cx="555" cy="96" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="96" text-anchor="middle" font-size="10">Generate Report</text>
+<ellipse cx="555" cy="160" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="160" text-anchor="middle" font-size="10">Preview Report</text>
+<ellipse cx="555" cy="224" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="224" text-anchor="middle" font-size="10">Export or Print Report</text>
+<circle cx="105" cy="102" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="111" x2="105" y2="141" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="124" x2="123" y2="124" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="141" x2="89" y2="164" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="141" x2="121" y2="164" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="182" text-anchor="middle" font-size="11" font-weight="700">Admin</text><line x1="128" y1="129" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="129" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="129" x2="464" y2="224" stroke="#6b7280" stroke-width="0.8"/></svg><p class="figure-caption">Report Module Use Case Diagram</p></div><table><tbody>
+<tr><th>Use Case</th><th>Description</th><th>User/Actor Roles</th></tr>
+<tr><td>Generate Report</td><td>Allows the admin to generate crime reports using selected filters.</td><td>Admin</td></tr>
+<tr><td>Preview Report</td><td>Allows the admin to preview the generated report before printing or exporting.</td><td>Admin</td></tr>
+<tr><td>Export or Print Report</td><td>Allows the admin to export or print the report using the browser print or PDF function.</td><td>Admin</td></tr>
+</tbody></table>
+<p>Activity Diagram Workflow:</p>
+<ol>
+<li>The admin opens the Reports module.</li>
+<li>The system displays report filter options.</li>
+<li>The admin selects crime type, barangay, status, and date range.</li>
+<li>The system retrieves matching crime records.</li>
+<li>The system generates the report preview.</li>
+<li>The admin prints or exports the report.</li>
+<li>The process ends.</li>
+</ol>
+<h2>User Management Module</h2>
+<div class="diagram"><svg viewBox="0 0 920 348" role="img" aria-label="User Management Module Use Case Diagram"><rect x="245" y="40" width="595" height="276" fill="none" stroke="#111827" stroke-width="1.4"/><text x="542.5" y="60" text-anchor="middle" font-size="13" font-weight="700">Crime Mapping System - User Management Module</text><ellipse cx="555" cy="96" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="96" text-anchor="middle" font-size="10">View Users</text>
+<ellipse cx="555" cy="160" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="160" text-anchor="middle" font-size="10">Create User</text>
+<ellipse cx="555" cy="224" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="224" text-anchor="middle" font-size="10">Update User</text>
+<ellipse cx="555" cy="288" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="288" text-anchor="middle" font-size="10">Delete User</text>
+<circle cx="105" cy="134" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="143" x2="105" y2="173" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="156" x2="123" y2="156" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="173" x2="89" y2="196" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="173" x2="121" y2="196" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="214" text-anchor="middle" font-size="11" font-weight="700">Admin</text><line x1="128" y1="161" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="161" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="161" x2="464" y2="224" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="161" x2="464" y2="288" stroke="#6b7280" stroke-width="0.8"/></svg><p class="figure-caption">User Management Module Use Case Diagram</p></div><table><tbody>
+<tr><th>Use Case</th><th>Description</th><th>User/Actor Roles</th></tr>
+<tr><td>View Users</td><td>Allows the admin to view all system user accounts.</td><td>Admin</td></tr>
+<tr><td>Create User</td><td>Allows the admin to add a new user account and assign a role.</td><td>Admin</td></tr>
+<tr><td>Update User</td><td>Allows the admin to edit user account details, role, password, and account status.</td><td>Admin</td></tr>
+<tr><td>Delete User</td><td>Allows the admin to remove a user account, except their own account.</td><td>Admin</td></tr>
+</tbody></table>
+<p>Activity Diagram Workflow:</p>
+<ol>
+<li>The admin opens the User Management module.</li>
+<li>The system displays the list of users.</li>
+<li>The admin selects an action: create, update, or delete.</li>
+<li>The system validates the user information.</li>
+<li>If valid, the system saves the changes.</li>
+<li>The system displays a success message.</li>
+<li>If invalid, the system displays an error message.</li>
+<li>The process ends.</li>
+</ol>
+<h2>Crime Type Management Module</h2>
+<div class="diagram"><svg viewBox="0 0 920 348" role="img" aria-label="Crime Type Management Module Use Case Diagram"><rect x="245" y="40" width="595" height="276" fill="none" stroke="#111827" stroke-width="1.4"/><text x="542.5" y="60" text-anchor="middle" font-size="13" font-weight="700">Crime Mapping System - Crime Type Management Module</text><ellipse cx="555" cy="96" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="96" text-anchor="middle" font-size="10">View Crime Types</text>
+<ellipse cx="555" cy="160" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="160" text-anchor="middle" font-size="10">Create Crime Type</text>
+<ellipse cx="555" cy="224" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="224" text-anchor="middle" font-size="10">Update Crime Type</text>
+<ellipse cx="555" cy="288" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="288" text-anchor="middle" font-size="10">Delete Crime Type</text>
+<circle cx="105" cy="134" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="143" x2="105" y2="173" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="156" x2="123" y2="156" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="173" x2="89" y2="196" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="173" x2="121" y2="196" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="214" text-anchor="middle" font-size="11" font-weight="700">Admin</text><line x1="128" y1="161" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="161" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="161" x2="464" y2="224" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="161" x2="464" y2="288" stroke="#6b7280" stroke-width="0.8"/></svg><p class="figure-caption">Crime Type Management Module Use Case Diagram</p></div><table><tbody>
+<tr><th>Use Case</th><th>Description</th><th>User/Actor Roles</th></tr>
+<tr><td>View Crime Types</td><td>Allows the admin to view existing crime type records.</td><td>Admin</td></tr>
+<tr><td>Create Crime Type</td><td>Allows the admin to add a new crime type.</td><td>Admin</td></tr>
+<tr><td>Update Crime Type</td><td>Allows the admin to edit crime type details such as name, description, icon, color, and active status.</td><td>Admin</td></tr>
+<tr><td>Delete Crime Type</td><td>Allows the admin to delete a crime type if it is not used by existing crime incidents.</td><td>Admin</td></tr>
+</tbody></table>
+<p>Activity Diagram Workflow:</p>
+<ol>
+<li>The admin opens the Crime Type Management module.</li>
+<li>The system displays the list of crime types.</li>
+<li>The admin selects create, update, deactivate, or delete.</li>
+<li>The system validates the crime type information.</li>
+<li>The system saves the changes.</li>
+<li>The system displays a success message.</li>
+<li>The process ends.</li>
+</ol>
+<h2>Offense Type Management Module</h2>
+<div class="diagram"><svg viewBox="0 0 920 348" role="img" aria-label="Offense Type Management Module Use Case Diagram"><rect x="245" y="40" width="595" height="276" fill="none" stroke="#111827" stroke-width="1.4"/><text x="542.5" y="60" text-anchor="middle" font-size="13" font-weight="700">Crime Mapping System - Offense Type Management Module</text><ellipse cx="555" cy="96" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="96" text-anchor="middle" font-size="10">View Offense Types</text>
+<ellipse cx="555" cy="160" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="160" text-anchor="middle" font-size="10">Create Offense Type</text>
+<ellipse cx="555" cy="224" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="224" text-anchor="middle" font-size="10">Update Offense Type</text>
+<ellipse cx="555" cy="288" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="288" text-anchor="middle" font-size="10">Delete Offense Type</text>
+<circle cx="105" cy="134" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="143" x2="105" y2="173" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="156" x2="123" y2="156" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="173" x2="89" y2="196" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="173" x2="121" y2="196" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="214" text-anchor="middle" font-size="11" font-weight="700">Admin</text><line x1="128" y1="161" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="161" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="161" x2="464" y2="224" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="161" x2="464" y2="288" stroke="#6b7280" stroke-width="0.8"/></svg><p class="figure-caption">Offense Type Management Module Use Case Diagram</p></div><table><tbody>
+<tr><th>Use Case</th><th>Description</th><th>User/Actor Roles</th></tr>
+<tr><td>View Offense Types</td><td>Allows the admin to view existing offense type records.</td><td>Admin</td></tr>
+<tr><td>Create Offense Type</td><td>Allows the admin to add a new offense type and optionally connect it to a crime type.</td><td>Admin</td></tr>
+<tr><td>Update Offense Type</td><td>Allows the admin to edit offense type details.</td><td>Admin</td></tr>
+<tr><td>Delete Offense Type</td><td>Allows the admin to remove an offense type record.</td><td>Admin</td></tr>
+</tbody></table>
+<p>Activity Diagram Workflow:</p>
+<ol>
+<li>The admin opens the Offense Type Management module.</li>
+<li>The system displays the list of offense types.</li>
+<li>The admin selects create, update, deactivate, or delete.</li>
+<li>The system validates the offense type information.</li>
+<li>The system saves the changes.</li>
+<li>The system displays a success message.</li>
+<li>The process ends.</li>
+</ol>
+<h2>Account Profile Module</h2>
+<div class="diagram"><svg viewBox="0 0 920 284" role="img" aria-label="Account Profile Module Use Case Diagram"><rect x="245" y="40" width="595" height="212" fill="none" stroke="#111827" stroke-width="1.4"/><text x="542.5" y="60" text-anchor="middle" font-size="13" font-weight="700">Crime Mapping System - Account Profile Module</text><ellipse cx="555" cy="96" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="90" text-anchor="middle" font-size="10">Update Profile</text>
+<text x="555" y="103" text-anchor="middle" font-size="10">Information</text>
+<ellipse cx="555" cy="160" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="160" text-anchor="middle" font-size="10">Change Password</text>
+<ellipse cx="555" cy="224" rx="91" ry="28" fill="white" stroke="#111827" stroke-width="1.2"/>
+<text x="555" y="224" text-anchor="middle" font-size="10">Delete Account</text>
+<circle cx="105" cy="58" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="67" x2="105" y2="97" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="80" x2="123" y2="80" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="97" x2="89" y2="120" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="97" x2="121" y2="120" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="138" text-anchor="middle" font-size="11" font-weight="700">Admin</text><line x1="128" y1="85" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="85" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="85" x2="464" y2="224" stroke="#6b7280" stroke-width="0.8"/><circle cx="105" cy="122" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="131" x2="105" y2="161" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="144" x2="123" y2="144" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="161" x2="89" y2="184" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="161" x2="121" y2="184" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="202" text-anchor="middle" font-size="11" font-weight="700">LGU</text><line x1="128" y1="149" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="149" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="149" x2="464" y2="224" stroke="#6b7280" stroke-width="0.8"/><circle cx="105" cy="186" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="195" x2="105" y2="225" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="208" x2="123" y2="208" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="225" x2="89" y2="248" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="225" x2="121" y2="248" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="266" text-anchor="middle" font-size="11" font-weight="700">Police Officer</text><line x1="128" y1="213" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="213" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="213" x2="464" y2="224" stroke="#6b7280" stroke-width="0.8"/><circle cx="105" cy="250" r="9" fill="white" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="259" x2="105" y2="289" stroke="#111827" stroke-width="1.5"/>
+<line x1="87" y1="272" x2="123" y2="272" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="289" x2="89" y2="312" stroke="#111827" stroke-width="1.5"/>
+<line x1="105" y1="289" x2="121" y2="312" stroke="#111827" stroke-width="1.5"/>
+<text x="105" y="330" text-anchor="middle" font-size="11" font-weight="700">Investigator</text><line x1="128" y1="277" x2="464" y2="96" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="277" x2="464" y2="160" stroke="#6b7280" stroke-width="0.8"/><line x1="128" y1="277" x2="464" y2="224" stroke="#6b7280" stroke-width="0.8"/></svg><p class="figure-caption">Account Profile Module Use Case Diagram</p></div><table><tbody>
+<tr><th>Use Case</th><th>Description</th><th>User/Actor Roles</th></tr>
+<tr><td>Update Profile Information</td><td>Allows users to update their name and email address.</td><td>Admin, LGU, Police Officer, Investigator</td></tr>
+<tr><td>Change Password</td><td>Allows users to update their account password.</td><td>Admin, LGU, Police Officer, Investigator</td></tr>
+<tr><td>Delete Account</td><td>Allows users to delete their own account if permitted by the system.</td><td>Admin, LGU, Police Officer, Investigator</td></tr>
+</tbody></table>
+<p>Activity Diagram Workflow:</p>
+<ol>
+<li>The user opens Account Settings.</li>
+<li>The system displays the profile form.</li>
+<li>The user updates profile information or password.</li>
+<li>The system validates the submitted data.</li>
+<li>If valid, the system updates the account.</li>
+<li>The system displays a success message.</li>
+<li>If invalid, the system displays an error message.</li>
+<li>The process ends.</li>
+</ol>
+
+<div class="activity-slide">
+<h3>Chapter IV: Methodology, Results, and Discussion</h3>
+<h2>Activity Diagram</h2>
+<div class="activity-note">
+<div>The Activity Diagram shows the step-by-step workflow of a particular process. It explains what happens from the beginning to the end of a system activity.</div>
+<div>Unlike the Use Case Diagram, which shows what users can do, the Activity Diagram shows how a process is performed.</div>
+</div>
+</div>
+
+<div class="activity-slide">
+<h3>Chapter IV: Methodology, Results, and Discussion</h3>
+<svg class="activity-board" viewBox="0 0 760 500" role="img" aria-label="Login Activity Diagram">
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#6b7280"/></marker></defs>
+<rect class="lane" x="60" y="25" width="300" height="430"/><rect class="lane" x="360" y="25" width="340" height="430"/>
+<text class="lane-title" x="210" y="45" text-anchor="middle">Authorized User</text><text class="lane-title" x="530" y="45" text-anchor="middle">System</text>
+<circle cx="210" cy="76" r="10" fill="#000"/><path class="flow" d="M210 86 L210 112"/>
+<rect class="node" x="152" y="112" width="116" height="38" rx="4"/><text x="210" y="127" text-anchor="middle">Enter email</text><text x="210" y="140" text-anchor="middle">and password</text>
+<path class="flow" d="M268 131 L445 131"/><rect class="node" x="445" y="112" width="130" height="38" rx="4"/><text x="510" y="127" text-anchor="middle">Validate user</text><text x="510" y="140" text-anchor="middle">credentials</text>
+<path class="flow" d="M510 150 L510 180"/><polygon class="decision" points="510,180 555,215 510,250 465,215"/><text x="510" y="211" text-anchor="middle">Valid</text><text x="510" y="224" text-anchor="middle">account?</text>
+<path class="flow" d="M555 215 L630 215 L630 270"/><text x="592" y="207">Yes</text><rect class="node" x="575" y="270" width="110" height="38" rx="4"/><text x="630" y="286" text-anchor="middle">Display role</text><text x="630" y="299" text-anchor="middle">dashboard</text>
+<path class="flow" d="M465 215 L380 215 L380 270"/><text x="414" y="207">No</text><rect class="node" x="318" y="270" width="124" height="38" rx="4"/><text x="380" y="286" text-anchor="middle">Show invalid login</text><text x="380" y="299" text-anchor="middle">message</text>
+<path class="flow" d="M630 308 L630 344 L210 344 L210 370"/><path class="flow" d="M380 308 L380 344 L210 344 L210 370"/>
+<circle cx="210" cy="386" r="13" fill="#000"/><circle cx="210" cy="386" r="17" fill="none" stroke="#000" stroke-width="2"/>
+</svg>
+<p class="figure-caption">Figure 11. Login Activity Diagram</p>
+</div>
+
+<div class="activity-slide">
+<h3>Chapter IV: Methodology, Results, and Discussion</h3>
+<svg class="activity-board" viewBox="0 0 760 560" role="img" aria-label="Record Crime Incident Activity Diagram">
+<defs><marker id="arrow2" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#6b7280"/></marker></defs>
+<rect class="lane" x="45" y="25" width="250" height="490"/><rect class="lane" x="295" y="25" width="420" height="490"/>
+<text class="lane-title" x="170" y="45" text-anchor="middle">Admin / Police Officer</text><text class="lane-title" x="505" y="45" text-anchor="middle">System</text>
+<circle cx="170" cy="76" r="10" fill="#000"/><path class="flow" style="marker-end:url(#arrow2)" d="M170 86 L170 112"/>
+<rect class="node" x="105" y="112" width="130" height="38" rx="4"/><text x="170" y="127" text-anchor="middle">Open Crime</text><text x="170" y="140" text-anchor="middle">Records module</text>
+<path class="flow" style="marker-end:url(#arrow2)" d="M235 131 L420 131"/><rect class="node" x="420" y="112" width="150" height="38" rx="4"/><text x="495" y="127" text-anchor="middle">Check role access</text><text x="495" y="140" text-anchor="middle">for create action</text>
+<path class="flow" style="marker-end:url(#arrow2)" d="M495 150 L495 178"/><rect class="node" x="420" y="178" width="150" height="38" rx="4"/><text x="495" y="194" text-anchor="middle">Display add crime</text><text x="495" y="207" text-anchor="middle">form</text>
+<path class="flow" style="marker-end:url(#arrow2)" d="M420 197 L170 197 L170 245"/><rect class="node" x="105" y="245" width="130" height="50" rx="4"/><text x="170" y="262" text-anchor="middle">Enter incident,</text><text x="170" y="275" text-anchor="middle">barangay, location,</text><text x="170" y="288" text-anchor="middle">offense, and status</text>
+<path class="flow" style="marker-end:url(#arrow2)" d="M235 270 L420 270"/><rect class="node" x="420" y="245" width="150" height="50" rx="4"/><text x="495" y="262" text-anchor="middle">Validate required</text><text x="495" y="275" text-anchor="middle">fields and linked</text><text x="495" y="288" text-anchor="middle">reference data</text>
+<path class="flow" style="marker-end:url(#arrow2)" d="M495 295 L495 323"/><polygon class="decision" points="495,323 545,360 495,397 445,360"/><text x="495" y="356" text-anchor="middle">Valid</text><text x="495" y="369" text-anchor="middle">record?</text>
+<path class="flow" style="marker-end:url(#arrow2)" d="M545 360 L640 360 L640 420"/><text x="588" y="352">Yes</text><rect class="node" x="580" y="420" width="120" height="50" rx="4"/><text x="640" y="437" text-anchor="middle">Generate case no.,</text><text x="640" y="450" text-anchor="middle">save record, and</text><text x="640" y="463" text-anchor="middle">write audit log</text>
+<path class="flow" style="marker-end:url(#arrow2)" d="M445 360 L325 360 L325 420"/><text x="380" y="352">No</text><rect class="node" x="265" y="420" width="120" height="38" rx="4"/><text x="325" y="436" text-anchor="middle">Show validation</text><text x="325" y="449" text-anchor="middle">errors</text>
+<path class="flow" style="marker-end:url(#arrow2)" d="M640 470 L640 492 L170 492"/><path class="flow" style="marker-end:url(#arrow2)" d="M325 458 L325 492 L170 492"/>
+<circle cx="170" cy="492" r="13" fill="#000"/><circle cx="170" cy="492" r="17" fill="none" stroke="#000" stroke-width="2"/>
+</svg>
+<p class="figure-caption">Figure 12. Record Crime Incident Activity Diagram</p>
+</div>
+
+<div class="activity-slide">
+<h3>Chapter IV: Methodology, Results, and Discussion</h3>
+<svg class="activity-board" viewBox="0 0 760 560" role="img" aria-label="Investigation Status and Evidence Activity Diagram">
+<defs><marker id="arrow3" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#6b7280"/></marker></defs>
+<rect class="lane" x="45" y="25" width="250" height="490"/><rect class="lane" x="295" y="25" width="420" height="490"/>
+<text class="lane-title" x="170" y="45" text-anchor="middle">Investigator / Authorized User</text><text class="lane-title" x="505" y="45" text-anchor="middle">System</text>
+<circle cx="170" cy="76" r="10" fill="#000"/><path class="flow" style="marker-end:url(#arrow3)" d="M170 86 L170 112"/>
+<rect class="node" x="105" y="112" width="130" height="38" rx="4"/><text x="170" y="127" text-anchor="middle">Open crime</text><text x="170" y="140" text-anchor="middle">record details</text>
+<path class="flow" style="marker-end:url(#arrow3)" d="M235 131 L425 131"/><rect class="node" x="425" y="112" width="145" height="38" rx="4"/><text x="498" y="127" text-anchor="middle">Display case,</text><text x="498" y="140" text-anchor="middle">evidence, findings</text>
+<path class="flow" style="marker-end:url(#arrow3)" d="M425 131 L170 131 L170 190"/><rect class="node" x="105" y="190" width="130" height="50" rx="4"/><text x="170" y="207" text-anchor="middle">Upload/view evidence</text><text x="170" y="220" text-anchor="middle">or enter investigation</text><text x="170" y="233" text-anchor="middle">findings</text>
+<path class="flow" style="marker-end:url(#arrow3)" d="M235 215 L425 215"/><rect class="node" x="425" y="190" width="145" height="50" rx="4"/><text x="498" y="207" text-anchor="middle">Validate file,</text><text x="498" y="220" text-anchor="middle">permission, and</text><text x="498" y="233" text-anchor="middle">case access</text>
+<path class="flow" style="marker-end:url(#arrow3)" d="M498 240 L498 268"/><rect class="node" x="425" y="268" width="145" height="38" rx="4"/><text x="498" y="284" text-anchor="middle">Save evidence or</text><text x="498" y="297" text-anchor="middle">findings</text>
+<path class="flow" style="marker-end:url(#arrow3)" d="M425 287 L170 287 L170 340"/><rect class="node" x="105" y="340" width="130" height="38" rx="4"/><text x="170" y="356" text-anchor="middle">Select updated</text><text x="170" y="369" text-anchor="middle">case status</text>
+<path class="flow" style="marker-end:url(#arrow3)" d="M235 359 L425 359"/><polygon class="decision" points="498,325 548,360 498,395 448,360"/><text x="498" y="356" text-anchor="middle">Allowed</text><text x="498" y="369" text-anchor="middle">status?</text>
+<path class="flow" style="marker-end:url(#arrow3)" d="M548 360 L640 360 L640 425"/><text x="590" y="352">Yes</text><rect class="node" x="580" y="425" width="120" height="38" rx="4"/><text x="640" y="441" text-anchor="middle">Update status and</text><text x="640" y="454" text-anchor="middle">record audit trail</text>
+<path class="flow" style="marker-end:url(#arrow3)" d="M448 360 L325 360 L325 425"/><text x="380" y="352">No</text><rect class="node" x="265" y="425" width="120" height="38" rx="4"/><text x="325" y="441" text-anchor="middle">Show permission</text><text x="325" y="454" text-anchor="middle">or input error</text>
+<path class="flow" style="marker-end:url(#arrow3)" d="M640 463 L640 492 L170 492"/><path class="flow" style="marker-end:url(#arrow3)" d="M325 463 L325 492 L170 492"/>
+<circle cx="170" cy="492" r="13" fill="#000"/><circle cx="170" cy="492" r="17" fill="none" stroke="#000" stroke-width="2"/>
+</svg>
+<p class="figure-caption">Figure 13. Evidence and Case Status Activity Diagram</p>
+</div>
+
+<div class="activity-slide">
+<h3>Chapter IV: Methodology, Results, and Discussion</h3>
+<svg class="activity-board" viewBox="0 0 760 520" role="img" aria-label="Map Hotspot Analytics Reports Activity Diagram">
+<defs><marker id="arrow4" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#6b7280"/></marker></defs>
+<rect class="lane" x="45" y="25" width="250" height="455"/><rect class="lane" x="295" y="25" width="420" height="455"/>
+<text class="lane-title" x="170" y="45" text-anchor="middle">Admin / LGU / Authorized User</text><text class="lane-title" x="505" y="45" text-anchor="middle">System</text>
+<circle cx="170" cy="76" r="10" fill="#000"/><path class="flow" style="marker-end:url(#arrow4)" d="M170 86 L170 112"/>
+<rect class="node" x="105" y="112" width="130" height="50" rx="4"/><text x="170" y="129" text-anchor="middle">Open Map,</text><text x="170" y="142" text-anchor="middle">Hotspots, Analytics,</text><text x="170" y="155" text-anchor="middle">or Reports</text>
+<path class="flow" style="marker-end:url(#arrow4)" d="M235 137 L425 137"/><rect class="node" x="425" y="112" width="145" height="50" rx="4"/><text x="498" y="129" text-anchor="middle">Check role</text><text x="498" y="142" text-anchor="middle">and selected</text><text x="498" y="155" text-anchor="middle">module access</text>
+<path class="flow" style="marker-end:url(#arrow4)" d="M498 162 L498 192"/><rect class="node" x="425" y="192" width="145" height="50" rx="4"/><text x="498" y="209" text-anchor="middle">Load incidents,</text><text x="498" y="222" text-anchor="middle">barangays, filters,</text><text x="498" y="235" text-anchor="middle">and statistics</text>
+<path class="flow" style="marker-end:url(#arrow4)" d="M425 217 L170 217 L170 285"/><rect class="node" x="105" y="285" width="130" height="38" rx="4"/><text x="170" y="301" text-anchor="middle">Select filters or</text><text x="170" y="314" text-anchor="middle">report options</text>
+<path class="flow" style="marker-end:url(#arrow4)" d="M235 304 L425 304"/><rect class="node" x="425" y="285" width="145" height="38" rx="4"/><text x="498" y="301" text-anchor="middle">Generate map,</text><text x="498" y="314" text-anchor="middle">charts, or preview</text>
+<path class="flow" style="marker-end:url(#arrow4)" d="M498 323 L498 355"/><rect class="node" x="425" y="355" width="145" height="38" rx="4"/><text x="498" y="371" text-anchor="middle">Display output</text><text x="498" y="384" text-anchor="middle">or printable report</text>
+<path class="flow" style="marker-end:url(#arrow4)" d="M425 374 L170 374 L170 425"/>
+<circle cx="170" cy="425" r="13" fill="#000"/><circle cx="170" cy="425" r="17" fill="none" stroke="#000" stroke-width="2"/>
+</svg>
+<p class="figure-caption">Figure 14. Map, Analytics, Hotspot, and Report Activity Diagram</p>
+</div>
+
+<div class="activity-slide">
+<h3>Chapter IV: Methodology, Results, and Discussion</h3>
+<svg class="activity-board" viewBox="0 0 760 520" role="img" aria-label="Admin Maintenance Activity Diagram">
+<defs><marker id="arrow5" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#6b7280"/></marker></defs>
+<rect class="lane" x="45" y="25" width="250" height="455"/><rect class="lane" x="295" y="25" width="420" height="455"/>
+<text class="lane-title" x="170" y="45" text-anchor="middle">Administrator</text><text class="lane-title" x="505" y="45" text-anchor="middle">System</text>
+<circle cx="170" cy="76" r="10" fill="#000"/><path class="flow" style="marker-end:url(#arrow5)" d="M170 86 L170 112"/>
+<rect class="node" x="105" y="112" width="130" height="50" rx="4"/><text x="170" y="129" text-anchor="middle">Open Users,</text><text x="170" y="142" text-anchor="middle">Crime Types, or</text><text x="170" y="155" text-anchor="middle">Offense Types</text>
+<path class="flow" style="marker-end:url(#arrow5)" d="M235 137 L425 137"/><rect class="node" x="425" y="112" width="145" height="50" rx="4"/><text x="498" y="129" text-anchor="middle">Confirm admin</text><text x="498" y="142" text-anchor="middle">role and load</text><text x="498" y="155" text-anchor="middle">records</text>
+<path class="flow" style="marker-end:url(#arrow5)" d="M425 137 L170 137 L170 220"/><rect class="node" x="105" y="220" width="130" height="38" rx="4"/><text x="170" y="236" text-anchor="middle">Create, edit,</text><text x="170" y="249" text-anchor="middle">deactivate, delete</text>
+<path class="flow" style="marker-end:url(#arrow5)" d="M235 239 L425 239"/><rect class="node" x="425" y="220" width="145" height="38" rx="4"/><text x="498" y="236" text-anchor="middle">Validate data and</text><text x="498" y="249" text-anchor="middle">relationships</text>
+<path class="flow" style="marker-end:url(#arrow5)" d="M498 258 L498 288"/><polygon class="decision" points="498,288 548,323 498,358 448,323"/><text x="498" y="319" text-anchor="middle">Allowed</text><text x="498" y="332" text-anchor="middle">change?</text>
+<path class="flow" style="marker-end:url(#arrow5)" d="M548 323 L640 323 L640 385"/><text x="590" y="315">Yes</text><rect class="node" x="580" y="385" width="120" height="38" rx="4"/><text x="640" y="401" text-anchor="middle">Save changes and</text><text x="640" y="414" text-anchor="middle">write audit log</text>
+<path class="flow" style="marker-end:url(#arrow5)" d="M448 323 L325 323 L325 385"/><text x="380" y="315">No</text><rect class="node" x="265" y="385" width="120" height="38" rx="4"/><text x="325" y="401" text-anchor="middle">Show validation</text><text x="325" y="414" text-anchor="middle">or delete warning</text>
+<path class="flow" style="marker-end:url(#arrow5)" d="M640 423 L640 450 L170 450"/><path class="flow" style="marker-end:url(#arrow5)" d="M325 423 L325 450 L170 450"/>
+<circle cx="170" cy="450" r="13" fill="#000"/><circle cx="170" cy="450" r="17" fill="none" stroke="#000" stroke-width="2"/>
+</svg>
+<p class="figure-caption">Figure 15. Admin Maintenance Activity Diagram</p>
+</div>
+
+</body>
+</html>

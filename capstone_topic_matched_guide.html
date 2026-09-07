@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Topic-Matched Guide - Crime Mapping and Management System</title>
+<style>
+@page { size: A4; margin: 1in; }
+body { font-family: Arial, Helvetica, sans-serif; color: #111827; font-size: 12pt; line-height: 1.45; }
+h1 { text-align: center; font-size: 18pt; margin: 0 0 18pt; text-transform: uppercase; }
+h2 { font-size: 15pt; margin: 18pt 0 8pt; }
+h3 { font-size: 13pt; margin: 12pt 0 6pt; }
+p { margin: 0 0 8pt; text-align: justify; }
+ul, ol { margin-top: 0; }
+table { border-collapse: collapse; width: 100%; margin: 8pt 0 14pt; }
+th, td { border: 1px solid #374151; padding: 6pt; vertical-align: top; }
+th { background: #e5e7eb; text-align: center; }
+.note { background: #fef3c7; border: 1px solid #f59e0b; padding: 8pt; }
+.ok { background: #dcfce7; border: 1px solid #22c55e; padding: 8pt; }
+.pagebreak { page-break-before: always; }
+</style>
+</head>
+<body>
+<h1>Topic-Matched Guide<br>Crime Mapping and Management System</h1>
+
+<div class="note">
+<p><strong>Purpose of this guide:</strong> This is not a final manuscript. It is a preparation guide matched to the Capstone 2 lesson topics so the documentation will not mismatch your system or your teacher's required format.</p>
+</div>
+
+<h2>Quick Check: Was the Previous Document Correct?</h2>
+<table>
+<tr><th>Section</th><th>Status</th><th>What to Adjust</th></tr>
+<tr><td>Requirements Analysis</td><td>Partly correct</td><td>The content matches the system, but the lesson says to provide one paragraph about the current technical situation and include properly labeled business-process diagrams with one paragraph discussion each.</td></tr>
+<tr><td>Requirements Documentation</td><td>Needs format adjustment</td><td>The functional and non-functional requirements are useful, but the lesson also expects low-fidelity wireframes/mockups for major screens.</td></tr>
+<tr><td>Design of Software/System/Product/Process</td><td>Mostly correct</td><td>Conceptual framework, system architecture, use case diagram, and activity diagram are the right items. Architecture should be shown as three-tier architecture and discussed in one paragraph.</td></tr>
+<tr><td>Normalization</td><td>Correct direction</td><td>UNF, 1NF, 2NF, and 3NF should be shown using your actual database tables and sample crime-management fields.</td></tr>
+</table>
+
+<h2>1. Requirements Analysis: Current Technical Situation</h2>
+<h3>Required by Lesson</h3>
+<ul>
+<li>Provide one paragraph discussing the current technical situation.</li>
+<li>Provide a diagram for each business process of the client.</li>
+<li>Label each diagram properly.</li>
+<li>Discuss each diagram using only one paragraph.</li>
+</ul>
+
+<h3>Use This One-Paragraph Current Technical Situation</h3>
+<p>The current technical situation of crime monitoring and record management requires a centralized system because crime incidents, evidence, case status updates, and reports can become difficult to manage when handled through manual forms, separate files, or disconnected records. The Crime Mapping and Management System is developed to support administrators, police officers, investigators, and LGU users in recording crime incidents, assigning officers, uploading evidence, monitoring case status, plotting incidents on a map, identifying hotspots, generating analytics, and preparing reports. Through a Laravel-based web application with role-based access, normalized database tables, audit logs, notifications, and barangay-based mapping, the system improves accuracy, retrieval, accountability, and decision-making for crime management in Koronadal City.</p>
+
+<h3>Business Process Diagrams You Should Include</h3>
+<table>
+<tr><th>Figure Label</th><th>Diagram Title</th><th>What the Diagram Should Show</th><th>One-Paragraph Discussion Guide</th></tr>
+<tr><td>Figure 1</td><td>Current Crime Reporting Process</td><td>Incident report received, manual recording, officer review, evidence collection, status update, report filing.</td><td>This figure explains the existing process where crime reports are received and recorded before being reviewed by police personnel. Evidence and case updates are attached to the incident record, and the report is filed for future reference. The process shows the need for a centralized system because manual handling can delay searching, updating, and generating crime summaries.</td></tr>
+<tr><td>Figure 2</td><td>Proposed Crime Recording Process</td><td>Login, create crime record, enter location/barangay, upload evidence, assign officer, save record, notify users.</td><td>This figure presents the proposed process of encoding a crime incident in the system. Authorized users log in, input crime details, select crime and offense type, identify barangay and coordinates, upload evidence, and save the record. The system then stores the data in the database and supports notifications and tracking.</td></tr>
+<tr><td>Figure 3</td><td>Case Status Monitoring Process</td><td>Pending, CIRAS recording, review, correction, data stored, IRF printed, signature, blotter, UCPER, resolved/closed.</td><td>This figure shows how a case moves through the system workflow from report received to final status. Each status update is recorded so authorized users can monitor the progress of an incident. This process improves accountability because the system stores status history, notes, and responsible users.</td></tr>
+<tr><td>Figure 4</td><td>Crime Analytics and Report Process</td><td>Select filters, retrieve crime data, generate charts, display trends, preview report, export/print.</td><td>This figure explains how administrators and LGU users use stored crime data for decision-making. The user selects filters such as date range, barangay, crime type, or status, and the system generates analytics, summaries, and reports. This helps identify crime trends and hotspot areas.</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+<h2>2. Requirements Documentation</h2>
+<h3>Required by Lesson</h3>
+<ul>
+<li>Create low-fidelity wireframes/mockups.</li>
+<li>Do not use colors, gradients, icons, or decorative elements in wireframes.</li>
+<li>Use simple rectangles, lines, circles, and text placeholders only.</li>
+<li>Represent images with a rectangle and an X.</li>
+<li>Focus on layout, not appearance.</li>
+<li>Include all major screens: Login, Dashboard with navigation bar, Add/Edit/Delete Records, Reports, and Notifications in each action.</li>
+<li>Keep navigation menus and button placement consistent.</li>
+<li>Label every screen with its page name.</li>
+<li>Make sure the wireframe process flow matches the actual developed system.</li>
+</ul>
+
+<h3>Wireframes/Mockups to Prepare for Your System</h3>
+<table>
+<tr><th>No.</th><th>Screen/Page Name</th><th>Must Show in Low Fidelity</th><th>System Match</th></tr>
+<tr><td>1</td><td>Login Page</td><td>System title, email field, password field, login button, forgot password link.</td><td>Matches Laravel authentication.</td></tr>
+<tr><td>2</td><td>Dashboard with Navigation Bar</td><td>Sidebar/top navigation, summary cards, recent cases table, chart placeholders.</td><td>Matches DashboardController and dashboard API data.</td></tr>
+<tr><td>3</td><td>Crime Records List</td><td>Search/filter area, table of cases, view/edit/delete buttons, status labels.</td><td>Matches crimes index page.</td></tr>
+<tr><td>4</td><td>Add Crime Record</td><td>Case details form, crime type, offense type, barangay, date/time, address, map/location fields, save button.</td><td>Matches create/store crime routes for admin and police officer.</td></tr>
+<tr><td>5</td><td>Edit Crime Record</td><td>Same form layout as add record, update button, current status section.</td><td>Matches crime edit/update workflow.</td></tr>
+<tr><td>6</td><td>Crime Details</td><td>Case information, evidence list, status update panel, print button, approval area if admin.</td><td>Matches crime show, print, status update, and approval functions.</td></tr>
+<tr><td>7</td><td>Evidence Upload</td><td>File input, category dropdown, description field, upload button, evidence table.</td><td>Matches evidence management.</td></tr>
+<tr><td>8</td><td>Crime Map</td><td>Map placeholder with X, filters, incident markers as circles, barangay list/legend.</td><td>Matches map routes and barangay boundaries.</td></tr>
+<tr><td>9</td><td>Hotspots</td><td>Map/chart placeholder, barangay ranking table, filter controls.</td><td>Matches hotspot monitoring.</td></tr>
+<tr><td>10</td><td>Analytics</td><td>Filter controls, trend chart placeholder, crime by type, crime by barangay, status breakdown.</td><td>Matches admin and LGU analytics.</td></tr>
+<tr><td>11</td><td>Reports</td><td>Report filters, preview table, print/export PDF buttons.</td><td>Matches reports preview and export.</td></tr>
+<tr><td>12</td><td>Notifications</td><td>Notification list, read/unread labels, mark as read button.</td><td>Matches notifications module.</td></tr>
+<tr><td>13</td><td>User Management</td><td>User table, add/edit form, role dropdown, active status, delete/deactivate button.</td><td>Matches admin user management.</td></tr>
+<tr><td>14</td><td>Audit Logs and Backup</td><td>Audit table, action details, backup download button.</td><td>Matches admin audit logs and backups.</td></tr>
+</table>
+
+<h3>Functional Requirements Matched to the System</h3>
+<table>
+<tr><th>ID</th><th>Requirement</th><th>Actor</th></tr>
+<tr><td>FR-01</td><td>The system shall allow users to log in, log out, and reset passwords using OTP.</td><td>All users</td></tr>
+<tr><td>FR-02</td><td>The system shall restrict access based on Administrator, Police Officer, Investigator, and LGU roles.</td><td>System</td></tr>
+<tr><td>FR-03</td><td>The system shall allow authorized users to add, view, edit, print, and delete crime incident records.</td><td>Admin, Police Officer, Investigator</td></tr>
+<tr><td>FR-04</td><td>The system shall automatically generate unique case numbers for crime incidents.</td><td>System</td></tr>
+<tr><td>FR-05</td><td>The system shall allow evidence files to be uploaded, categorized, viewed, and deleted.</td><td>Admin, Police Officer, Investigator</td></tr>
+<tr><td>FR-06</td><td>The system shall track case status from report received to resolved or closed.</td><td>Admin, Police Officer, Investigator</td></tr>
+<tr><td>FR-07</td><td>The system shall support administrator approval for selected final case statuses.</td><td>Administrator</td></tr>
+<tr><td>FR-08</td><td>The system shall display crime incidents on a map with barangay and coordinate data.</td><td>Admin, Police Officer, Investigator</td></tr>
+<tr><td>FR-09</td><td>The system shall provide hotspot monitoring based on stored crime locations.</td><td>Admin, Police Officer, Investigator</td></tr>
+<tr><td>FR-10</td><td>The system shall provide analytics for trends, crime type, barangay, status, monthly, and summary reports.</td><td>Administrator, LGU</td></tr>
+<tr><td>FR-11</td><td>The system shall generate printable and exportable crime reports.</td><td>Administrator</td></tr>
+<tr><td>FR-12</td><td>The system shall allow administrators to manage users, crime types, and offense types.</td><td>Administrator</td></tr>
+<tr><td>FR-13</td><td>The system shall provide notifications and mark-read functions.</td><td>Admin, Police Officer, Investigator</td></tr>
+<tr><td>FR-14</td><td>The system shall record audit logs for accountability.</td><td>Administrator</td></tr>
+<tr><td>FR-15</td><td>The system shall allow administrators to download backups.</td><td>Administrator</td></tr>
+</table>
+
+<h3>Non-Functional Requirements from Lesson Topics</h3>
+<table>
+<tr><th>Category</th><th>System-Specific Requirement</th></tr>
+<tr><td>Performance</td><td>The system should retrieve dashboard summaries, filters, maps, and analytics within acceptable response time for normal office use.</td></tr>
+<tr><td>Reliability</td><td>The system should preserve crime records, evidence references, status history, assignment history, and audit logs accurately.</td></tr>
+<tr><td>Availability</td><td>The system should be accessible to authorized users during office or operational monitoring hours.</td></tr>
+<tr><td>Security</td><td>The system should use authentication, role-based access, password hashing, active account status, and protected routes.</td></tr>
+<tr><td>Usability</td><td>The system should provide clear navigation, consistent forms, readable tables, and understandable dashboards for each role.</td></tr>
+<tr><td>Maintainability</td><td>The system should be organized into Laravel routes, controllers, models, migrations, and Blade views for easier updates.</td></tr>
+<tr><td>Scalability</td><td>The system should allow additional crime records, users, barangays, crime types, offense types, and evidence files.</td></tr>
+<tr><td>Compatibility</td><td>The system should work in common web browsers and on a standard Laravel-supported server environment.</td></tr>
+<tr><td>Portability</td><td>The system should be transferable to another compatible server by migrating files, database, environment configuration, and storage.</td></tr>
+<tr><td>Data Integrity</td><td>The system should use validation, foreign keys, normalized tables, unique case numbers, and controlled status values.</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+<h2>3. Design of Software, System, Product, and Process</h2>
+<h3>3.1 Conceptual Framework</h3>
+<p><strong>Lesson format:</strong> Use Input, Process, and Output.</p>
+<table>
+<tr><th>Input</th><th>Process</th><th>Output</th></tr>
+<tr><td>Crime details, user information, barangay/location data, crime types, offense types, evidence files, status updates, report filters.</td><td>Authentication, validation, role checking, case number generation, crime record storage, evidence upload, mapping, hotspot analysis, analytics computation, report generation, audit logging, notification handling.</td><td>Stored crime records, mapped incidents, status histories, evidence lists, notifications, analytics charts, hotspot summaries, printable/exportable reports, audit logs.</td></tr>
+</table>
+
+<h3>3.2 System Architecture</h3>
+<p><strong>Lesson format:</strong> Provide a three-tier architecture figure and discuss it in one paragraph.</p>
+<table>
+<tr><th>Layer</th><th>For Your System</th></tr>
+<tr><td>Presentation Layer</td><td>Browser pages such as login, dashboard, crime records, map, analytics, reports, users, notifications, and audit logs.</td></tr>
+<tr><td>Application or Business Logic Layer</td><td>Laravel routes, middleware, controllers, models, validation, role checking, workflow rules, analytics logic, and report generation.</td></tr>
+<tr><td>Data Layer</td><td>Database tables, uploaded evidence storage, barangay GeoJSON data, sessions, cache, and backup files.</td></tr>
+</table>
+<p>The three-tier architecture of the Crime Mapping and Management System separates the user interface, system processing, and data storage. The presentation layer allows users to access pages through a browser. The application or business logic layer handles authentication, role restrictions, validation, crime workflow, mapping, analytics, reports, and notifications through Laravel. The data layer stores users, crime incidents, crime types, offense types, barangays, evidence, histories, audit logs, notifications, and system files.</p>
+
+<h3>3.3 Use Case Diagram</h3>
+<p><strong>Lesson format:</strong> Identify actors, list functions, draw system boundary, put use cases inside, actors outside, and connect actors to the functions they can access.</p>
+<table>
+<tr><th>Actor</th><th>Use Cases</th></tr>
+<tr><td>Administrator</td><td>Manage users, manage crime records, approve case status, manage crime types, manage offense types, generate reports, view analytics, view audit logs, download backup, manage notifications.</td></tr>
+<tr><td>Police Officer</td><td>Add crime record, plot incident, upload evidence, update case status, view map, view hotspots, view notifications, print crime record.</td></tr>
+<tr><td>Investigator</td><td>View assigned cases, update case status, record investigation findings, upload/view evidence, view map, view hotspots, view notifications.</td></tr>
+<tr><td>LGU User</td><td>View analytics, view summary reports, review barangay-level crime information.</td></tr>
+</table>
+
+<h3>3.4 Activity Diagram</h3>
+<p><strong>Recommended activity diagrams for your system:</strong></p>
+<ul>
+<li>Login Activity Diagram</li>
+<li>Add Crime Record Activity Diagram</li>
+<li>Update Case Status Activity Diagram</li>
+<li>Upload Evidence Activity Diagram</li>
+<li>Generate Report Activity Diagram</li>
+<li>View Analytics Activity Diagram</li>
+</ul>
+
+<div class="pagebreak"></div>
+<h2>4. Normalization</h2>
+<h3>Required Scope</h3>
+<p>Show the movement of your database design from unnormalized form to 1NF, 2NF, and 3NF. Use your actual system entities so the section matches the application.</p>
+
+<h3>UNF Example</h3>
+<table>
+<tr><th>Case Number</th><th>Crime Details</th><th>Location</th><th>People</th><th>Evidence Repeating Group</th><th>Status Repeating Group</th></tr>
+<tr><td>CRM-20260816-0001</td><td>Theft, offense name, dates, time, address</td><td>Barangay name, city, latitude, longitude</td><td>Reporter, assigned officer, investigator, approver</td><td>Evidence 1, Evidence 2, IRF, Blotter, UCPER</td><td>Pending, CIRAS, Review, Data Stored, Resolved</td></tr>
+</table>
+
+<h3>1NF</h3>
+<p>Apply 1NF by making each field atomic and removing repeating groups. Evidence records and status updates should not be stored as repeated columns in one crime record.</p>
+<table>
+<tr><th>Table</th><th>Fields</th></tr>
+<tr><td>crime_incidents</td><td>case_number, title, crime_type_id, offense_type_id, barangay_id, dates, times, address, coordinates, status, reporter, assigned_officer</td></tr>
+<tr><td>evidence</td><td>crime_id, file_path, file_type, file_name, category, description, uploaded_by</td></tr>
+<tr><td>crime_status_histories</td><td>crime_id, old_status, new_status, notes, changed_by</td></tr>
+</table>
+
+<h3>2NF</h3>
+<p>Apply 2NF by separating data that depends on separate entities. Crime type names, offense names, barangay information, and user information should be stored in their own tables and referenced using IDs.</p>
+<table>
+<tr><th>Separated Table</th><th>Reason</th></tr>
+<tr><td>users</td><td>Stores user details once and links them as reporter, assigned officer, uploader, approver, or notification recipient.</td></tr>
+<tr><td>crime_types</td><td>Stores crime classification data once.</td></tr>
+<tr><td>offense_types</td><td>Stores legal offense categories once and can link to crime types.</td></tr>
+<tr><td>barangays</td><td>Stores barangay name, city, and coordinates once.</td></tr>
+</table>
+
+<h3>3NF</h3>
+<p>Apply 3NF by removing transitive and event-based dependencies. Logs, notifications, assignment histories, status histories, and OTP recovery records should be placed in separate tables because they describe events or supporting records connected to users and crimes.</p>
+<table>
+<tr><th>Final Supporting Table</th><th>Purpose</th></tr>
+<tr><td>case_assignment_histories</td><td>Tracks changes in assigned officers or investigators.</td></tr>
+<tr><td>system_notifications</td><td>Stores user notifications and read status.</td></tr>
+<tr><td>audit_logs</td><td>Stores user actions, old values, new values, IP address, and user agent.</td></tr>
+<tr><td>password_reset_otps</td><td>Stores OTP-based password reset data.</td></tr>
+</table>
+
+<div class="ok">
+<p><strong>Final reminder:</strong> Your manuscript should not only list features. It should show that every requirement, wireframe, diagram, and database table is connected to the actual Crime Mapping and Management System you built.</p>
+</div>
+
+</body>
+</html>

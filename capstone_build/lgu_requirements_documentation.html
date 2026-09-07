@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Requirements Documentation</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 18mm 17mm;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            color: #111827;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 11.5pt;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 20pt;
+            margin: 0 0 18px;
+            text-align: center;
+        }
+
+        h2 {
+            border-bottom: 1px solid #d1d5db;
+            font-size: 15pt;
+            margin: 24px 0 12px;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            font-size: 12.5pt;
+            margin: 18px 0 8px;
+        }
+
+        p {
+            margin: 0 0 10px;
+            text-align: justify;
+        }
+
+        .requirement {
+            margin-left: 18px;
+            text-indent: -18px;
+        }
+
+        h2, h3 {
+            break-after: avoid;
+        }
+    </style>
+</head>
+<body>
+<h1>LGU Requirements Documentation</h1>
+<h2>Functional Requirements</h2>
+<h3>Login Module</h3>
+<p>This module allows the LGU user to securely access the system using valid credentials.</p>
+<p>REQ. LU.1.1 The LGU user shall be able to enter their email address.</p>
+<p>REQ. LU.1.2 The LGU user shall be able to enter their password.</p>
+<p>REQ. LU.1.3 The system shall validate the LGU user&#039;s email and password before granting access to the dashboard.</p>
+<p>REQ. LU.1.4 The LGU user shall be able to access the forgot password page when needed.</p>
+<h3>Dashboard Module</h3>
+<p>This module allows the LGU user to view role-based summary information.</p>
+<p>REQ. LU.2.1 The LGU user shall be able to access the dashboard after a successful login.</p>
+<p>REQ. LU.2.2 The LGU user shall be able to view role-based dashboard statistics.</p>
+<p>REQ. LU.2.3 The LGU user shall be able to view crime summary information available to their role.</p>
+<p>REQ. LU.2.4 The system shall prevent the LGU user from accessing crime incident management, crime map, hotspot, report management, user management, audit log, crime type management, and offense type management modules.</p>
+<h3>Analytics Module</h3>
+<p>This module allows the LGU user to view crime analytics for planning, monitoring, and decision-making.</p>
+<p>REQ. LU.3.1 The LGU user shall be able to access the analytics module.</p>
+<p>REQ. LU.3.2 The LGU user shall be able to view crime trend data.</p>
+<p>REQ. LU.3.3 The LGU user shall be able to view crime distribution by crime type.</p>
+<p>REQ. LU.3.4 The LGU user shall be able to view crime distribution by barangay.</p>
+<p>REQ. LU.3.5 The LGU user shall be able to view crime status breakdown information.</p>
+<p>REQ. LU.3.6 The LGU user shall be able to view monthly crime report data for a selected year.</p>
+<p>REQ. LU.3.7 The system shall restrict LGU access to viewing analytics only and shall not allow LGU users to modify crime records.</p>
+<h3>Notifications Module</h3>
+<p>This module allows the LGU user to receive system messages and feedback related to their allowed actions.</p>
+<p>REQ. LU.4.1 The LGU user shall be able to view system notifications intended for their role.</p>
+<p>REQ. LU.4.2 The system shall display success messages after completed LGU user actions.</p>
+<p>REQ. LU.4.3 The system shall display warning or error messages when the LGU user submits invalid information or attempts an unauthorized action.</p>
+<p>REQ. LU.4.4 The system shall provide clear notification messages for profile updates, password changes, login errors, logout confirmation, and restricted access attempts.</p>
+<h3>Profile Module</h3>
+<p>This module allows the LGU user to manage their account profile and password.</p>
+<p>REQ. LU.5.1 The LGU user shall be able to update their profile information.</p>
+<p>REQ. LU.5.2 The LGU user shall be able to update their password.</p>
+<p>REQ. LU.5.3 The system shall validate profile and password changes before saving.</p>
+<h3>Logout Module</h3>
+<p>This module allows the LGU user to securely end their active session.</p>
+<p>REQ. LU.6.1 The LGU user shall be able to log out from the system.</p>
+<p>REQ. LU.6.2 The system shall invalidate the LGU user&#039;s active session after logout.</p>
+<p>REQ. LU.6.3 The system shall prevent the logged-out LGU user from accessing authenticated pages without logging in again.</p>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Chapter IV - 13 Modules and Database Normalization</title>
+<style>
+@page { size: A4; margin: 18mm 16mm; }
+body { color:#111827; font-family:Arial, Helvetica, sans-serif; font-size:11px; line-height:1.45; }
+h1 { border-bottom:1px solid #9ca3af; color:#374151; font-size:26px; margin:0 0 18px; padding-bottom:8px; text-align:center; }
+h2 { color:#111827; font-size:15px; margin:22px 0 8px; page-break-after:avoid; }
+h3 { color:#1f2937; font-size:13px; margin:14px 0 6px; page-break-after:avoid; }
+p { margin:6px 0; }
+table { border-collapse:collapse; margin:8px 0 12px; page-break-inside:avoid; width:100%; }
+th,td { border:1px solid #4b5563; padding:6px; text-align:left; vertical-align:top; }
+th { background:#f3f4f6; font-weight:700; text-align:center; }
+ol { margin:6px 0 12px 20px; padding:0; }
+li { margin:2px 0; }
+.module { page-break-inside:avoid; }
+.caption { font-size:10px; font-weight:700; margin-top:2px; text-align:center; }
+.diagram { margin:8px auto 10px; max-width:760px; text-align:center; }
+.diagram svg { max-width:100%; width:100%; }
+.node { fill:#fff; stroke:#4b5563; stroke-width:1.2; }
+.lane { fill:none; stroke:#9ca3af; stroke-width:1; }
+.flow { fill:none; marker-end:url(#arrow); stroke:#6b7280; stroke-width:1.1; }
+.small { font-size:10px; }
+.pagebreak { page-break-before:always; }
+</style>
+</head>
+<body>
+<h1>Chapter IV: Methodology, Results, and Discussion</h1>
+<h2>Activity Diagram and Module Separation</h2>
+<p>The Crime Mapping and Management System is separated into thirteen modules based on the actual routes, controllers, models, and workflows found in the Laravel system. Each module below identifies its actors, major functions, and activity flow. The system actors are Administrator, Police Officer, Investigator, and LGU user.</p>
+
+<div class="module">
+<h2>1. Login and Authentication Module</h2>
+<table><tr><th>Actors</th><th>Functions</th><th>System Basis</th></tr><tr><td>Administrator, Police Officer, Investigator, LGU</td><td>Login, logout, password reset through OTP, session authentication.</td><td>Laravel Breeze authentication routes, password reset OTP mail, users table, sessions table.</td></tr></table>
+<ol><li>The user opens the login page.</li><li>The user enters email and password.</li><li>The system validates the credentials and active account status.</li><li>If valid, the system opens the role-based dashboard.</li><li>If invalid, the system displays an error message.</li></ol>
+</div>
+
+<div class="module">
+<h2>2. Dashboard Module</h2>
+<table><tr><th>Actors</th><th>Functions</th><th>System Basis</th></tr><tr><td>Administrator, Police Officer, Investigator, LGU</td><td>View summary counts, recent cases, dashboard API data, and role-based overview.</td><td>DashboardController, /dashboard, /dashboard/api-data.</td></tr></table>
+<ol><li>The authenticated user opens the dashboard.</li><li>The system checks the user's role.</li><li>The system retrieves counts and records appropriate to that role.</li><li>The dashboard displays the current summary information.</li></ol>
+</div>
+
+<div class="module">
+<h2>3. Crime Incident Management Module</h2>
+<table><tr><th>Actors</th><th>Functions</th><th>System Basis</th></tr><tr><td>Administrator, Police Officer, Investigator</td><td>View, create, update, soft-delete, filter, and manage crime records.</td><td>CrimeController, crimes resource routes, crimes table.</td></tr></table>
+<ol><li>The authorized user opens Crime Records.</li><li>The system checks role permission.</li><li>The user adds, views, edits, or deletes a crime incident.</li><li>The system validates title, type, offense type, barangay, date, location, status, reporter, and assigned officer data.</li><li>The system saves the record, assigns or preserves the case number, and writes timestamps/audit details.</li></ol>
+</div>
+
+<div class="module">
+<h2>4. Crime Status Workflow Management Module</h2>
+<table><tr><th>Actors</th><th>Functions</th><th>System Basis</th></tr><tr><td>Administrator, Police Officer, Investigator</td><td>Update case status from pending through the detailed investigative workflow up to resolved or closed.</td><td>CrimeController updateStatus, expanded crime status migration.</td></tr></table>
+<ol><li>The user opens a crime record.</li><li>The user selects a new status.</li><li>The system checks whether the transition and role are allowed.</li><li>The system stores status notes, investigation findings when applicable, findings recorded date, and resolved date when needed.</li><li>The system shows a success or validation message.</li></ol>
+<p>The final status values are pending, ciras_recording, for_review, for_correction, data_stored, irf_printed, for_signature, blotter_entered, ucper_compiled, resolved, and closed.</p>
+</div>
+
+<div class="module">
+<h2>5. Evidence Management Module</h2>
+<table><tr><th>Actors</th><th>Functions</th><th>System Basis</th></tr><tr><td>Administrator, Police Officer, Investigator</td><td>Upload, view, and delete evidence files connected to a crime record.</td><td>EvidenceController, evidence table, storage disk migration.</td></tr></table>
+<ol><li>The authorized user opens a crime record.</li><li>The user uploads or views evidence.</li><li>The system validates the file and linked crime record.</li><li>The system stores file path, file name, file type, description, uploader, and storage disk.</li><li>The system allows deletion only to authorized users and keeps the record soft-delete capable.</li></ol>
+</div>
+
+<div class="module">
+<h2>6. Crime Map Module</h2>
+<table><tr><th>Actors</th><th>Functions</th><th>System Basis</th></tr><tr><td>Administrator, Police Officer, Investigator</td><td>View mapped incidents, retrieve map data, detect barangay, and plot an incident from the map interface.</td><td>CrimeMapController, /map routes, barangay boundaries GeoJSON.</td></tr></table>
+<ol><li>The user opens the map page.</li><li>The system loads crime locations and barangay boundaries.</li><li>The user filters or selects a location.</li><li>The system displays markers, coordinates, and barangay information.</li><li>For authorized police/admin users, the selected map location can be used for plotting an incident.</li></ol>
+</div>
+
+<div class="module">
+<h2>7. Hotspot Module</h2>
+<table><tr><th>Actors</th><th>Functions</th><th>System Basis</th></tr><tr><td>Administrator, Police Officer, Investigator</td><td>View high-incident areas and hotspot summaries.</td><td>HotspotController, crimes and barangays data.</td></tr></table>
+<ol><li>The user opens the Hotspots module.</li><li>The system retrieves crime records grouped by barangay/location.</li><li>The system identifies areas with higher incident concentration.</li><li>The user reviews hotspot results for monitoring and planning.</li></ol>
+</div>
+
+<div class="module">
+<h2>8. Analytics Module</h2>
+<table><tr><th>Actors</th><th>Functions</th><th>System Basis</th></tr><tr><td>Administrator, LGU</td><td>View trends, crime by type, crime by barangay, status breakdown, and monthly report data.</td><td>AnalyticsController, analytics route group restricted to admin and LGU.</td></tr></table>
+<ol><li>The user opens Analytics.</li><li>The system confirms Admin or LGU role.</li><li>The user selects an analytics view.</li><li>The system retrieves crime data and generates charts/statistics.</li><li>The user reviews the results.</li></ol>
+</div>
+
+<div class="module">
+<h2>9. Report Management Module</h2>
+<table><tr><th>Actors</th><th>Functions</th><th>System Basis</th></tr><tr><td>Administrator</td><td>Generate, preview, print, and export filtered crime reports.</td><td>ReportController, reports routes, export-pdf route.</td></tr></table>
+<ol><li>The administrator opens Reports.</li><li>The system displays filter options.</li><li>The administrator selects crime type, barangay, status, and date range.</li><li>The system retrieves matching crime records.</li><li>The system shows report preview and allows print/PDF export.</li></ol>
+</div>
+
+<div class="module">
+<h2>10. User Management Module</h2>
+<table><tr><th>Actors</th><th>Functions</th><th>System Basis</th></tr><tr><td>Administrator</td><td>Create, view, update, deactivate, and delete user accounts.</td><td>UserController, users resource routes, users table.</td></tr></table>
+<ol><li>The administrator opens User Management.</li><li>The system displays accounts.</li><li>The administrator creates or edits name, email, role, phone, badge number, avatar, and active status.</li><li>The system validates uniqueness and role values.</li><li>The system saves the account changes.</li></ol>
+</div>
+
+<div class="module">
+<h2>11. Crime Type Management Module</h2>
+<table><tr><th>Actors</th><th>Functions</th><th>System Basis</th></tr><tr><td>Administrator</td><td>Create, update, deactivate, or delete crime classifications.</td><td>CrimeTypeController, crime_types table.</td></tr></table>
+<ol><li>The administrator opens Crime Types.</li><li>The system displays existing crime types.</li><li>The administrator enters name, description, icon, color, and active status.</li><li>The system validates and saves the crime type.</li><li>The system prevents unsafe deletion when referenced by records.</li></ol>
+</div>
+
+<div class="module">
+<h2>12. Offense Type Management Module</h2>
+<table><tr><th>Actors</th><th>Functions</th><th>System Basis</th></tr><tr><td>Administrator</td><td>Create, update, deactivate, or delete offense types linked optionally to crime types.</td><td>OffenseTypeController, offense_types table, normalized offense migration.</td></tr></table>
+<ol><li>The administrator opens Offense Types.</li><li>The system displays offense type records.</li><li>The administrator enters the offense name, optional linked crime type, description, and active status.</li><li>The system validates unique offense names.</li><li>The system saves the offense type and makes it available to crime records.</li></ol>
+</div>
+
+<div class="module">
+<h2>13. Audit Log and Account Profile Module</h2>
+<table><tr><th>Actors</th><th>Functions</th><th>System Basis</th></tr><tr><td>Administrator for audit logs; all users for profile</td><td>Review audit logs, update profile information, change password, and manage own account settings.</td><td>AuditLogController, ProfileController, audit_logs table, profile routes.</td></tr></table>
+<ol><li>The administrator opens Audit Logs to review user actions, affected records, old values, new values, IP address, and user agent.</li><li>Any authenticated user can open Profile Settings.</li><li>The user updates profile information or password.</li><li>The system validates the submitted data and saves changes.</li></ol>
+</div>
+
+<div class="pagebreak"></div>
+<h2>Database Normalization</h2>
+<p>The normalization below is based on the actual system entities: users, crimes, crime types, offense types, barangays, evidence, audit logs, sessions, password reset tokens, and password reset OTPs. The purpose is to show how a single unorganized crime-report record becomes the current relational database design.</p>
+
+<h2>Unnormalized Form (UNF)</h2>
+<p>In UNF, one crime report stores all information in one wide record. Repeating evidence files, repeated officer/investigator details, repeated type names, and repeated barangay data are mixed with the crime incident details.</p>
+<table>
+<tr><th>Case No.</th><th>Incident Details</th><th>Crime/Offense</th><th>Barangay/Location</th><th>People</th><th>Evidence Group</th><th>Status/Audit</th></tr>
+<tr><td>CRM-20260806-0001</td><td>Title, date reported, time reported, date occurred, time occurred, stage of felony, status notes, investigation findings</td><td>Crime type name, description, icon, color; offense name and description</td><td>Barangay name, city, latitude, longitude, address, street/highway</td><td>Reporter name/email/role/badge; assigned officer name/email/role/badge; uploader name/email</td><td>Evidence 1 file name/path/type/description; Evidence 2 file name/path/type/description; more evidence columns if needed</td><td>Status, resolved date, action, old values, new values, IP address, user agent</td></tr>
+</table>
+<p>Problem: one case may have many evidence files and many audit actions. Storing them in the same row creates repeating groups, duplicated names, update anomalies, and difficulty filtering reports.</p>
+
+<h2>First Normal Form (1NF)</h2>
+<p>In 1NF, repeating groups are removed. Each evidence item and each audit action is placed in its own row. However, descriptive data such as user names, crime type names, offense names, and barangay names can still repeat in many rows.</p>
+<table>
+<tr><th>1NF Table</th><th>Atomic Fields</th><th>Remaining Issue</th></tr>
+<tr><td>crime_report_rows</td><td>case_number, title, dates/times, stage_of_felony, status, status_notes, investigation_findings, barangay_name, crime_type_name, offense_name, reporter_email, assigned_officer_email</td><td>Crime type, offense, barangay, and user details repeat for every crime row.</td></tr>
+<tr><td>crime_evidence_rows</td><td>case_number, file_path, file_type, file_name, description, uploaded_by_email</td><td>Uploader and case details can repeat for each evidence item.</td></tr>
+<tr><td>crime_audit_rows</td><td>case_number, user_email, action, old_values, new_values, ip_address, user_agent, created_at</td><td>User and auditable record details can repeat for each audit entry.</td></tr>
+</table>
+
+<h2>Second Normal Form (2NF)</h2>
+<p>In 2NF, data that depends only on one subject is separated into its own table. Crime records keep foreign keys instead of repeating full names and descriptions. Evidence depends on a crime, audit logs depend on a user and an audited record, and reference data is separated.</p>
+<table>
+<tr><th>Table</th><th>Primary Key</th><th>Foreign Keys</th><th>Main Attributes</th></tr>
+<tr><td>users</td><td>id</td><td>None</td><td>name, email, role, password, phone, badge_number, avatar, is_active</td></tr>
+<tr><td>crime_types</td><td>id</td><td>None</td><td>name, description, icon, color, is_active</td></tr>
+<tr><td>offense_types</td><td>id</td><td>crime_type_id</td><td>name, description, is_active</td></tr>
+<tr><td>barangays</td><td>id</td><td>None</td><td>name, city, latitude, longitude, is_active</td></tr>
+<tr><td>crimes</td><td>id</td><td>crime_type_id, offense_type_id, barangay_id, reported_by, assigned_officer</td><td>case_number, title, dates/times, stage_of_felony, status, address, coordinates, status_notes, findings</td></tr>
+<tr><td>evidence</td><td>id</td><td>crime_id, uploaded_by</td><td>file_path, storage_disk, file_type, file_name, description, deleted_at</td></tr>
+<tr><td>audit_logs</td><td>id</td><td>user_id</td><td>action, auditable_type, auditable_id, old_values, new_values, ip_address, user_agent</td></tr>
+</table>
+
+<h2>Third Normal Form (3NF)</h2>
+<p>In 3NF, non-key attributes depend only on the key of their own table. The final design removes transitive dependencies: offense data depends on offense_types.id, barangay data depends on barangays.id, user profile data depends on users.id, and evidence metadata depends on evidence.id.</p>
+<table>
+<tr><th>Final 3NF Table</th><th>Key</th><th>Accurate Final Fields / Dependencies</th></tr>
+<tr><td>users</td><td>id</td><td>name, email unique, email_verified_at, role enum admin/police_officer/investigator/lgu, password, phone, badge_number, avatar, is_active, remember_token, timestamps.</td></tr>
+<tr><td>password_reset_tokens</td><td>email</td><td>token, created_at. Depends on reset email only.</td></tr>
+<tr><td>password_reset_otps</td><td>id</td><td>email, otp, expires_at, used_at, timestamps. Supports OTP password reset without mixing OTP data into users.</td></tr>
+<tr><td>sessions</td><td>id</td><td>user_id nullable, ip_address, user_agent, payload, last_activity. Session data is separated from user profile data.</td></tr>
+<tr><td>crime_types</td><td>id</td><td>name, description, icon, color, is_active, timestamps. Crime type descriptions do not repeat in crimes.</td></tr>
+<tr><td>offense_types</td><td>id</td><td>name unique, crime_type_id nullable, description, is_active, timestamps. Offense details do not repeat in crimes.</td></tr>
+<tr><td>barangays</td><td>id</td><td>name, city, latitude, longitude, is_active, timestamps. Barangay coordinates and city are stored once.</td></tr>
+<tr><td>crimes</td><td>id</td><td>case_number unique, title, crime_type_id, offense_type_id, barangay_id, date_reported, time_reported, date_occurred, time_occurred, stage_of_felony, status, status_notes, investigation_findings, findings_recorded_at, latitude, longitude, address, street_highway, reported_by, assigned_officer, resolved_at, timestamps, deleted_at.</td></tr>
+<tr><td>evidence</td><td>id</td><td>crime_id, file_path, storage_disk, file_type, file_name, description, uploaded_by, timestamps, deleted_at. Each evidence row belongs to one crime and one uploader.</td></tr>
+<tr><td>audit_logs</td><td>id</td><td>user_id nullable, action, auditable_type, auditable_id, old_values JSON, new_values JSON, ip_address, user_agent, timestamps. Audit entries are independent event records.</td></tr>
+</table>
+<p>The final 3NF structure supports the thirteen modules by keeping operational records, reference data, authentication data, evidence files, and audit history in separate but related tables. This reduces duplication, improves report accuracy, and protects data integrity through primary keys, unique fields, foreign keys, indexes, role-based access, and soft deletes where required.</p>
+
+</body>
+</html>

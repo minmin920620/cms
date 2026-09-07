@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Chapter IV - Activity Diagrams and Normalization Slides</title>
+<style>
+@page { size: landscape; margin: 0; }
+* { box-sizing: border-box; }
+body { background:#111; color:#333; font-family:Arial, Helvetica, sans-serif; margin:0; }
+.slide { background:#fff; border-bottom:10px solid #d97706; height:576px; margin:0 auto 18px; overflow:hidden; padding:34px 52px 46px; position:relative; width:1024px; }
+.slide:after { background:#b45309; bottom:0; content:""; height:28px; left:0; opacity:.9; position:absolute; width:100%; }
+h1 { border-bottom:1px solid #c8c8c8; color:#3f3f46; font-size:44px; line-height:1.02; margin:0 0 20px; padding-bottom:14px; }
+h2 { color:#3f3f46; font-size:25px; line-height:1.1; margin:0 0 12px; }
+h3 { color:#222; font-size:16px; margin:0 0 8px; text-align:center; }
+p { font-size:17px; margin:7px 0; }
+.grid2 { display:grid; gap:28px; grid-template-columns:1fr 1fr; }
+.grid3 { display:grid; gap:20px; grid-template-columns:1fr 1fr 1fr; }
+table { border-collapse:collapse; font-size:12px; width:100%; }
+th, td { border:1.5px solid #f59e0b; padding:6px; vertical-align:top; }
+th { background:#fff7ed; font-weight:700; text-align:left; }
+td { background:#ffedd5; }
+.small td,.small th { font-size:10px; padding:5px; }
+.tiny td,.tiny th { font-size:9px; padding:4px; }
+.note { font-size:16px; font-weight:700; }
+.bullet { font-size:27px; font-weight:700; line-height:1.16; margin-left:18px; }
+.bullet div { margin:8px 0; }
+.bullet div:before { border:2px solid #f59e0b; content:""; display:inline-block; height:12px; margin-right:6px; width:12px; }
+.problem { font-size:25px; font-weight:700; line-height:1.18; }
+.problem div:before { color:#f59e0b; content:"o "; font-weight:400; }
+.red { color:red; }
+.caption { font-size:12px; font-weight:700; margin-top:4px; text-align:center; }
+.activity svg,.usecase svg { width:100%; }
+.node { fill:#fff; stroke:#555; stroke-width:1.2; }
+.lane { fill:none; stroke:#999; stroke-width:1; }
+.flow { fill:none; marker-end:url(#arrow); stroke:#666; stroke-width:1.15; }
+.uml { fill:#fff; stroke:#555; stroke-width:1.2; }
+.actor-line { stroke:#777; stroke-width:1.2; }
+svg text { fill:#111; font-family:Arial, Helvetica, sans-serif; font-size:10px; }
+.lane-title { font-size:11px; font-weight:700; }
+.module-table { margin-top:18px; }
+.tight h1 { font-size:40px; }
+.center { text-align:center; }
+</style>
+</head>
+<body>
+
+<section class="slide">
+<h1>Chapter IV: Methodology, Results,<br>and Discussion</h1>
+<h2>Activity Diagram</h2>
+<div class="bullet">
+<div>The Activity Diagram shows the step-by-step workflow of a particular process. It explains what happens from the beginning to the end of a system activity.</div>
+<div>Unlike the Use Case Diagram, which shows what users can do, the Activity Diagram shows how a process is performed.</div>
+</div>
+</section>
+
+<section class="slide tight">
+<h1>Chapter IV: Methodology, Results,<br>and Discussion</h1>
+<div class="grid2">
+<div>
+<h3>Login and Authentication Module</h3>
+<table><tr><th>Use Case</th><th>Description</th><th>User/Actor</th></tr>
+<tr><td>Login</td><td>Access the system using email and password.</td><td>All Users</td></tr>
+<tr><td>Reset Password</td><td>Request OTP, verify code, and set a new password.</td><td>All Users</td></tr>
+<tr><td>Logout</td><td>End the authenticated session.</td><td>All Users</td></tr></table>
+</div>
+<div class="usecase">
+<svg viewBox="0 0 430 250" aria-label="Login Use Case"><defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#666"/></marker></defs>
+<rect class="lane" x="122" y="30" width="285" height="185"/><text x="264" y="50" text-anchor="middle" font-weight="700">Login and Authentication Module</text>
+<circle cx="55" cy="105" r="8" fill="#fff" stroke="#555"/><line class="actor-line" x1="55" y1="113" x2="55" y2="150"/><line class="actor-line" x1="35" y1="128" x2="75" y2="128"/><line class="actor-line" x1="55" y1="150" x2="38" y2="180"/><line class="actor-line" x1="55" y1="150" x2="72" y2="180"/><text x="55" y="205" text-anchor="middle">Authorized User</text>
+<ellipse class="uml" cx="260" cy="82" rx="58" ry="24"/><text x="260" y="86" text-anchor="middle">Login</text>
+<ellipse class="uml" cx="260" cy="132" rx="58" ry="24"/><text x="260" y="136" text-anchor="middle">Reset Password</text>
+<ellipse class="uml" cx="260" cy="182" rx="58" ry="24"/><text x="260" y="186" text-anchor="middle">Logout</text>
+<line class="actor-line" x1="78" y1="130" x2="202" y2="82"/><line class="actor-line" x1="78" y1="130" x2="202" y2="132"/><line class="actor-line" x1="78" y1="130" x2="202" y2="182"/></svg>
+<div class="caption">Figure 1. Login and Authentication Module Use Case</div>
+</div>
+</div>
+</section>
+
+<section class="slide">
+<h1>Chapter IV: Methodology, Results,<br>and Discussion</h1>
+<div class="grid2 activity">
+<svg viewBox="0 0 420 390"><defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#666"/></marker></defs>
+<rect class="lane" x="28" y="25" width="170" height="330"/><rect class="lane" x="198" y="25" width="190" height="330"/><text class="lane-title" x="113" y="42" text-anchor="middle">Authorized User</text><text class="lane-title" x="293" y="42" text-anchor="middle">System</text>
+<circle cx="113" cy="66" r="10" fill="#000"/><path class="flow" d="M113 76 L113 103"/><rect class="node" x="69" y="103" width="88" height="35" rx="4"/><text x="113" y="118" text-anchor="middle">Enter login</text><text x="113" y="131" text-anchor="middle">credentials</text>
+<path class="flow" d="M157 121 L247 121"/><rect class="node" x="247" y="103" width="90" height="35" rx="4"/><text x="292" y="118" text-anchor="middle">Validate</text><text x="292" y="131" text-anchor="middle">credentials</text>
+<path class="flow" d="M292 138 L292 165"/><polygon class="node" points="292,165 327,192 292,219 257,192"/><text x="292" y="195" text-anchor="middle">Valid?</text>
+<path class="flow" d="M257 192 L198 192 L198 250 L113 250"/><text x="214" y="184">No</text><rect class="node" x="70" y="232" width="86" height="36" rx="4"/><text x="113" y="247" text-anchor="middle">Display error</text><text x="113" y="260" text-anchor="middle">message</text>
+<path class="flow" d="M327 192 L350 192 L350 250 L292 250"/><text x="335" y="184">Yes</text><rect class="node" x="248" y="232" width="88" height="36" rx="4"/><text x="292" y="247" text-anchor="middle">Display role</text><text x="292" y="260" text-anchor="middle">dashboard</text>
+<path class="flow" d="M292 268 L292 310 L113 310"/><path class="flow" d="M113 268 L113 310"/><circle cx="113" cy="326" r="12" fill="#000"/><circle cx="113" cy="326" r="16" fill="none" stroke="#000" stroke-width="2"/></svg>
+<svg viewBox="0 0 420 390"><rect class="lane" x="28" y="25" width="170" height="330"/><rect class="lane" x="198" y="25" width="190" height="330"/><text class="lane-title" x="113" y="42" text-anchor="middle">Authorized User</text><text class="lane-title" x="293" y="42" text-anchor="middle">System</text>
+<circle cx="113" cy="66" r="10" fill="#000"/><path class="flow" d="M113 76 L113 105"/><rect class="node" x="67" y="105" width="92" height="35" rx="4"/><text x="113" y="120" text-anchor="middle">Enter email</text><text x="113" y="133" text-anchor="middle">for OTP</text>
+<path class="flow" d="M159 122 L246 122"/><rect class="node" x="246" y="105" width="94" height="35" rx="4"/><text x="293" y="120" text-anchor="middle">Send one-time</text><text x="293" y="133" text-anchor="middle">password code</text>
+<path class="flow" d="M246 122 L113 122 L113 178"/><rect class="node" x="67" y="178" width="92" height="35" rx="4"/><text x="113" y="193" text-anchor="middle">Enter OTP</text><text x="113" y="206" text-anchor="middle">code</text>
+<path class="flow" d="M159 195 L246 195"/><polygon class="node" points="293,168 333,195 293,222 253,195"/><text x="293" y="191" text-anchor="middle">Valid</text><text x="293" y="204" text-anchor="middle">code?</text>
+<path class="flow" d="M293 222 L293 252"/><rect class="node" x="248" y="252" width="90" height="35" rx="4"/><text x="293" y="267" text-anchor="middle">Display reset</text><text x="293" y="280" text-anchor="middle">password form</text>
+<path class="flow" d="M248 269 L113 269"/><rect class="node" x="67" y="252" width="92" height="35" rx="4"/><text x="113" y="267" text-anchor="middle">Enter new</text><text x="113" y="280" text-anchor="middle">password</text>
+<path class="flow" d="M159 269 L246 320"/><rect class="node" x="246" y="305" width="94" height="35" rx="4"/><text x="293" y="320" text-anchor="middle">Password</text><text x="293" y="333" text-anchor="middle">changed</text>
+<circle cx="113" cy="326" r="12" fill="#000"/><circle cx="113" cy="326" r="16" fill="none" stroke="#000" stroke-width="2"/></svg>
+</div>
+<div class="grid2"><div class="caption">Figure 2. Login Activity Diagram</div><div class="caption">Figure 3. Reset Password Activity Diagram</div></div>
+</section>
+
+<section class="slide tight">
+<h1>Chapter IV: Methodology, Results,<br>and Discussion</h1>
+<div class="grid2">
+<div><h3>Dashboard Module</h3><table><tr><th>Use Case</th><th>Description</th><th>Roles</th></tr><tr><td>View Dashboard</td><td>Shows counts, summaries, and recent crime records based on user role.</td><td>All Users</td></tr><tr><td>View Dashboard API Data</td><td>Retrieves current data for dashboard cards/charts.</td><td>All Users</td></tr></table></div>
+<div><h3>Dashboard Activity Diagram</h3><div class="activity"><svg viewBox="0 0 430 270"><rect class="lane" x="40" y="25" width="155" height="210"/><rect class="lane" x="195" y="25" width="195" height="210"/><text class="lane-title" x="118" y="42" text-anchor="middle">User</text><text class="lane-title" x="292" y="42" text-anchor="middle">System</text><circle cx="118" cy="65" r="10" fill="#000"/><path class="flow" d="M118 75 L118 100"/><rect class="node" x="72" y="100" width="92" height="35" rx="4"/><text x="118" y="115" text-anchor="middle">Open</text><text x="118" y="128" text-anchor="middle">Dashboard</text><path class="flow" d="M164 117 L247 117"/><rect class="node" x="247" y="100" width="92" height="35" rx="4"/><text x="293" y="115" text-anchor="middle">Check role</text><text x="293" y="128" text-anchor="middle">and records</text><path class="flow" d="M293 135 L293 164"/><rect class="node" x="247" y="164" width="92" height="35" rx="4"/><text x="293" y="179" text-anchor="middle">Display summary</text><text x="293" y="192" text-anchor="middle">information</text><path class="flow" d="M247 181 L118 181 L118 205"/><circle cx="118" cy="217" r="12" fill="#000"/><circle cx="118" cy="217" r="16" fill="none" stroke="#000" stroke-width="2"/></svg></div><div class="caption">Figure 4. Dashboard Activity Diagram</div></div>
+</div>
+</section>
+
+<section class="slide tight">
+<h1>Chapter IV: Methodology, Results,<br>and Discussion</h1>
+<div class="grid2">
+<div><h3>Crime Incident Management Module</h3><table><tr><th>Use Case</th><th>Description</th><th>Roles</th></tr><tr><td>Record Crime</td><td>Create case number, title, type, offense, barangay, dates, address, coordinates, reporter, and assigned officer.</td><td>Admin, Police</td></tr><tr><td>Update Crime</td><td>Edit authorized crime record details.</td><td>Admin, Police, Investigator</td></tr><tr><td>Delete Crime</td><td>Soft-delete a crime record.</td><td>Admin, Police, Investigator</td></tr></table></div>
+<div><h3>Crime Incident Activity Diagram</h3><div class="activity"><svg viewBox="0 0 430 290"><rect class="lane" x="35" y="25" width="160" height="230"/><rect class="lane" x="195" y="25" width="200" height="230"/><text class="lane-title" x="115" y="42" text-anchor="middle">Admin/Police</text><text class="lane-title" x="295" y="42" text-anchor="middle">System</text><circle cx="115" cy="65" r="10" fill="#000"/><path class="flow" d="M115 75 L115 98"/><rect class="node" x="67" y="98" width="96" height="34" rx="4"/><text x="115" y="113" text-anchor="middle">Input crime</text><text x="115" y="126" text-anchor="middle">details</text><path class="flow" d="M163 115 L248 115"/><rect class="node" x="248" y="98" width="94" height="34" rx="4"/><text x="295" y="113" text-anchor="middle">Validate</text><text x="295" y="126" text-anchor="middle">information</text><path class="flow" d="M295 132 L295 158"/><polygon class="node" points="295,158 332,185 295,212 258,185"/><text x="295" y="188" text-anchor="middle">Valid?</text><path class="flow" d="M332 185 L365 185 L365 225 L295 225"/><text x="340" y="177">Yes</text><rect class="node" x="246" y="225" width="98" height="34" rx="4"/><text x="295" y="240" text-anchor="middle">Save case and</text><text x="295" y="253" text-anchor="middle">audit log</text><path class="flow" d="M258 185 L200 185 L200 225 L115 225"/><text x="215" y="177">No</text><circle cx="115" cy="238" r="12" fill="#000"/><circle cx="115" cy="238" r="16" fill="none" stroke="#000" stroke-width="2"/></svg></div><div class="caption">Figure 5. Crime Incident Activity Diagram</div></div>
+</div>
+</section>
+
+<section class="slide tight">
+<h1>Chapter IV: Methodology, Results,<br>and Discussion</h1>
+<div class="grid3">
+<div><h3>Status Workflow</h3><table class="small"><tr><th>Use Case</th><th>Description</th></tr><tr><td>Update Status</td><td>Move case through pending, CIRAS recording, review, correction, data stored, IRF printed, signature, blotter, UCPER, resolved, or closed.</td></tr><tr><td>Record Findings</td><td>Store investigation findings and findings date.</td></tr></table></div>
+<div><h3>Evidence Management</h3><table class="small"><tr><th>Use Case</th><th>Description</th></tr><tr><td>Upload Evidence</td><td>Attach file path, storage disk, type, name, and description to a case.</td></tr><tr><td>View/Delete Evidence</td><td>Display or soft-delete evidence files.</td></tr></table></div>
+<div><h3>Activity Diagram</h3><div class="activity"><svg viewBox="0 0 300 270"><rect class="lane" x="15" y="20" width="120" height="220"/><rect class="lane" x="135" y="20" width="150" height="220"/><text class="lane-title" x="75" y="37" text-anchor="middle">Investigator</text><text class="lane-title" x="210" y="37" text-anchor="middle">System</text><circle cx="75" cy="58" r="8" fill="#000"/><path class="flow" d="M75 66 L75 88"/><rect class="node" x="35" y="88" width="80" height="32" rx="4"/><text x="75" y="101" text-anchor="middle">Open case</text><text x="75" y="114" text-anchor="middle">record</text><path class="flow" d="M115 104 L172 104"/><rect class="node" x="172" y="88" width="78" height="32" rx="4"/><text x="211" y="101" text-anchor="middle">Display case</text><text x="211" y="114" text-anchor="middle">and files</text><path class="flow" d="M172 104 L75 104 L75 150"/><rect class="node" x="35" y="150" width="80" height="32" rx="4"/><text x="75" y="163" text-anchor="middle">Update status</text><text x="75" y="176" text-anchor="middle">or evidence</text><path class="flow" d="M115 166 L172 166"/><rect class="node" x="172" y="150" width="78" height="32" rx="4"/><text x="211" y="163" text-anchor="middle">Validate and</text><text x="211" y="176" text-anchor="middle">save</text><path class="flow" d="M172 166 L75 166 L75 210"/><circle cx="75" cy="220" r="10" fill="#000"/><circle cx="75" cy="220" r="13" fill="none" stroke="#000" stroke-width="2"/></svg></div><div class="caption">Figure 6. Status and Evidence Activity Diagram</div></div>
+</div>
+</section>
+
+<section class="slide tight">
+<h1>Chapter IV: Methodology, Results,<br>and Discussion</h1>
+<div class="grid3">
+<div><h3>Crime Map Module</h3><table class="small"><tr><th>Use Case</th><th>Description</th></tr><tr><td>View Crime Map</td><td>Load incidents, coordinates, and barangay boundaries.</td></tr><tr><td>Plot Incident</td><td>Use selected map location when reporting a crime.</td></tr></table></div>
+<div><h3>Hotspot Module</h3><table class="small"><tr><th>Use Case</th><th>Description</th></tr><tr><td>View Hotspots</td><td>Display barangays/areas with higher incident concentration.</td></tr><tr><td>Review Hotspot Data</td><td>Use grouped crime records for monitoring.</td></tr></table></div>
+<div><h3>Map/Hotspot Activity</h3><div class="activity"><svg viewBox="0 0 300 270"><rect class="lane" x="15" y="20" width="120" height="220"/><rect class="lane" x="135" y="20" width="150" height="220"/><text class="lane-title" x="75" y="37" text-anchor="middle">User</text><text class="lane-title" x="210" y="37" text-anchor="middle">System</text><circle cx="75" cy="58" r="8" fill="#000"/><path class="flow" d="M75 66 L75 90"/><rect class="node" x="35" y="90" width="80" height="32" rx="4"/><text x="75" y="103" text-anchor="middle">Open map or</text><text x="75" y="116" text-anchor="middle">hotspots</text><path class="flow" d="M115 106 L172 106"/><rect class="node" x="172" y="90" width="78" height="32" rx="4"/><text x="211" y="103" text-anchor="middle">Load crimes</text><text x="211" y="116" text-anchor="middle">and barangays</text><path class="flow" d="M211 122 L211 150"/><rect class="node" x="172" y="150" width="78" height="32" rx="4"/><text x="211" y="163" text-anchor="middle">Display map</text><text x="211" y="176" text-anchor="middle">or hotspots</text><path class="flow" d="M172 166 L75 166 L75 210"/><circle cx="75" cy="220" r="10" fill="#000"/><circle cx="75" cy="220" r="13" fill="none" stroke="#000" stroke-width="2"/></svg></div><div class="caption">Figure 7. Map and Hotspot Activity Diagram</div></div>
+</div>
+</section>
+
+<section class="slide tight">
+<h1>Chapter IV: Methodology, Results,<br>and Discussion</h1>
+<div class="grid3">
+<div><h3>Analytics Module</h3><table class="small"><tr><th>Use Case</th><th>Description</th></tr><tr><td>View Trends</td><td>Show monthly crime trends.</td></tr><tr><td>View Breakdown</td><td>Show crime by type, barangay, and status.</td></tr><tr><td>View Monthly Report</td><td>Show selected-year monthly statistics.</td></tr></table></div>
+<div><h3>Report Management Module</h3><table class="small"><tr><th>Use Case</th><th>Description</th></tr><tr><td>Generate Report</td><td>Filter by type, barangay, status, and date range.</td></tr><tr><td>Export/Print</td><td>Preview and export report as printable/PDF output.</td></tr></table></div>
+<div><h3>Analytics/Report Activity</h3><div class="activity"><svg viewBox="0 0 300 270"><rect class="lane" x="15" y="20" width="120" height="220"/><rect class="lane" x="135" y="20" width="150" height="220"/><text class="lane-title" x="75" y="37" text-anchor="middle">Admin/LGU</text><text class="lane-title" x="210" y="37" text-anchor="middle">System</text><circle cx="75" cy="58" r="8" fill="#000"/><path class="flow" d="M75 66 L75 88"/><rect class="node" x="35" y="88" width="80" height="32" rx="4"/><text x="75" y="101" text-anchor="middle">Select report</text><text x="75" y="114" text-anchor="middle">or analytics</text><path class="flow" d="M115 104 L172 104"/><rect class="node" x="172" y="88" width="78" height="32" rx="4"/><text x="211" y="101" text-anchor="middle">Retrieve</text><text x="211" y="114" text-anchor="middle">crime data</text><path class="flow" d="M211 120 L211 150"/><rect class="node" x="172" y="150" width="78" height="32" rx="4"/><text x="211" y="163" text-anchor="middle">Generate chart</text><text x="211" y="176" text-anchor="middle">or preview</text><path class="flow" d="M172 166 L75 166 L75 210"/><circle cx="75" cy="220" r="10" fill="#000"/><circle cx="75" cy="220" r="13" fill="none" stroke="#000" stroke-width="2"/></svg></div><div class="caption">Figure 8. Analytics and Report Activity Diagram</div></div>
+</div>
+</section>
+
+<section class="slide tight">
+<h1>Chapter IV: Methodology, Results,<br>and Discussion</h1>
+<div class="grid3">
+<div><h3>User Management</h3><table class="small"><tr><th>Use Case</th><th>Description</th></tr><tr><td>Create User</td><td>Add name, email, role, phone, badge, avatar, and active status.</td></tr><tr><td>Update/Deactivate</td><td>Edit or deactivate an account.</td></tr></table></div>
+<div><h3>Crime Type Management</h3><table class="small"><tr><th>Use Case</th><th>Description</th></tr><tr><td>Manage Crime Types</td><td>Create/update type name, description, icon, color, and active status.</td></tr><tr><td>Protect References</td><td>Prevent unsafe deletion when used by crimes.</td></tr></table></div>
+<div><h3>Offense Type Management</h3><table class="small"><tr><th>Use Case</th><th>Description</th></tr><tr><td>Manage Offenses</td><td>Create/update unique offense names and optional crime type link.</td></tr><tr><td>Activate/Deactivate</td><td>Control active offense options.</td></tr></table></div>
+</div>
+<div class="caption">Figures 9-11. Admin Maintenance Module Use Case Tables</div>
+</section>
+
+<section class="slide">
+<h1>Chapter IV: Methodology, Results,<br>and Discussion</h1>
+<div class="grid3 activity">
+<svg viewBox="0 0 300 330"><rect class="lane" x="18" y="20" width="120" height="270"/><rect class="lane" x="138" y="20" width="145" height="270"/><text class="lane-title" x="78" y="37" text-anchor="middle">Admin</text><text class="lane-title" x="210" y="37" text-anchor="middle">System</text><circle cx="78" cy="60" r="9" fill="#000"/><path class="flow" d="M78 69 L78 95"/><rect class="node" x="38" y="95" width="80" height="32" rx="4"/><text x="78" y="108" text-anchor="middle">Input user</text><text x="78" y="121" text-anchor="middle">data</text><path class="flow" d="M118 111 L172 111"/><polygon class="node" points="210,84 248,111 210,138 172,111"/><text x="210" y="114" text-anchor="middle">Exists?</text><path class="flow" d="M210 138 L210 165"/><rect class="node" x="170" y="165" width="80" height="32" rx="4"/><text x="210" y="178" text-anchor="middle">Store user</text><text x="210" y="191" text-anchor="middle">information</text><path class="flow" d="M210 197 L210 235 L78 235"/><circle cx="78" cy="250" r="11" fill="#000"/><circle cx="78" cy="250" r="14" fill="none" stroke="#000" stroke-width="2"/></svg>
+<svg viewBox="0 0 300 330"><rect class="lane" x="18" y="20" width="120" height="270"/><rect class="lane" x="138" y="20" width="145" height="270"/><text class="lane-title" x="78" y="37" text-anchor="middle">Admin</text><text class="lane-title" x="210" y="37" text-anchor="middle">System</text><circle cx="78" cy="60" r="9" fill="#000"/><path class="flow" d="M78 69 L78 95"/><rect class="node" x="38" y="95" width="80" height="32" rx="4"/><text x="78" y="108" text-anchor="middle">Choose user</text><text x="78" y="121" text-anchor="middle">account</text><path class="flow" d="M118 111 L172 111"/><rect class="node" x="172" y="95" width="78" height="32" rx="4"/><text x="211" y="108" text-anchor="middle">Display user</text><text x="211" y="121" text-anchor="middle">list</text><path class="flow" d="M78 127 L78 160"/><polygon class="node" points="78,160 116,187 78,214 40,187"/><text x="78" y="184" text-anchor="middle">Confirm</text><text x="78" y="197" text-anchor="middle">deactivate?</text><path class="flow" d="M116 187 L172 187"/><rect class="node" x="172" y="171" width="78" height="32" rx="4"/><text x="211" y="184" text-anchor="middle">Update</text><text x="211" y="197" text-anchor="middle">status</text><path class="flow" d="M172 187 L78 245"/><circle cx="78" cy="250" r="11" fill="#000"/><circle cx="78" cy="250" r="14" fill="none" stroke="#000" stroke-width="2"/></svg>
+<svg viewBox="0 0 300 330"><rect class="lane" x="18" y="20" width="120" height="270"/><rect class="lane" x="138" y="20" width="145" height="270"/><text class="lane-title" x="78" y="37" text-anchor="middle">Admin</text><text class="lane-title" x="210" y="37" text-anchor="middle">System</text><circle cx="78" cy="60" r="9" fill="#000"/><path class="flow" d="M78 69 L78 95"/><rect class="node" x="38" y="95" width="80" height="32" rx="4"/><text x="78" y="108" text-anchor="middle">Input type or</text><text x="78" y="121" text-anchor="middle">offense data</text><path class="flow" d="M118 111 L172 111"/><rect class="node" x="172" y="95" width="78" height="32" rx="4"/><text x="211" y="108" text-anchor="middle">Validate</text><text x="211" y="121" text-anchor="middle">references</text><path class="flow" d="M211 127 L211 165"/><rect class="node" x="172" y="165" width="78" height="32" rx="4"/><text x="211" y="178" text-anchor="middle">Save</text><text x="211" y="191" text-anchor="middle">maintenance</text><path class="flow" d="M172 181 L78 245"/><circle cx="78" cy="250" r="11" fill="#000"/><circle cx="78" cy="250" r="14" fill="none" stroke="#000" stroke-width="2"/></svg>
+</div>
+<div class="grid3"><div class="caption">Figure 12. Register User Activity Diagram</div><div class="caption">Figure 13. Deactivate User Activity Diagram</div><div class="caption">Figure 14. Crime/Offense Type Activity Diagram</div></div>
+</section>
+
+<section class="slide tight">
+<h1>Chapter IV: Methodology, Results,<br>and Discussion</h1>
+<div class="grid2">
+<div><h3>Audit Log and Account Profile Module</h3><table><tr><th>Use Case</th><th>Description</th><th>Role</th></tr><tr><td>Review Audit Logs</td><td>View action, auditable record, old/new values, IP address, user agent, and timestamps.</td><td>Admin</td></tr><tr><td>Update Profile</td><td>Update own name, email, and password.</td><td>All Users</td></tr></table></div>
+<div><h3>Audit/Profile Activity Diagram</h3><div class="activity"><svg viewBox="0 0 430 270"><rect class="lane" x="40" y="25" width="155" height="210"/><rect class="lane" x="195" y="25" width="195" height="210"/><text class="lane-title" x="118" y="42" text-anchor="middle">User/Admin</text><text class="lane-title" x="292" y="42" text-anchor="middle">System</text><circle cx="118" cy="65" r="10" fill="#000"/><path class="flow" d="M118 75 L118 100"/><rect class="node" x="72" y="100" width="92" height="35" rx="4"/><text x="118" y="115" text-anchor="middle">Open profile</text><text x="118" y="128" text-anchor="middle">or audit logs</text><path class="flow" d="M164 117 L247 117"/><rect class="node" x="247" y="100" width="92" height="35" rx="4"/><text x="293" y="115" text-anchor="middle">Validate role</text><text x="293" y="128" text-anchor="middle">and request</text><path class="flow" d="M293 135 L293 164"/><rect class="node" x="247" y="164" width="92" height="35" rx="4"/><text x="293" y="179" text-anchor="middle">Save profile or</text><text x="293" y="192" text-anchor="middle">display logs</text><path class="flow" d="M247 181 L118 181 L118 205"/><circle cx="118" cy="217" r="12" fill="#000"/><circle cx="118" cy="217" r="16" fill="none" stroke="#000" stroke-width="2"/></svg></div><div class="caption">Figure 15. Audit Log and Profile Activity Diagram</div></div>
+</div>
+</section>
+
+<section class="slide">
+<h1>Chapter IV: Methodology, Results,<br>and Discussion</h1>
+<h2>Normalization</h2>
+<div class="problem">
+<div>Introduce the database before normalization.</div>
+<div><span class="red">1NF</span> - Remove repeating groups. Each column must contain only one value (atomic values). Instead of multiple evidence or audit columns, each evidence file and audit action gets its own row.</div>
+</div>
+</section>
+
+<section class="slide tight">
+<h1>Chapter IV: Methodology, Results,<br>and Discussion</h1>
+<h2>Example of UNF:</h2>
+<table class="small"><tr><th>CaseNo</th><th>Title</th><th>CrimeType</th><th>Offense1</th><th>Offense2</th><th>Evidence1</th><th>Evidence2</th><th>Officer</th><th>Status</th></tr>
+<tr><td>CRM-001</td><td>Theft Incident</td><td>Theft</td><td>Robbery</td><td>Alarm and Scandal</td><td>photo.jpg</td><td>statement.pdf</td><td>PO Dela Cruz</td><td>pending</td></tr>
+<tr><td>CRM-002</td><td>Assault Incident</td><td>Physical Injury</td><td>Assault</td><td></td><td>medical.pdf</td><td>photo2.jpg</td><td>PO Santos</td><td>for_review</td></tr></table>
+<h2>Problem:</h2>
+<div class="problem">
+<div>Offenses and evidence are stored in multiple columns.</div>
+<div>If a crime has more evidence files, additional columns must be added.</div>
+<div>Crime type, officer, barangay, and status information are repeated and difficult to maintain.</div>
+</div>
+</section>
+
+<section class="slide tight">
+<h1>Chapter IV: Methodology, Results,<br>and Discussion</h1>
+<h2>Example of 1NF:</h2>
+<p class="note">Rule of 1NF: Each column must contain only one value. Repeating evidence columns become separate rows.</p>
+<table class="small"><tr><th>CaseNo</th><th>Title</th><th>CrimeType</th><th>Offense</th><th>EvidenceFile</th><th>Officer</th><th>Status</th></tr>
+<tr><td>CRM-001</td><td>Theft Incident</td><td>Theft</td><td>Robbery</td><td>photo.jpg</td><td>PO Dela Cruz</td><td>pending</td></tr>
+<tr><td>CRM-001</td><td>Theft Incident</td><td>Theft</td><td>Alarm and Scandal</td><td>statement.pdf</td><td>PO Dela Cruz</td><td>pending</td></tr>
+<tr><td>CRM-002</td><td>Assault Incident</td><td>Physical Injury</td><td>Assault</td><td>medical.pdf</td><td>PO Santos</td><td>for_review</td></tr>
+<tr><td>CRM-002</td><td>Assault Incident</td><td>Physical Injury</td><td>Assault</td><td>photo2.jpg</td><td>PO Santos</td><td>for_review</td></tr></table>
+<p class="center">*No repeating groups, but crime, officer, type, and status data are still repeated in every row.</p>
+</section>
+
+<section class="slide tight">
+<h1>Chapter IV: Methodology, Results,<br>and Discussion</h1>
+<h2>Example of 2NF:</h2>
+<p class="note">Rule of 2NF: Remove partial dependencies. Separate crime records, reference tables, users, and evidence.</p>
+<div class="grid3">
+<table class="tiny"><tr><th>CrimeID (PK)</th><th>CaseNo</th><th>Title</th><th>CrimeTypeID (FK)</th><th>BarangayID (FK)</th><th>ReportedBy (FK)</th></tr><tr><td>C001</td><td>CRM-001</td><td>Theft Incident</td><td>CT01</td><td>B01</td><td>U01</td></tr><tr><td>C002</td><td>CRM-002</td><td>Assault Incident</td><td>CT02</td><td>B02</td><td>U02</td></tr></table>
+<table class="tiny"><tr><th>EvidenceID (PK)</th><th>CrimeID (FK)</th><th>FileName</th><th>UploadedBy (FK)</th></tr><tr><td>E001</td><td>C001</td><td>photo.jpg</td><td>U01</td></tr><tr><td>E002</td><td>C001</td><td>statement.pdf</td><td>U01</td></tr></table>
+<table class="tiny"><tr><th>UserID (PK)</th><th>Name</th><th>Email</th><th>Role</th></tr><tr><td>U01</td><td>PO Dela Cruz</td><td>po1@email</td><td>police_officer</td></tr><tr><td>U02</td><td>PO Santos</td><td>po2@email</td><td>police_officer</td></tr></table>
+</div>
+<p>*Crime information is stored once. Evidence and users are separated. Remaining problem: some descriptive reference data must still be separated clearly to remove transitive dependencies.</p>
+<table class="tiny" style="width:50%; margin:auto;"><tr><th>CrimeTypeID (PK)</th><th>Name</th><th>Description</th><th>Icon</th><th>Color</th></tr><tr><td>CT01</td><td>Theft</td><td>Property crime</td><td>shield</td><td>#ef4444</td></tr></table>
+</section>
+
+<section class="slide tight">
+<h1>Chapter IV: Methodology, Results,<br>and Discussion</h1>
+<h2>Example of 3NF:</h2>
+<p class="note">Rule of 3NF: Remove transitive dependencies. A non-key attribute should depend only on the primary key. Final tables match the system database.</p>
+<div class="grid3">
+<table class="tiny"><tr><th>users</th><th>Main Fields</th></tr><tr><td>id (PK)</td><td>name, email, role, phone, badge_number, avatar, is_active</td></tr></table>
+<table class="tiny"><tr><th>crimes</th><th>Main Fields</th></tr><tr><td>id (PK)</td><td>case_number, title, crime_type_id, offense_type_id, barangay_id, dates/times, status, coordinates, reported_by, assigned_officer</td></tr></table>
+<table class="tiny"><tr><th>evidence</th><th>Main Fields</th></tr><tr><td>id (PK)</td><td>crime_id, file_path, storage_disk, file_type, file_name, uploaded_by, deleted_at</td></tr></table>
+</div>
+<div class="grid3" style="margin-top:18px;">
+<table class="tiny"><tr><th>crime_types</th><th>Main Fields</th></tr><tr><td>id (PK)</td><td>name, description, icon, color, is_active</td></tr></table>
+<table class="tiny"><tr><th>offense_types</th><th>Main Fields</th></tr><tr><td>id (PK)</td><td>name, crime_type_id, description, is_active</td></tr></table>
+<table class="tiny"><tr><th>barangays / audit_logs</th><th>Main Fields</th></tr><tr><td>id (PK)</td><td>barangay name/city/coordinates; audit user/action/old_values/new_values/ip/user_agent</td></tr></table>
+</div>
+<p class="center">No duplicated type, barangay, user, evidence, or audit information. Easier updates, accurate reports, and better database integrity.</p>
+</section>
+
+</body>
+</html>
