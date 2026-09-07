@@ -385,7 +385,9 @@ class CrimeMapController extends Controller
      * Point-in-polygon detection using ray casting algorithm.
      * Returns the barangay info if the point falls within any boundary.
      *
-     * Priority: Predefined boundaries → DB barangay center proximity
+     * A barangay is returned only when the plotted coordinate is inside a
+     * verified GIS or polygon boundary. Nearest-center guesses are unsafe for
+     * incident reporting because they can assign a neighboring barangay.
      */
     public function detectBarangayByCoordinates(float $lat, float $lng): ?array
     {
@@ -447,8 +449,9 @@ class CrimeMapController extends Controller
             }
         }
 
-        // --- Priority 4: Fallback to nearest seeded barangay center ---
-        return $this->findNearestBarangay($lat, $lng);
+        // Do not guess a barangay from its center point. The caller will ask
+        // the user to select it manually when no boundary contains the pin.
+        return null;
     }
 
     private function detectBarangayFromGeoJson(float $lat, float $lng, $barangays): ?array
