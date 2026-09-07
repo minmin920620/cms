@@ -17,16 +17,6 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <style>
-        svg[class~="h-4"][class~="w-4"] { width: 1rem !important; height: 1rem !important; }
-        svg[class~="h-5"][class~="w-5"] { width: 1.25rem !important; height: 1.25rem !important; }
-        svg[class~="h-6"][class~="w-6"] { width: 1.5rem !important; height: 1.5rem !important; }
-        svg[class~="h-7"][class~="w-7"] { width: 1.75rem !important; height: 1.75rem !important; }
-        svg[class~="h-8"][class~="w-8"] { width: 2rem !important; height: 2rem !important; }
-        svg[class~="h-12"][class~="w-12"] { width: 3rem !important; height: 3rem !important; }
-        img[class~="h-12"][class~="w-12"] { width: 3rem !important; height: 3rem !important; }
-        img[class~="h-16"][class~="w-16"] { width: 4rem !important; height: 4rem !important; }
-    </style>
 </head>
 <body class="font-sans antialiased">
     <div class="material-shell min-h-screen lg:flex">
