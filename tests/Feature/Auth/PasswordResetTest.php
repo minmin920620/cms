@@ -6,6 +6,7 @@ use App\Mail\PasswordResetOtp;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\RateLimiter;
 use Tests\TestCase;
 
 class PasswordResetTest extends TestCase
@@ -60,5 +61,22 @@ class PasswordResetTest extends TestCase
 
             return true;
         });
+    }
+
+    public function test_password_reset_attempts_are_rate_limited(): void
+    {
+        $payload = [
+            'email' => 'person@example.com',
+            'otp' => '000000',
+            'password' => 'password',
+            'password_confirmation' => 'password',
+        ];
+
+        for ($attempt = 0; $attempt < 6; $attempt++) {
+            $this->post('/reset-password', $payload)->assertSessionHasErrors('otp');
+        }
+
+        $this->post('/reset-password', $payload)->assertTooManyRequests();
+        RateLimiter::clear('person@example.com|127.0.0.1');
     }
 }

@@ -142,8 +142,13 @@ class SystemFeatureCoverageTest extends TestCase
         $response
             ->assertOk()
             ->assertHeader('Content-Type', 'application/sql')
-            ->assertSee('Crime Mapping System backup')
-            ->assertSee('CRM-BACKUP-0001');
+            ->assertStreamed();
+
+        $content = $response->streamedContent();
+
+        $this->assertStringContainsString('Crime Mapping System backup', $content);
+        $this->assertStringContainsString('CREATE TABLE', $content);
+        $this->assertStringContainsString('CRM-BACKUP-0001', $content);
     }
 
     private function crime(array $overrides = []): Crime
