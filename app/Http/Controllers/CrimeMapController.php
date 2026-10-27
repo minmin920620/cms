@@ -844,6 +844,9 @@ class CrimeMapController extends Controller
             'avancenaa' => 'avancena',
             'sarabia' => 'saravia',
             'stonino' => 'santonino',
+            // The GIS/PSA feature uses Zulueta (Bo. 7), while this app's
+            // barangay records and local map label this area as Topland.
+            'zulueta' => 'topland',
         ];
 
 	        return $aliases[$normalized] ?? $normalized ?? '';
