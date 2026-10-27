@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\BarangayMapPoints;
 use App\Models\Barangay;
 use App\Models\Crime;
 use Illuminate\View\View;
@@ -31,20 +32,32 @@ class HotspotController extends Controller
         $totalIncidents = $hotspots->sum('total_incidents');
         $barangaysWithIncidents = $hotspots->where('total_incidents', '>', 0)->count();
         $maxIncidents = max((int) $hotspots->max('total_incidents'), 1);
+        $gisPoints = BarangayMapPoints::all();
 
         $mapHotspots = $hotspots
             ->where('total_incidents', '>', 0)
-            ->whereNotNull('latitude')
-            ->whereNotNull('longitude')
-            ->map(fn ($barangay) => [
-                'name' => $barangay->name,
-                'lat' => (float) $barangay->latitude,
-                'lng' => (float) $barangay->longitude,
-                'total' => (int) $barangay->total_incidents,
-                'open' => (int) $barangay->open_incidents,
-                'resolved' => (int) $barangay->resolved_incidents,
-                'density' => round(($barangay->total_incidents / $maxIncidents) * 100, 1),
-            ])
+            ->map(function ($barangay) use ($gisPoints, $maxIncidents) {
+                $point = $gisPoints[$barangay->name] ?? null;
+
+                // Keep the old stored point as a fallback if GIS data is unavailable.
+                $latitude = $point['lat'] ?? $barangay->latitude;
+                $longitude = $point['lng'] ?? $barangay->longitude;
+
+                if ($latitude === null || $longitude === null) {
+                    return null;
+                }
+
+                return [
+                    'name' => $barangay->name,
+                    'lat' => (float) $latitude,
+                    'lng' => (float) $longitude,
+                    'total' => (int) $barangay->total_incidents,
+                    'open' => (int) $barangay->open_incidents,
+                    'resolved' => (int) $barangay->resolved_incidents,
+                    'density' => round(($barangay->total_incidents / $maxIncidents) * 100, 1),
+                ];
+            })
+            ->filter()
             ->values();
 
         $heatPoints = $mapHotspots
