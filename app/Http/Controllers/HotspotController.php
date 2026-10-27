@@ -37,7 +37,7 @@ class HotspotController extends Controller
         $mapHotspots = $hotspots
             ->where('total_incidents', '>', 0)
             ->map(function ($barangay) use ($gisPoints, $maxIncidents) {
-                $point = $gisPoints[$barangay->name] ?? null;
+                $point = $gisPoints[BarangayMapPoints::normalizeName($barangay->name)] ?? null;
 
                 // Keep the old stored point as a fallback if GIS data is unavailable.
                 $latitude = $point['lat'] ?? $barangay->latitude;

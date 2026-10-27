@@ -77,13 +77,34 @@ class BarangayMapPoints
                 $point = self::interiorPoint($ring);
 
                 if ($point) {
-                    $points[$name] = ['lat' => $point[1], 'lng' => $point[0]];
+                    $points[self::normalizeName($name)] = ['lat' => $point[1], 'lng' => $point[0]];
                     break;
                 }
             }
         }
 
         return $points;
+    }
+
+    public static function normalizeName(string $name): string
+    {
+        $name = strtolower($name);
+        $name = preg_replace('/\([^)]*\)/', '', $name);
+        $name = str_replace(
+            ["ñ", "Ñ", "Ã±", "Ã‘", "ÃƒÂ±", "ÃƒÂ‘"],
+            'n',
+            $name
+        );
+        $name = preg_replace('/\bbarangay\b|\bbrgy\.?\b/', '', $name);
+        $name = preg_replace('/\bsto\.?\b/', 'santo', $name);
+        $name = preg_replace('/\bsta\.?\b/', 'santa', $name);
+        $name = preg_replace('/[^a-z0-9]+/', '', $name);
+
+        return match ($name) {
+            'zulueta' => 'topland',
+            'sarabia' => 'saravia',
+            default => $name,
+        };
     }
 
     /** @return array{0: float, 1: float}|null */
